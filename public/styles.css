@@ -729,6 +729,8 @@ body.beta-is-open { overflow: hidden; }
 .beta-email input { width: 100%; min-height: 50px; padding: 12px 14px; border: 1px solid var(--ink); border-radius: 10px; font-size: 16px; color: var(--ink); background: #fff; }
 .beta-honey { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .beta-consent { margin: 12px 0 0; color: #55534a; font-size: 12px; line-height: 1.5; }
+.beta-research { display:flex; gap:10px; align-items:flex-start; margin-top:12px; color:#45443c; font-size:13px; line-height:1.5; cursor:pointer; }
+.beta-research input { flex:0 0 20px; width:20px; height:20px; margin:0; accent-color:var(--blue); }
 .beta-controls { flex: 0 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 24px max(18px, env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--white); }
 #beta-back, #beta-skip { min-height: 44px; padding: 8px 0; border: 0; background: transparent; color: #45443e; font-size: 14px; cursor: pointer; }
 #beta-skip { margin-left: auto; }

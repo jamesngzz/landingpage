@@ -206,14 +206,18 @@ const betaTools = new Set();
 let betaBusy = false;
 let betaComplete = false;
 let lastInsightAction = "use";
+const journey = {id: crypto.randomUUID(), started_at: new Date().toISOString(), events: []};
+const betaSubmissionId = crypto.randomUUID();
+Object.assign(english, {betaConsent: "We save your email, selected profile and demo result to organise the beta and contact you. No spam."});
+Object.assign(vietnamese, {betaConsent: "Chúng tôi lưu email, hồ sơ đã chọn và kết quả demo để tổ chức beta và liên hệ với bạn. Không spam.", betaResearchConsent: "Tôi đồng ý chia sẻ các lượt bấm trong demo và nguồn giới thiệu để giúp cải thiện Wizzdom. Không bắt buộc."});
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const scenario = () => scenarios[currentPersona][currentLanguage];
 const moment = () => moments[currentPersona][currentLanguage];
 const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (char) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
-const readJSON = (key) => { try { const data = JSON.parse(localStorage.getItem(key) || "[]"); return Array.isArray(data) ? data : []; } catch { return []; } };
-const saveJSON = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; } };
+// Discard earlier prototype telemetry; current demo interactions stay in memory.
+try { localStorage.removeItem("wizzdom-demand-signals"); } catch { /* Storage is optional. */ }
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const focusStage = (selector) => {
   const node = $(selector);
@@ -241,11 +245,23 @@ function renderArtifact() {
 }
 
 function track(type, detail = {}) {
-  const signal = { type, persona: currentPersona, language: currentLanguage, timestamp: new Date().toISOString(), ...detail };
-  const signals = readJSON("wizzdom-demand-signals");
-  signals.push(signal);
-  saveJSON("wizzdom-demand-signals", signals.slice(-100));
+  const signal = { id: crypto.randomUUID(), type, persona: currentPersona, language: currentLanguage, timestamp: new Date().toISOString(), properties: detail };
+  journey.events.push(signal);
+  journey.events = journey.events.slice(-99);
   window.dispatchEvent(new CustomEvent("wizzdom:demand-signal", { detail: signal }));
+}
+
+function researchSession() {
+  const width = window.innerWidth;
+  let referrer_host = null;
+  try { referrer_host = document.referrer ? new URL(document.referrer).hostname : null; } catch { /* No referrer. */ }
+  const params = new URLSearchParams(window.location.search);
+  const attribution = {};
+  for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]) {
+    const value = params.get(key);
+    if (value && /^[\w .:/-]{1,100}$/.test(value)) attribution[key] = value;
+  }
+  return {id:journey.id, started_at:journey.started_at, page_path:"/", referrer_host, attribution, device_type:width<650?"mobile":width<1024?"tablet":"desktop", viewport_bucket:width<650?"small":width<1024?"medium":"large"};
 }
 
 function setStage(step) {
@@ -351,7 +367,7 @@ $$(`[data-persona]`).forEach((button) => button.addEventListener("click", () => 
 
 $("#mobile-persona").addEventListener("change", (event) => $(`[data-persona="${event.target.value}"]`).click());
 
-$$(`[data-language]`).forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.language)));
+$$(`[data-language]`).forEach((button) => button.addEventListener("click", () => {setLanguage(button.dataset.language); track("language_changed");}));
 
 $("#evidence-toggle").addEventListener("click", () => {
   const drawer = $("#evidence-drawer");
@@ -390,6 +406,7 @@ $$(`a[href^="#"]`).forEach((link) => link.addEventListener("click", (event) => {
 }));
 
 function renderBetaStep(focus = true) {
+  if (focus && !betaComplete) track("beta_step_viewed", {step:betaStep});
   $("#beta-progress").textContent = `${betaStep} / 3`;
   $("#beta-progress").hidden = betaComplete;
   $("#demand-form").hidden = betaComplete;
@@ -436,11 +453,12 @@ $("#beta-dialog").addEventListener("close", () => document.body.classList.remove
 $("#beta-dialog").addEventListener("click", event => { if (event.target === $("#beta-dialog")) $("#beta-dialog").close(); });
 window.visualViewport?.addEventListener("resize", syncDialogViewport);
 window.addEventListener("resize", () => { if ($("#beta-dialog").open) syncDialogViewport(); });
-$$("[data-beta-role]").forEach(node => node.addEventListener("click", () => { betaRole = node.dataset.betaRole; betaStep = 2; renderBetaStep(); }));
-$$("[data-beta-need]").forEach(node => node.addEventListener("click", () => { betaNeed = node.dataset.betaNeed; betaStep = 3; renderBetaStep(); }));
+$$("[data-beta-role]").forEach(node => node.addEventListener("click", () => { betaRole = node.dataset.betaRole; track("beta_role_selected",{role:betaRole}); betaStep = 2; renderBetaStep(); }));
+$$("[data-beta-need]").forEach(node => node.addEventListener("click", () => { betaNeed = node.dataset.betaNeed; track("beta_need_selected",{need:betaNeed}); betaStep = 3; renderBetaStep(); }));
 $$("[data-beta-tool]").forEach(node => node.addEventListener("click", () => {
   const tool = node.dataset.betaTool;
   betaTools.has(tool) ? betaTools.delete(tool) : betaTools.add(tool);
+  track("beta_tool_toggled",{tool,selected:betaTools.has(tool)});
   renderBetaStep(false);
 }));
 $("#beta-back").addEventListener("click", () => { betaStep = Math.max(1, betaStep - 1); renderBetaStep(); });
@@ -452,6 +470,8 @@ $("#demand-form").addEventListener("submit", async event => {
   if (betaStep < 3) { betaStep += 1; renderBetaStep(); return; }
   const field = $("#beta-email");
   if (!field.reportValidity()) return;
+  track("beta_submit_attempt");
+  const shareResearch = $("#beta-research-consent").checked;
   betaBusy = true;
   $("#beta-submit").disabled = true;
   $("#demand-form").setAttribute("aria-busy", "true");
@@ -465,6 +485,9 @@ $("#demand-form").addEventListener("submit", async event => {
       body: JSON.stringify({
         email: field.value.trim(), role: betaRole, need: betaNeed, tools: [...betaTools],
         language: currentLanguage, consent: true, website: event.currentTarget.elements.website.value,
+        submission_id: betaSubmissionId, research_consent: shareResearch,
+        session: shareResearch ? researchSession() : null, events: shareResearch ? journey.events : [],
+        context_sources: $$(".source-chips button.active").map(node=>node.dataset.source),
         demo: selectedChoice ? {persona: currentPersona, choice: selectedChoiceIndex, rating: $("[data-value].active")?.dataset.value} : {}
       })
     });
