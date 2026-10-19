@@ -83,13 +83,24 @@
         </div>
       </section>
 
-      <section class="principles-section" id="how">
-        <div class="principles-heading"><p class="eyebrow" data-i18n="howEyebrow">HOW WIZZDOM WORKS</p><h2 data-i18n="howTitle">Connect. Match. See what matters.</h2></div>
-        <div class="how-explorer">
-          <div class="how-steps" role="group" aria-label="Explore how Wizzdom works"><button id="how-connect" type="button" data-how="connect" aria-expanded="true" aria-controls="how-panel-connect"><span>01</span><strong data-i18n="howConnect">Connect</strong><b aria-hidden="true">→</b></button><button id="how-match" type="button" data-how="match" aria-expanded="false" aria-controls="how-panel-match"><span>02</span><strong data-i18n="howMatch">Match</strong><b aria-hidden="true">→</b></button><button id="how-insight" type="button" data-how="insight" aria-expanded="false" aria-controls="how-panel-insight"><span>03</span><strong data-i18n="howInsight">Insight</strong><b aria-hidden="true">↓</b></button></div>
-          <div id="how-panel-connect" class="how-panel" data-how-panel="connect" role="region" aria-labelledby="how-connect"><div class="principle-visual source-pool"><i>ChatGPT</i><i>Claude</i><i>Codex</i><i data-i18n="howVisualBrowser">Browser history</i></div><div><h3 data-i18n="howOneTitle">Choose your sources.</h3><p data-i18n="howOneBody">AI chats, browsing history, notes. You choose what comes in.</p></div></div>
-          <div id="how-panel-match" class="how-panel" data-how-panel="match" role="region" aria-labelledby="how-match" hidden><div class="principle-visual match-visual"><div><small data-i18n="howVisualTask">CURRENT TASK</small><b data-i18n="howVisualTaskValue">Plan next sprint</b></div><span>＋</span><div><small data-i18n="howVisualContext">PAST EVIDENCE</small><b data-i18n="howVisualContextValue">9 prior signals</b></div><em data-i18n="howVisualMatch">MATCH</em></div><div><h3 data-i18n="howTwoTitle">Find the missing pieces.</h3><p data-i18n="howTwoBody">Retrieve relevant decisions and patterns. Match them to your current task.</p></div></div>
-          <div id="how-panel-insight" class="how-panel" data-how-panel="insight" role="region" aria-labelledby="how-insight" hidden><div class="principle-visual surface-visual"><small data-i18n="howVisualEvidence">7 CUSTOMER SIGNALS</small><b data-i18n="howVisualInsight">Fix onboarding first.</b><span data-i18n="howVisualSources">View sources in the demo</span></div><div><h3 data-i18n="howThreeTitle">Act with the evidence.</h3><p data-i18n="howThreeBody">See the insight and its sources before your next move. You decide.</p></div></div>
+      <section class="principles-section wisdom-section" id="how" aria-labelledby="wisdom-title">
+        <div class="wisdom-heading"><p class="eyebrow" data-i18n="howEyebrow">MEET YOUR THOUGHTFUL TEAMMATE</p><h2 id="wisdom-title"><span data-i18n="wisdomTitleOne">Connects the dots.</span><span data-i18n="wisdomTitleTwo">Lends a hand.</span></h2></div>
+        <div class="wisdom-story" id="wisdom-story">
+          <div class="wisdom-task"><span class="task-spark" aria-hidden="true">↗</span><span data-i18n="wisdomCurrent">You’re fixing a login failure.</span><small data-i18n="wisdomExample">Fictional example</small></div>
+          <div class="wisdom-canvas">
+            <div class="wisdom-memories">
+              <article class="memory-fragment"><span class="fragment-icon" aria-hidden="true">{ }</span><div><small>Codex</small><strong data-i18n="wisdomPatch">Same fix. Tried twice.</strong></div><span class="fragment-status" aria-hidden="true">↶</span></article>
+              <article class="memory-fragment"><span class="fragment-icon browser-fragment" aria-hidden="true">↗</span><div><small data-i18n="wisdomBrowser">Browsing history</small><strong data-i18n="wisdomIncident">Incident review: clock skew.</strong></div><span class="fragment-status" aria-hidden="true">✓</span></article>
+              <article class="memory-fragment"><span class="fragment-icon notes-fragment" aria-hidden="true">≡</span><div><small data-i18n="wisdomNotes">Your notes</small><strong data-i18n="wisdomDeadline">Ship on Friday.</strong></div><span class="fragment-status" aria-hidden="true">◷</span></article>
+            </div>
+            <div class="wisdom-mind" aria-hidden="true"><svg class="wisdom-wires" viewBox="0 0 200 300" preserveAspectRatio="none" fill="none"><path d="M0 50C70 50 45 150 100 150M0 150H200M0 250C70 250 45 150 100 150"/><path class="wire-signal" d="M0 50C70 50 45 150 100 150H200M0 150H200M0 250C70 250 45 150 100 150H200"/></svg><div class="wisdom-halo"></div><div class="wisdom-orb"><span>⌁</span><i></i></div></div>
+            <article class="wisdom-help"><div class="wisdom-help-head"><span class="helper-avatar" aria-hidden="true">⌁</span><div><b>wizzdom</b><small data-i18n="wisdomTiming">A little heads-up</small></div></div><h3 data-i18n="wisdomVoice">One thing before you try that…</h3><p data-i18n="wisdomAdvice">You’ve tried this fix twice. Check the device clock before another retry.</p><div class="wisdom-citation"><span aria-hidden="true">↳</span><span data-i18n="wisdomEvidence">2 past fixes + incident review</span></div><a class="wisdom-next" href="#lab" data-start-persona="engineer"><span data-i18n="wisdomTry">Try this moment</span><b aria-hidden="true">↗</b></a></article>
+          </div>
+          <div class="wisdom-qualities">
+            <div><span class="quality-mark" aria-hidden="true">01</span><div><h3 data-i18n="wisdomRememberTitle">Attentive.</h3><p data-i18n="wisdomRememberBody">Remembers across the sources you choose.</p></div></div>
+            <div><span class="quality-mark" aria-hidden="true">02</span><div><h3 data-i18n="wisdomConnectTitle">Perceptive.</h3><p data-i18n="wisdomConnectBody">Matches past evidence to your current task.</p></div></div>
+            <div><span class="quality-mark" aria-hidden="true">03</span><div><h3 data-i18n="wisdomHelpTitle">Helpful.</h3><p data-i18n="wisdomHelpBody">Suggests a better next move. You decide.</p></div></div>
+          </div>
         </div>
       </section>
 

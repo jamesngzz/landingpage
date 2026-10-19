@@ -176,6 +176,7 @@ const moments = {
 };
 
 Object.assign(vietnamese, {
+  howEyebrow: "NGƯỜI ĐỒNG HÀNH TINH Ý CỦA BẠN", wisdomTitleOne: "Nhìn ra mối liên hệ.", wisdomTitleTwo: "Giúp đúng lúc.", wisdomCurrent: "Bạn đang sửa lỗi đăng nhập.", wisdomExample: "Ví dụ hư cấu", wisdomPatch: "Cùng cách sửa. Đã thử hai lần.", wisdomBrowser: "Lịch sử duyệt web", wisdomIncident: "Báo cáo sự cố: lệch đồng hồ.", wisdomNotes: "Ghi chú của bạn", wisdomDeadline: "Release vào thứ Sáu.", wisdomTiming: "Nhắc bạn một chút", wisdomVoice: "Trước khi bạn thử lại…", wisdomAdvice: "Bạn đã thử cách này hai lần. Hãy kiểm tra đồng hồ thiết bị trước khi retry.", wisdomEvidence: "2 lần sửa cũ + báo cáo sự cố", wisdomTry: "Thử tình huống này", wisdomRememberTitle: "Chú tâm.", wisdomRememberBody: "Nhớ xuyên suốt các nguồn bạn chọn.", wisdomConnectTitle: "Tinh ý.", wisdomConnectBody: "Đối chiếu bằng chứng cũ với việc hiện tại.", wisdomHelpTitle: "Hữu ích.", wisdomHelpBody: "Gợi ý bước tốt hơn. Bạn quyết định.",
   heroPrimary: "Xem AI bỏ sót gì", exampleTitle: "Wizzdom tìm lại những mảnh ghép còn thiếu.",
   heroSub: "Wizzdom kết nối điều bạn đã biết với việc bạn đang làm.", heroExample: "Ví dụ hư cấu", replay: "Xem lại", heroNow: "Bạn hỏi AI", heroPrompt: "“Lên kế hoạch analytics dashboard.”", heroMemoryOne: "7 người kẹt ở bước thiết lập", heroMemoryTwo: "Ưu tiên sửa thiết lập", heroRemembers: "Wizzdom tìm lại bằng chứng", heroInsight: "“Sửa thiết lập trước khi thêm tính năng.”", heroOld: "Build dashboard", heroNew: "Sửa thiết lập",
   yourTask: "VIỆC TRƯỚC MẮT", chooseNext: "Bạn sẽ làm gì tiếp theo?", moreBackground: "Xem bối cảnh", showEvidence: "Xem 3 nguồn", demoDisclaimer: "Tình huống hư cấu. Không truy cập dữ liệu của bạn.", fictionalContext: "Tình huống hư cấu", sampleWorkspace: "THỬ MỘT QUYẾT ĐỊNH",
@@ -403,10 +404,10 @@ function nextFormStep() {
 $("#form-next").addEventListener("click", nextFormStep);
 $("#form-back").addEventListener("click", () => updateFormStep(1));
 $("#form-moment").addEventListener("input", () => { $("#form-moment").setCustomValidity(""); $("#form-success").hidden = true; });
-$$('[data-how]').forEach((button) => button.addEventListener("click", () => {
-  $$('[data-how]').forEach((item) => item.setAttribute("aria-expanded", String(item === button)));
-  $$('[data-how-panel]').forEach((panel) => { panel.hidden = panel.dataset.howPanel !== button.dataset.how; });
-  track("how_step_opened", { step: button.dataset.how });
+$$('[data-start-persona]').forEach((link) => link.addEventListener("click", () => {
+  const persona = link.dataset.startPersona;
+  $(`[data-persona="${persona}"]`).click();
+  track("helpful_moment_opened", { source: "how_it_works" });
 }));
 
 let heroTimer;
@@ -423,6 +424,13 @@ $("#replay-hero").addEventListener("click", replayHero);
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver((entries) => { if (entries.some((entry) => entry.isIntersecting)) { replayHero(); observer.disconnect(); } }, {threshold:.35});
   observer.observe($("#hero-demo"));
+  const wisdomObserver = new IntersectionObserver((entries) => {
+    if (entries.some((entry) => entry.isIntersecting)) {
+      if (!reducedMotion()) $("#wisdom-story").classList.add("is-awake");
+      wisdomObserver.disconnect();
+    }
+  }, {threshold:.25});
+  wisdomObserver.observe($("#wisdom-story"));
 }
 window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", (event) => { if (event.matches) { clearTimeout(heroTimer); $("#hero-demo").classList.remove("is-playing"); } });
 let savedLanguage;
