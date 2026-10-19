@@ -2,7 +2,7 @@ import {copyFile, cp, mkdir} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 const root = new URL('../', import.meta.url);
 await mkdir(new URL('public/', root), {recursive:true});
-for (const file of ['index.html', 'script.js', 'styles.css']) {
+for (const file of ['index.html', 'script.js', 'styles.css', 'focus-modality.js']) {
   await copyFile(new URL(file, root), new URL(`public/${file}`, root));
 }
 for (const dir of ['assets', 'fonts']) {
