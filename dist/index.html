@@ -16,28 +16,22 @@
     </header>
 
     <main id="top">
-      <section class="hero">
+      <section class="hero minimal-hero">
         <div class="hero-copy">
-          <p class="eyebrow" data-i18n="heroEyebrow">GIVE YOUR AI THE FULL PICTURE</p>
           <h1><span data-i18n="heroLineOne">AI forgets.</span><span data-i18n="heroLineTwo">It acts blind.</span><span class="price-line" data-i18n="heroLineThree">You pay the price.</span></h1>
-          <p class="hero-sub" data-i18n="heroSub">Wizzdom brings decisions and lessons from your AI chats and browsing history into the work you’re doing now.</p>
-          <div class="hero-actions"><a class="button primary" href="#lab" data-i18n="heroPrimary">Give my AI the full picture</a><a class="button text-button" href="#how" data-i18n="heroSecondary">How it works ↓</a></div>
-          <p class="microcopy"><span class="demo-dot" aria-hidden="true"></span><span data-i18n="heroMicro">30-second sample · No access to your data</span></p>
+          <div class="hero-actions"><a class="button primary" href="#lab" data-i18n="heroPrimary">See what AI misses</a></div>
         </div>
+        <a class="scroll-cue" href="#example" aria-label="See Wizzdom in action"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg></a>
+      </section>
+      <section class="example-section" id="example" aria-labelledby="example-title">
+        <h2 id="example-title" data-i18n="exampleTitle">Wizzdom brings the missing pieces back.</h2>
         <div class="hero-composition">
-          <div class="context-flow">
-            <div class="flow-step flow-sources">
-              <div class="flow-step-head"><span>01</span><b data-i18n="heroFlowSourcesLabel">WHAT AI FORGOT</b></div>
-              <div class="flow-source-grid">
-                <article><b>ChatGPT</b><p data-i18n="heroFlowChat">7 users stuck at setup.</p></article>
-                <article><b>Claude</b><p data-i18n="heroFlowClaude">Fix setup before analytics.</p></article>
-                <article><b data-i18n="heroFlowBrowserLabel">Browsing</b><p data-i18n="heroFlowBrowser">Setup checklist · revisited 4×</p></article>
-              </div>
-            </div>
-            <div class="flow-link"><span>↓</span><small data-i18n="heroFlowRetrieve">buried across old chats</small></div>
-            <div class="flow-step flow-current"><div class="flow-step-head"><span>02</span><b data-i18n="heroFlowNowLabel">AI IS ABOUT TO ACT</b></div><p data-i18n="heroFlowNow">Build an analytics dashboard next.</p><small class="flow-blindspot" data-i18n="heroFlowBlindspot">BLIND TO 9 PRIOR SIGNALS</small></div>
-            <div class="flow-link"><span>↓</span><small data-i18n="heroFlowAnalyze">wizzdom restores the full picture</small></div>
-            <div class="flow-step flow-insight"><div class="flow-step-head"><span>03</span><b data-i18n="heroFlowInsightLabel">WIZZDOM NOTICES</b></div><h3 data-i18n="heroFlowInsight">Fix onboarding first.</h3><div class="evidence-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p data-i18n="heroFlowProof">7 customer signals + 2 prior decisions</p></div>
+          <div class="hero-demo" id="hero-demo">
+            <div class="hero-demo-bar"><span data-i18n="heroExample">Fictional example</span><button type="button" id="replay-hero"><span aria-hidden="true">↻</span> <span data-i18n="replay">Replay</span></button></div>
+            <div class="hero-scene scene-prompt"><span class="scene-step">1</span><div><small data-i18n="heroNow">You ask AI</small><p data-i18n="heroPrompt">“Plan the analytics dashboard.”</p></div></div>
+            <div class="hero-retrieval scene-sources"><span class="retrieval-line" aria-hidden="true"></span><div class="memory-ticket"><b>ChatGPT</b><span data-i18n="heroMemoryOne">7 users stuck at setup</span></div><div class="memory-ticket"><b>Claude</b><span data-i18n="heroMemoryTwo">Fix setup first</span></div></div>
+            <div class="hero-scene scene-insight"><span class="scene-step">⌁</span><div><small data-i18n="heroRemembers">Wizzdom brings back the evidence</small><p data-i18n="heroInsight">“Fix setup before building more features.”</p><div class="mini-funnel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+            <div class="hero-change scene-result"><del data-i18n="heroOld">Build dashboard</del><span aria-hidden="true">→</span><strong data-i18n="heroNew">Fix setup first</strong></div>
           </div>
         </div>
       </section>
@@ -53,46 +47,37 @@
 
       <section class="lab-section" id="lab">
         <div class="lab-intro"><div><p class="eyebrow" data-i18n="labEyebrow">TRY IT IN 30 SECONDS</p><h2 data-i18n="labTitle">What are you working on?</h2></div><p data-i18n="labSub">Pick your role. Make a call. See what your AI missed.</p></div>
-        <div class="persona-grid" role="tablist" aria-label="Choose a persona">
-          <button class="persona-card active" type="button" role="tab" aria-selected="true" data-persona="product"><span class="persona-icon">P</span><strong data-persona-label="product">Building a product</strong><small data-persona-blurb="product">Decisions scattered across calls and chats</small></button>
-          <button class="persona-card" type="button" role="tab" aria-selected="false" data-persona="engineer"><span class="persona-icon">{ }</span><strong data-persona-label="engineer">Writing software</strong><small data-persona-blurb="engineer">Previous fixes and constraints get lost</small></button>
-          <button class="persona-card" type="button" role="tab" aria-selected="false" data-persona="research"><span class="persona-icon">R</span><strong data-persona-label="research">Researching a question</strong><small data-persona-blurb="research">Important evidence conflicts across sources</small></button>
-          <button class="persona-card" type="button" role="tab" aria-selected="false" data-persona="business"><span class="persona-icon">B</span><strong data-persona-label="business">Growing a business</strong><small data-persona-blurb="business">Signals and commitments hide in conversations</small></button>
-          <button class="persona-card" type="button" role="tab" aria-selected="false" data-persona="creator"><span class="persona-icon">C</span><strong data-persona-label="creator">Creating for an audience</strong><small data-persona-blurb="creator">Feedback repeats in different words</small></button>
-          <button class="persona-card" type="button" role="tab" aria-selected="false" data-persona="personal"><span class="persona-icon">ME</span><strong data-persona-label="personal">Working on myself</strong><small data-persona-blurb="personal">Goals disappear when choices feel urgent</small></button>
+        <div class="persona-grid" role="group" aria-label="Choose a persona">
+          <button class="persona-card active" type="button" aria-pressed="true" data-persona="product"><span class="persona-icon" aria-hidden="true">P</span><strong data-persona-label="product">Product</strong><small data-persona-blurb="product">Wrong priorities</small></button>
+          <button class="persona-card" type="button" aria-pressed="false" data-persona="engineer"><span class="persona-icon" aria-hidden="true">{ }</span><strong data-persona-label="engineer">Developer</strong><small data-persona-blurb="engineer">Repeated fixes</small></button>
+          <button class="persona-card" type="button" aria-pressed="false" data-persona="research"><span class="persona-icon" aria-hidden="true">R</span><strong data-persona-label="research">Researcher</strong><small data-persona-blurb="research">Missing evidence</small></button>
+          <button class="persona-card" type="button" aria-pressed="false" data-persona="business"><span class="persona-icon" aria-hidden="true">B</span><strong data-persona-label="business">Business owner</strong><small data-persona-blurb="business">Forgotten terms</small></button>
+          <button class="persona-card" type="button" aria-pressed="false" data-persona="creator"><span class="persona-icon" aria-hidden="true">C</span><strong data-persona-label="creator">Creator</strong><small data-persona-blurb="creator">Missed feedback</small></button>
+          <button class="persona-card" type="button" aria-pressed="false" data-persona="personal"><span class="persona-icon" aria-hidden="true">ME</span><strong data-persona-label="personal">Personal</strong><small data-persona-blurb="personal">Old habits</small></button>
         </div>
 
-        <div class="simulator" aria-live="polite">
+        <div class="simulator">
           <div class="simulator-bar"><div><i></i><i></i><i></i><b data-i18n="sampleWorkspace">SAMPLE WORKSPACE</b></div><span><em></em><span data-i18n="fictionalContext">Fictional context</span></span></div>
-          <div class="simulator-layout">
-            <aside class="context-rail">
-              <div class="rail-heading"><span data-i18n="contextAvailable">CONTEXT AVAILABLE</span><b id="context-count">03</b></div>
-              <article class="context-note"><small data-i18n="currentGoal">CURRENT GOAL</small><p id="scenario-goal"></p></article>
-              <article class="context-note"><small data-i18n="whatsHappening">WHAT’S HAPPENING</small><p id="scenario-situation"></p></article>
-              <div class="source-stack" id="scenario-sources"></div>
-              <p class="rail-note" data-i18n="railNote">These sources are illustrative. Wizzdom never reads your device in this demo.</p>
-            </aside>
+          <div class="simulator-layout compact-simulator">
             <div class="decision-stage">
               <div class="stage-progress"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span><small data-i18n="progressLabel">CHOOSE · NOTICE · DECIDE AGAIN</small></div>
-              <div class="decision-panel" id="decision-panel"><p class="stage-label" data-i18n="youreAboutToAsk">YOU’RE ABOUT TO ASK AI</p><blockquote id="scenario-ask"></blockquote><p class="choice-prompt" data-i18n="chooseNext">What would you ask it to do next?</p><div class="choice-list" id="scenario-choices"></div></div>
+              <div class="decision-panel" id="decision-panel"><p class="scenario-setup" id="scenario-setup"></p><div class="task-message"><span class="message-mark" id="message-mark" aria-hidden="true">↗</span><div><p class="stage-label" data-i18n="yourTask">IN FRONT OF YOU</p><h3 id="scenario-ask" tabindex="-1"></h3></div></div><p class="choice-prompt" data-i18n="chooseNext">What would you do next?</p><div class="choice-list" id="scenario-choices"></div><details class="background-details"><summary data-i18n="moreBackground">More background</summary><p id="scenario-goal"></p><p id="scenario-situation"></p></details></div>
               <div class="insight-panel" id="insight-panel" hidden>
-                <div class="companion-orb" aria-hidden="true"><span>⌁</span></div>
                 <div class="insight-card">
-                  <div class="insight-header"><div><small data-i18n="wizzdomNoticed">WIZZDOM NOTICED</small><span id="selected-action"></span></div><span class="confidence" data-i18n="highConfidence">HIGH CONFIDENCE</span></div>
-                  <h3 id="insight-title"></h3><p id="insight-body"></p>
-                  <button class="evidence-toggle" id="evidence-toggle" type="button"><span data-i18n="showEvidence">Show the evidence</span><b aria-hidden="true">＋</b></button>
-                  <div class="evidence-drawer" id="evidence-drawer" hidden></div>
-                  <div class="why-now"><small data-i18n="whyNow">WHY NOW</small><p id="insight-why"></p></div>
+                  <div class="insight-header"><div><small data-i18n="wizzdomNoticed">WIZZDOM NOTICED</small><span id="selected-action"></span></div></div>
+                  <div class="insight-content"><div class="proof-artifact" id="proof-artifact"></div><div class="insight-explanation"><h3 id="insight-title" tabindex="-1"></h3><p id="insight-body"></p><button class="evidence-toggle" id="evidence-toggle" type="button" aria-expanded="false" aria-controls="evidence-drawer"><span data-i18n="showEvidence">View 3 sources</span><b aria-hidden="true">＋</b></button></div></div>
+                  <div class="evidence-drawer" id="evidence-drawer" hidden><div id="evidence-items"></div><div class="why-now"><small data-i18n="whyNow">WHY NOW</small><p id="insight-why"></p></div></div>
                   <div class="insight-actions"><button class="button primary compact" type="button" data-insight-action="use" data-i18n="useContext">Use this context</button><button class="button quiet compact" type="button" data-insight-action="continue" data-i18n="continueAnyway">Continue anyway</button></div>
                 </div>
               </div>
               <div class="reflection-panel" id="reflection-panel" hidden>
                 <div class="decision-delta"><div><small data-i18n="beforeContext">CURRENT THOUGHT</small><strong id="decision-before"></strong></div><span aria-hidden="true">→</span><div><small data-i18n="afterContext">WHAT SHOULD BE DONE</small><strong id="decision-after"></strong></div></div>
-                <h3 data-i18n="wouldChange">Would this insight change your next move?</h3>
+                <h3 id="reflection-title" tabindex="-1" data-i18n="wouldChange">Would this insight change your next move?</h3>
                 <div class="value-buttons" role="group" aria-label="Rate the value"><button type="button" data-value="definitely" data-i18n="definitely">Definitely</button><button type="button" data-value="maybe" data-i18n="maybe">Maybe</button><button type="button" data-value="no" data-i18n="notReally">Not really</button></div>
                 <div class="signal-capture" id="signal-capture" hidden><p data-i18n="whereLives">Where does context like this live for you?</p><div class="source-chips" id="source-chips"><button type="button" data-source="chatgpt">ChatGPT</button><button type="button" data-source="claude">Claude</button><button type="button" data-source="codex">Codex</button><button type="button" data-source="browser" data-i18n="browserChats">Browser chats</button><button type="button" data-source="notes" data-i18n="notesDocs">Notes & docs</button><button type="button" data-source="calls" data-i18n="callsFeedback">Calls & feedback</button></div><button class="button primary next-button" id="make-it-yours" type="button" data-i18n="makeYours">Make this about my work</button></div>
               </div>
               <div class="reset-row"><button id="reset-demo" type="button" data-i18n="resetDemo">↻ Try another moment</button></div>
+              <p class="demo-disclaimer" data-i18n="demoDisclaimer">Fictional sample. No access to your data.</p>
             </div>
           </div>
         </div>
@@ -100,10 +85,11 @@
 
       <section class="principles-section" id="how">
         <div class="principles-heading"><p class="eyebrow" data-i18n="howEyebrow">HOW WIZZDOM WORKS</p><h2 data-i18n="howTitle">Connect. Match. See what matters.</h2></div>
-        <div class="principle-grid">
-          <article><span>01</span><div class="principle-visual source-pool"><i>ChatGPT</i><i>Claude</i><i>Codex</i><i data-i18n="howVisualBrowser">Browser history</i></div><small data-i18n="howOneSmall">CONNECT</small><h3 data-i18n="howOneTitle">Choose your sources.</h3><p data-i18n="howOneBody">AI chats, browsing history, notes. You choose what comes in.</p></article>
-          <article><span>02</span><div class="principle-visual match-visual"><div><small data-i18n="howVisualTask">CURRENT TASK</small><b data-i18n="howVisualTaskValue">Plan next sprint</b></div><span>＋</span><div><small data-i18n="howVisualContext">PAST EVIDENCE</small><b data-i18n="howVisualContextValue">9 prior signals</b></div><em data-i18n="howVisualMatch">MATCH</em></div><small data-i18n="howTwoSmall">RETRIEVE + MATCH</small><h3 data-i18n="howTwoTitle">Find the missing pieces.</h3><p data-i18n="howTwoBody">Retrieve relevant decisions and patterns. Match them to your current task.</p></article>
-          <article><span>03</span><div class="principle-visual surface-visual"><small data-i18n="howVisualEvidence">7 CUSTOMER SIGNALS</small><b data-i18n="howVisualInsight">Fix onboarding first.</b><span data-i18n="howVisualSources">View sources →</span></div><small data-i18n="howThreeSmall">ANALYZE + SURFACE</small><h3 data-i18n="howThreeTitle">Act with the evidence.</h3><p data-i18n="howThreeBody">See the insight and its sources before your next move. You decide.</p></article>
+        <div class="how-explorer">
+          <div class="how-steps" role="group" aria-label="Explore how Wizzdom works"><button id="how-connect" type="button" data-how="connect" aria-expanded="true" aria-controls="how-panel-connect"><span>01</span><strong data-i18n="howConnect">Connect</strong><b aria-hidden="true">→</b></button><button id="how-match" type="button" data-how="match" aria-expanded="false" aria-controls="how-panel-match"><span>02</span><strong data-i18n="howMatch">Match</strong><b aria-hidden="true">→</b></button><button id="how-insight" type="button" data-how="insight" aria-expanded="false" aria-controls="how-panel-insight"><span>03</span><strong data-i18n="howInsight">Insight</strong><b aria-hidden="true">↓</b></button></div>
+          <div id="how-panel-connect" class="how-panel" data-how-panel="connect" role="region" aria-labelledby="how-connect"><div class="principle-visual source-pool"><i>ChatGPT</i><i>Claude</i><i>Codex</i><i data-i18n="howVisualBrowser">Browser history</i></div><div><h3 data-i18n="howOneTitle">Choose your sources.</h3><p data-i18n="howOneBody">AI chats, browsing history, notes. You choose what comes in.</p></div></div>
+          <div id="how-panel-match" class="how-panel" data-how-panel="match" role="region" aria-labelledby="how-match" hidden><div class="principle-visual match-visual"><div><small data-i18n="howVisualTask">CURRENT TASK</small><b data-i18n="howVisualTaskValue">Plan next sprint</b></div><span>＋</span><div><small data-i18n="howVisualContext">PAST EVIDENCE</small><b data-i18n="howVisualContextValue">9 prior signals</b></div><em data-i18n="howVisualMatch">MATCH</em></div><div><h3 data-i18n="howTwoTitle">Find the missing pieces.</h3><p data-i18n="howTwoBody">Retrieve relevant decisions and patterns. Match them to your current task.</p></div></div>
+          <div id="how-panel-insight" class="how-panel" data-how-panel="insight" role="region" aria-labelledby="how-insight" hidden><div class="principle-visual surface-visual"><small data-i18n="howVisualEvidence">7 CUSTOMER SIGNALS</small><b data-i18n="howVisualInsight">Fix onboarding first.</b><span data-i18n="howVisualSources">View sources in the demo</span></div><div><h3 data-i18n="howThreeTitle">Act with the evidence.</h3><p data-i18n="howThreeBody">See the insight and its sources before your next move. You decide.</p></div></div>
         </div>
       </section>
 
@@ -112,8 +98,8 @@
       <section class="privacy-section" id="privacy"><div class="privacy-copy"><p class="eyebrow" data-i18n="privacyEyebrow">LOCAL-FIRST. YOU’RE IN CONTROL.</p><h2 data-i18n="privacyTitle">Your history stays on your Mac.</h2><p data-i18n="privacyBody">Cloud reasoning receives only the selected task and relevant evidence. Choose sources, inspect evidence, pause anytime.</p></div><div class="privacy-console"><div class="console-head"><span data-i18n="privacyConsoleLabel">Your data controls</span><b data-i18n="userControlled">USER CONTROLLED</b></div><div><i>✓</i><span data-i18n="privacyOne">Choose each source and time range</span></div><div><i>✓</i><span data-i18n="privacyTwo">Raw imported history stays on your Mac</span></div><div><i>✓</i><span data-i18n="privacyThree">Preview evidence used for reasoning</span></div><div><i>✓</i><span data-i18n="privacyFour">Pause or disconnect any source</span></div><div class="negative"><i>×</i><span data-i18n="privacyFive">No screen scraping or silent actions</span></div></div></section>
 
       <section class="apply-section" id="apply">
-        <div class="apply-copy"><p class="eyebrow" data-i18n="applyEyebrow">PRIVATE BETA · BUILT AROUND REAL MOMENTS</p><h2 data-i18n="applyTitle">What should Wizzdom catch for you?</h2><p data-i18n="applyBody">Describe one moment where missing context changes the quality of your next decision. We’ll use the strongest cases to shape the first cohort.</p><ul><li data-i18n="applyOne">One real workflow across one or more AI tools</li><li data-i18n="applyTwo">Evidence attached to every Wizzdom moment</li><li data-i18n="applyThree">Continue only if it changes a real next move</li></ul></div>
-        <form class="apply-form" id="demand-form"><input type="hidden" name="persona" id="form-persona" value="product" /><label><span data-i18n="formMoment">What should Wizzdom notice?</span><textarea name="moment" id="form-moment" rows="4" required placeholder="When I’m about to…"></textarea></label><label><span data-i18n="formOutcome">What should it help you do next?</span><input name="outcome" id="form-outcome" type="text" required placeholder="Make a better decision, remember a constraint…" /></label><label><span data-i18n="formEmail">Email</span><input name="email" type="email" required placeholder="you@example.com" /></label><label class="consent"><input required type="checkbox" /><span data-i18n="formConsent">I can test this on a real workflow during the private beta.</span></label><button class="button primary full" type="submit" data-i18n="formSubmit">Request private beta access</button><p class="form-note" data-i18n="formNote">Prototype collection flow. Your response stays in this browser until the beta intake backend is connected.</p><p class="form-success" id="form-success" role="status" hidden data-i18n="formSuccess">Your moment is saved in this browser. The live intake endpoint is the next launch step.</p></form>
+        <div class="apply-copy"><p class="eyebrow" data-i18n="applyEyebrow">CO-BUILD THE PRIVATE BETA</p><h2 data-i18n="applyTitle">What should Wizzdom catch for you?</h2><p data-i18n="applyBody">Bring one real moment. Help shape the first cohort.</p></div>
+        <form class="apply-form" id="demand-form"><input type="hidden" name="persona" id="form-persona" value="product" /><p class="form-step-label" id="form-step-label" data-i18n="formStepOne">1 of 2 · Your moment</p><fieldset id="form-step-one"><label><span data-i18n="formMoment">What should Wizzdom catch before it’s too late?</span><textarea name="moment" id="form-moment" rows="4" required placeholder="When I’m about to…"></textarea></label><button class="button primary full" id="form-next" type="button" data-i18n="formNext">Continue →</button></fieldset><fieldset id="form-step-two" hidden disabled><label><span data-i18n="formOutcome">What should it help you do next?</span><input name="outcome" id="form-outcome" type="text" required placeholder="Make a better decision, remember a constraint…" /></label><label><span data-i18n="formEmail">Email</span><input name="email" type="email" required placeholder="you@example.com" /></label><label class="consent"><input required type="checkbox" /><span data-i18n="formConsent">I can test this on a real workflow during the private beta.</span></label><button class="button primary full" type="submit" data-i18n="formSubmit">Save my beta interest</button><button class="form-back" id="form-back" type="button" data-i18n="formBack">← Edit my moment</button></fieldset><p class="form-note" data-i18n="formNote">Prototype: saves in this browser only. Beta registration is not connected yet.</p><p class="form-success" id="form-success" role="status" hidden data-i18n="formSuccess">Saved in this browser. This is not yet a beta registration.</p></form>
       </section>
     </main>
 

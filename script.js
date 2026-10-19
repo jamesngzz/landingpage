@@ -148,23 +148,85 @@ const scenarios = {
   }
 };
 
+const moments = {
+  product: {
+    en: { label: "Product", blurb: "Wrong priorities", setup: "A customer asks for a dashboard. You have two weeks.", prompt: "“Can you build an analytics dashboard?”", choices: ["Plan the dashboard", "Draft the feature spec"], thoughts: ["Build the dashboard", "Write the dashboard spec"], title: "Fix setup first.", reason: "7 of 9 users got stuck before analytics. Your team already chose activation as the priority." },
+    vi: { label: "Sản phẩm", blurb: "Sai ưu tiên", setup: "Khách hàng muốn có dashboard. Team có hai tuần.", prompt: "“Build analytics dashboard được không?”", choices: ["Lên kế hoạch dashboard", "Viết đặc tả tính năng"], thoughts: ["Build dashboard", "Viết đặc tả dashboard"], title: "Sửa bước thiết lập trước.", reason: "7/9 người dùng kẹt trước bước analytics. Team đã chọn ưu tiên activation." }
+  },
+  engineer: {
+    en: { label: "Developer", blurb: "Repeated fixes", setup: "Authentication fails intermittently. Release is Friday.", prompt: "“Retry token refresh to fix the failure.”", choices: ["Generate the patch", "Add retry logging"], thoughts: ["Patch token refresh", "Log another retry"], title: "You tried this twice.", reason: "Both retry patches regressed. The incident review points to device clock skew." },
+    vi: { label: "Developer", blurb: "Fix lặp lại", setup: "Đăng nhập lúc được lúc không. Thứ Sáu cần release.", prompt: "“Retry token refresh để sửa lỗi.”", choices: ["Tạo patch", "Thêm log cho retry"], thoughts: ["Patch token refresh", "Thêm log cho retry"], title: "Bạn đã thử hai lần.", reason: "Cả hai patch đều tái phát lỗi. Báo cáo sự cố chỉ ra đồng hồ thiết bị bị lệch." }
+  },
+  research: {
+    en: { label: "Researcher", blurb: "Missing evidence", setup: "12 studies. Your conclusion is due tomorrow.", prompt: "“AI tutors improve learning. Write the conclusion.”", choices: ["Draft the conclusion", "Turn it into slides"], thoughts: ["Claim better learning", "Present better learning"], title: "Engagement isn’t learning.", reason: "Only 2 studies measured your success metric: 30-day recall. One found no significant gain." },
+    vi: { label: "Nghiên cứu", blurb: "Thiếu bằng chứng", setup: "12 nghiên cứu. Ngày mai cần nộp kết luận.", prompt: "“AI tutor giúp học tốt hơn. Viết kết luận.”", choices: ["Viết kết luận", "Chuyển thành slides"], thoughts: ["Khẳng định học tốt hơn", "Trình bày việc học tốt hơn"], title: "Tương tác nhiều ≠ học tốt.", reason: "Chỉ 2 nghiên cứu đo khả năng nhớ sau 30 ngày. Một nghiên cứu không thấy cải thiện đáng kể." }
+  },
+  business: {
+    en: { label: "Business owner", blurb: "Forgotten terms", setup: "A long-term client asks for a quick start. Your team is free.", prompt: "“Can your team start on Monday?”", choices: ["Draft a friendly yes", "Prepare the kickoff"], thoughts: ["Say yes to Monday", "Schedule the kickoff"], title: "Get paid before starting.", reason: "Your rule: clear the balance and collect a 50% deposit before taking new work." },
+    vi: { label: "Chủ business", blurb: "Quên điều kiện", setup: "Khách quen muốn bắt đầu gấp. Team đang có chỗ trống.", prompt: "“Team bắt đầu thứ Hai được không?”", choices: ["Soạn email đồng ý", "Chuẩn bị kickoff"], thoughts: ["Đồng ý bắt đầu thứ Hai", "Lên lịch kickoff"], title: "Thu tiền trước khi bắt đầu.", reason: "Bạn đã đặt quy tắc: trả hết nợ và đặt cọc 50% trước khi nhận việc mới." }
+  },
+  creator: {
+    en: { label: "Creator", blurb: "Missed feedback", setup: "You’re choosing this week’s video. A tool list is easy to make.", prompt: "“Outline the 10 best AI tools.”", choices: ["Write the outline", "Write clickable titles"], thoughts: ["Make another tool list", "Package another tool list"], title: "Show a workflow instead.", reason: "38 viewers asked for a complete workflow. Your last 4 tool lists underperformed." },
+    vi: { label: "Creator", blurb: "Bỏ sót feedback", setup: "Bạn đang chọn video tuần này. List công cụ dễ làm.", prompt: "“Lên outline 10 công cụ AI tốt nhất.”", choices: ["Viết outline", "Viết title dễ click"], thoughts: ["Làm thêm list công cụ", "Đóng gói list công cụ"], title: "Hãy làm một workflow.", reason: "38 người muốn xem workflow hoàn chỉnh. 4 video liệt kê công cụ gần nhất đều kém hiệu quả." }
+  },
+  personal: {
+    en: { label: "Personal", blurb: "Old habits", setup: "Three courses go on sale today. Your portfolio is unfinished.", prompt: "“Which course should I buy?”", choices: ["Rank the courses", "Compare the discounts"], thoughts: ["Buy another course", "Find the best course deal"], title: "Finish the project first.", reason: "Your goal was to publish a portfolio project. Four unfinished courses won’t move it forward." },
+    vi: { label: "Cá nhân", blurb: "Thói quen cũ", setup: "Ba khóa học giảm giá hôm nay. Portfolio vẫn chưa xong.", prompt: "“Tôi nên mua khóa học nào?”", choices: ["Xếp hạng khóa học", "So sánh giảm giá"], thoughts: ["Mua thêm khóa học", "Tìm khóa giảm giá tốt nhất"], title: "Hoàn thành project trước.", reason: "Bạn đã đặt mục tiêu đăng portfolio. Bốn khóa dở dang chưa giúp bạn tiến gần hơn." }
+  }
+};
+
+Object.assign(vietnamese, {
+  heroPrimary: "Xem AI bỏ sót gì", exampleTitle: "Wizzdom tìm lại những mảnh ghép còn thiếu.",
+  heroSub: "Wizzdom kết nối điều bạn đã biết với việc bạn đang làm.", heroExample: "Ví dụ hư cấu", replay: "Xem lại", heroNow: "Bạn hỏi AI", heroPrompt: "“Lên kế hoạch analytics dashboard.”", heroMemoryOne: "7 người kẹt ở bước thiết lập", heroMemoryTwo: "Ưu tiên sửa thiết lập", heroRemembers: "Wizzdom tìm lại bằng chứng", heroInsight: "“Sửa thiết lập trước khi thêm tính năng.”", heroOld: "Build dashboard", heroNew: "Sửa thiết lập",
+  yourTask: "VIỆC TRƯỚC MẮT", chooseNext: "Bạn sẽ làm gì tiếp theo?", moreBackground: "Xem bối cảnh", showEvidence: "Xem 3 nguồn", demoDisclaimer: "Tình huống hư cấu. Không truy cập dữ liệu của bạn.", fictionalContext: "Tình huống hư cấu", sampleWorkspace: "THỬ MỘT QUYẾT ĐỊNH",
+  howConnect: "Kết nối", howMatch: "Đối chiếu", howInsight: "Insight", howVisualSources: "Xem nguồn trong demo",
+  applyEyebrow: "CÙNG XÂY PRIVATE BETA", applyBody: "Mang đến một tình huống thật. Cùng định hình cohort đầu tiên.", formMoment: "Bạn muốn Wizzdom nhắc điều gì trước khi quá muộn?", formStepOne: "1 / 2 · Tình huống của bạn", formStepTwo: "2 / 2 · Bước tiếp theo", formNext: "Tiếp tục →", formBack: "← Sửa tình huống", formSubmit: "Lưu mong muốn tham gia beta", formNote: "Prototype: chỉ lưu trong browser này. Chưa kết nối đăng ký beta thật.", formSuccess: "Đã lưu trong browser này. Đây chưa phải đăng ký beta."
+});
+
 let currentLanguage = "en";
 let currentPersona = "product";
 let selectedChoice = "";
+let selectedChoiceIndex = 0;
+let currentStep = 1;
+let formStep = 1;
+let lastInsightAction = "use";
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const scenario = () => scenarios[currentPersona][currentLanguage];
+const moment = () => moments[currentPersona][currentLanguage];
+const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (char) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+const readJSON = (key) => { try { const data = JSON.parse(localStorage.getItem(key) || "[]"); return Array.isArray(data) ? data : []; } catch { return []; } };
+const saveJSON = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; } };
+const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const focusStage = (selector) => $(selector).focus({ preventScroll: true });
+
+function renderArtifact() {
+  const vi = currentLanguage === "vi";
+  const dots = (n, total) => `<div class="proof-dots" aria-hidden="true">${Array.from({length:total},(_,i)=>`<i class="${i<n?"lit":""}"></i>`).join("")}</div>`;
+  const tag = (text) => `<small class="artifact-tag">${text}</small>`;
+  const content = {
+    product: `${tag(vi?"CUỘC GỌI KHÁCH HÀNG":"CUSTOMER CALLS")}<strong class="artifact-stat">7<span>/9</span></strong><p>${vi?"kẹt ở bước thiết lập":"stuck at setup"}</p>${dots(7,9)}`,
+    engineer: `${tag(vi?"LỊCH SỬ PATCH":"PATCH HISTORY")}<div class="patch-row"><code>retry(refreshToken)</code><b>↶ ${vi?"Đã revert":"Reverted"}</b></div><div class="patch-row"><code>retry(refreshToken)</code><b>↶ ${vi?"Đã revert":"Reverted"}</b></div><p>${vi?"Cùng cách sửa. Hai lần tái phát.":"Same fix. Two regressions."}</p>`,
+    research: `${tag(vi?"12 NGHIÊN CỨU":"12 STUDIES")}<div class="study-row"><span>${vi?"Tương tác":"Engagement"}</span><b>10</b><i style="--fill:83.33%"></i></div><div class="study-row recall"><span>${vi?"Nhớ sau 30 ngày":"30-day recall"}</span><b>2</b><i style="--fill:16.67%"></i></div><p>${vi?"Chỉ 2 nghiên cứu đo đúng mục tiêu.":"Only 2 measured your goal."}</p>`,
+    business: `${tag(vi?"HÓA ĐƠN CHƯA TRẢ":"UNPAID INVOICE")}<strong class="artifact-stat money">$12,400</strong><span class="overdue-stamp">${vi?"QUÁ HẠN 45 NGÀY":"45 DAYS OVERDUE"}</span><div class="invoice-lines" aria-hidden="true"><i></i><i></i><i></i></div>`,
+    creator: `${tag(vi?"BÌNH LUẬN KHÁN GIẢ":"AUDIENCE COMMENTS")}<blockquote>“${vi?"Cho xem workflow hoàn chỉnh đi.":"Show us the complete workflow."}”</blockquote><strong class="comment-count">38 <span>${vi?"yêu cầu tương tự":"similar requests"}</span></strong>`,
+    personal: `${tag(vi?"KHÓA HỌC ĐÃ MUA":"COURSES BOUGHT")}<div class="course-books" aria-hidden="true">${Array.from({length:4},()=>'<i><span></span></i>').join("")}</div><strong class="artifact-stat">4</strong><p>${vi?"khóa dở dang · không khóa nào quá 18%":"unfinished · none above 18%"}</p>`
+  };
+  $("#proof-artifact").dataset.kind = currentPersona;
+  $("#proof-artifact").innerHTML = content[currentPersona];
+}
 
 function track(type, detail = {}) {
   const signal = { type, persona: currentPersona, language: currentLanguage, timestamp: new Date().toISOString(), ...detail };
-  const signals = JSON.parse(localStorage.getItem("wizzdom-demand-signals") || "[]");
+  const signals = readJSON("wizzdom-demand-signals");
   signals.push(signal);
-  localStorage.setItem("wizzdom-demand-signals", JSON.stringify(signals.slice(-100)));
+  saveJSON("wizzdom-demand-signals", signals.slice(-100));
   window.dispatchEvent(new CustomEvent("wizzdom:demand-signal", { detail: signal }));
 }
 
 function setProgress(step) {
+  currentStep = step;
   $$(".stage-progress > span").forEach((node, index) => node.classList.toggle("active", index < step));
 }
 
@@ -175,6 +237,8 @@ function resetStage() {
   $("#signal-capture").hidden = true;
   $("#evidence-drawer").hidden = true;
   $("#evidence-toggle b").textContent = "＋";
+  $("#evidence-toggle").setAttribute("aria-expanded", "false");
+  $$(".background-details").forEach((node) => { node.open = false; });
   $$("[data-value], .source-chips button").forEach((node) => node.classList.remove("active"));
   selectedChoice = "";
   setProgress(1);
@@ -182,43 +246,55 @@ function resetStage() {
 
 function renderScenario() {
   const data = scenario();
+  const compact = moment();
   $("#scenario-goal").textContent = data.goal;
   $("#scenario-situation").textContent = data.situation;
-  $("#scenario-ask").textContent = `“${data.ask}”`;
-  $("#scenario-sources").innerHTML = data.sources.map(([name, meta]) => `<div class="source-pill"><i></i><span>${name}</span><small>${meta}</small></div>`).join("");
-  $("#scenario-choices").innerHTML = data.choices.map((choice, index) => `<button type="button" data-choice="${index}" data-key="${index + 1}"><span>${choice}</span></button>`).join("");
+  $("#scenario-setup").textContent = compact.setup;
+  $("#scenario-ask").textContent = compact.prompt;
+  $("#message-mark").textContent = ({product:"↗",engineer:"{ }",research:"≡",business:"✉",creator:"▶",personal:"◇"})[currentPersona];
+  $("#scenario-choices").innerHTML = compact.choices.map((choice, index) => `<button type="button" data-choice="${index}" data-key="${index + 1}"><span>${escapeHTML(choice)}</span></button>`).join("");
   $("#form-persona").value = currentPersona;
-  $$(`[data-persona-label]`).forEach((node) => { const item = scenarios[node.dataset.personaLabel][currentLanguage]; node.textContent = item.label; });
-  $$(`[data-persona-blurb]`).forEach((node) => { const item = scenarios[node.dataset.personaBlurb][currentLanguage]; node.textContent = item.blurb; });
+  $$(`[data-persona-label]`).forEach((node) => { node.textContent = moments[node.dataset.personaLabel][currentLanguage].label; });
+  $$(`[data-persona-blurb]`).forEach((node) => { node.textContent = moments[node.dataset.personaBlurb][currentLanguage].blurb; });
   $$("[data-choice]").forEach((button) => button.addEventListener("click", () => showInsight(Number(button.dataset.choice))));
   resetStage();
 }
 
-function showInsight(choiceIndex) {
+function showInsight(choiceIndex, record = true) {
   const data = scenario();
-  selectedChoice = data.choices[choiceIndex];
+  const compact = moment();
+  selectedChoiceIndex = choiceIndex;
+  selectedChoice = compact.choices[choiceIndex];
   $("#decision-panel").hidden = true;
   $("#insight-panel").hidden = false;
   $("#selected-action").textContent = `${currentLanguage === "vi" ? "Bạn chọn" : "You chose"}: ${selectedChoice}`;
-  $("#insight-title").textContent = data.title;
-  $("#insight-body").textContent = data.body;
+  $("#insight-title").textContent = compact.title;
+  $("#insight-body").textContent = compact.reason;
   $("#insight-why").textContent = data.why;
-  $("#evidence-drawer").innerHTML = data.evidence.map(([source, text]) => `<div class="evidence-item"><b>${source}</b><span>${text}</span></div>`).join("");
+  $("#evidence-items").innerHTML = data.evidence.map(([source, text]) => `<div class="evidence-item"><b>${escapeHTML(source)}</b><span>${escapeHTML(text)}</span></div>`).join("");
+  renderArtifact();
   setProgress(2);
-  track("scenario_choice", { choice: selectedChoice, choice_index: choiceIndex });
+  if (record) { focusStage("#insight-title"); track("scenario_choice", { choice: selectedChoice, choice_index: choiceIndex }); }
 }
 
-function showReflection(action) {
+function showReflection(action, record = true) {
   const data = scenario();
   $("#insight-panel").hidden = true;
   $("#reflection-panel").hidden = false;
-  $("#decision-before").textContent = data.before;
-  $("#decision-after").textContent = action === "use" ? data.after : (currentLanguage === "vi" ? "Tiếp tục, nhưng đã thấy evidence" : "Continue, with the evidence visible");
+  $("#decision-before").textContent = moment().thoughts[selectedChoiceIndex];
+  $("#decision-after").textContent = data.after;
+  lastInsightAction = action;
   setProgress(3);
-  track("insight_action", { action, choice: selectedChoice });
+  if (record) { focusStage("#reflection-title"); track("insight_action", { action, choice: selectedChoice }); }
 }
 
 function setLanguage(language) {
+  const previousStep = currentStep;
+  const choiceIndex = selectedChoiceIndex;
+  const previousAction = lastInsightAction;
+  const evidenceWasOpen = !$("#evidence-drawer").hidden;
+  const rating = $("[data-value].active")?.dataset.value;
+  const chosenSources = $$(".source-chips button.active").map((node) => node.dataset.source);
   currentLanguage = language;
   document.documentElement.lang = language;
   $$(`[data-i18n]`).forEach((node) => {
@@ -234,13 +310,19 @@ function setLanguage(language) {
   $("#form-outcome").placeholder = language === "vi" ? "Đưa ra quyết định tốt hơn, nhớ một constraint…" : "Make a better decision, remember a constraint…";
   document.title = language === "vi" ? "wizzdom — Cho AI thấy toàn cảnh" : "wizzdom — Give AI the full picture";
   document.querySelector('meta[name="description"]').content = language === "vi" ? "AI quên rồi hành động khi chỉ thấy một phần. Wizzdom đưa quyết định, bài học và tín hiệu còn thiếu trở lại trước bước tiếp theo." : "AI forgets, then acts on an incomplete picture. Wizzdom brings the missing decisions, lessons and signals back before the next move.";
-  localStorage.setItem("wizzdom-language", language);
+  try { localStorage.setItem("wizzdom-language", language); } catch { /* Language still works without storage. */ }
   renderScenario();
+  if (previousStep >= 2) showInsight(choiceIndex, false);
+  if (previousStep === 3) showReflection(previousAction, false);
+  if (evidenceWasOpen) { $("#evidence-drawer").hidden = false; $("#evidence-toggle").setAttribute("aria-expanded", "true"); $("#evidence-toggle b").textContent = "−"; }
+  if (rating) { $(`[data-value="${rating}"]`).classList.add("active"); $("#signal-capture").hidden = false; }
+  chosenSources.forEach((source) => $(`[data-source="${source}"]`).classList.add("active"));
+  updateFormStep(formStep, false);
 }
 
 $$(`[data-persona]`).forEach((button) => button.addEventListener("click", () => {
   currentPersona = button.dataset.persona;
-  $$(`[data-persona]`).forEach((item) => { const active = item === button; item.classList.toggle("active", active); item.setAttribute("aria-selected", String(active)); });
+  $$(`[data-persona]`).forEach((item) => { const active = item === button; item.classList.toggle("active", active); item.setAttribute("aria-pressed", String(active)); });
   renderScenario();
   track("persona_selected");
 }));
@@ -250,6 +332,7 @@ $$(`[data-language]`).forEach((button) => button.addEventListener("click", () =>
 $("#evidence-toggle").addEventListener("click", () => {
   const drawer = $("#evidence-drawer");
   drawer.hidden = !drawer.hidden;
+  $("#evidence-toggle").setAttribute("aria-expanded", String(!drawer.hidden));
   $("#evidence-toggle b").textContent = drawer.hidden ? "＋" : "−";
   if (!drawer.hidden) track("evidence_opened", { choice: selectedChoice });
 });
@@ -270,34 +353,79 @@ $$(`.source-chips button`).forEach((button) => button.addEventListener("click", 
 $("#make-it-yours").addEventListener("click", () => {
   $("#form-moment").value = scenario().form;
   $("#form-persona").value = currentPersona;
-  $("#apply").scrollIntoView({ behavior: "smooth", block: "start" });
-  setTimeout(() => $("#form-moment").focus(), 500);
+  updateFormStep(1, false);
+  $("#apply").scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
+  $("#form-moment").focus({ preventScroll: true });
   track("make_it_yours_clicked", { sources: $$(".source-chips button.active").map((node) => node.dataset.source) });
 });
 
-$("#reset-demo").addEventListener("click", () => { resetStage(); track("demo_reset"); });
+$("#reset-demo").addEventListener("click", () => { resetStage(); focusStage("#scenario-ask"); track("demo_reset"); });
 
 $$(`a[href^="#"]`).forEach((link) => link.addEventListener("click", (event) => {
   const target = document.querySelector(link.getAttribute("href"));
   if (!target) return;
   event.preventDefault();
-  target.scrollIntoView({ behavior: "smooth", block: "start" });
+  target.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
 }));
 
 $("#demand-form").addEventListener("submit", (event) => {
   event.preventDefault();
+  if (formStep === 1) { nextFormStep(); return; }
   const form = new FormData(event.currentTarget);
   const response = {
     persona: form.get("persona"), moment: form.get("moment"), outcome: form.get("outcome"), email: form.get("email"),
     selected_sources: $$(".source-chips button.active").map((node) => node.dataset.source), created_at: new Date().toISOString()
   };
-  const responses = JSON.parse(localStorage.getItem("wizzdom-beta-responses") || "[]");
+  const responses = readJSON("wizzdom-beta-responses");
   responses.push(response);
-  localStorage.setItem("wizzdom-beta-responses", JSON.stringify(responses.slice(-20)));
+  const saved = saveJSON("wizzdom-beta-responses", responses.slice(-20));
   $("#form-success").hidden = false;
+  if (!saved) $("#form-success").textContent = currentLanguage === "vi" ? "Browser không cho phép lưu. Chưa có dữ liệu nào được gửi đi." : "Browser storage is unavailable. Nothing has been sent.";
   track("beta_form_completed", { has_moment: Boolean(response.moment), has_outcome: Boolean(response.outcome), selected_sources: response.selected_sources });
 });
 
-const savedLanguage = localStorage.getItem("wizzdom-language");
-const initialLanguage = savedLanguage || (navigator.language.toLowerCase().startsWith("vi") ? "vi" : "en");
+function updateFormStep(step, focus = true) {
+  formStep = step;
+  $("#form-step-one").hidden = step !== 1;
+  // Keep the moment enabled so it is included in FormData on the final step.
+  $("#form-step-two").hidden = step !== 2;
+  $("#form-step-two").disabled = step !== 2;
+  $("#form-step-label").textContent = currentLanguage === "vi" ? vietnamese[step === 1 ? "formStepOne" : "formStepTwo"] : (step === 1 ? "1 of 2 · Your moment" : "2 of 2 · Next step");
+  if (focus) $(step === 1 ? "#form-moment" : "#form-outcome").focus({preventScroll:true});
+}
+function nextFormStep() {
+  const field = $("#form-moment");
+  field.setCustomValidity(field.value.trim() ? "" : (currentLanguage === "vi" ? "Hãy mô tả một tình huống." : "Describe one moment."));
+  if (!field.reportValidity()) return;
+  updateFormStep(2);
+  track("beta_moment_entered", { has_moment: true });
+}
+$("#form-next").addEventListener("click", nextFormStep);
+$("#form-back").addEventListener("click", () => updateFormStep(1));
+$("#form-moment").addEventListener("input", () => { $("#form-moment").setCustomValidity(""); $("#form-success").hidden = true; });
+$$('[data-how]').forEach((button) => button.addEventListener("click", () => {
+  $$('[data-how]').forEach((item) => item.setAttribute("aria-expanded", String(item === button)));
+  $$('[data-how-panel]').forEach((panel) => { panel.hidden = panel.dataset.howPanel !== button.dataset.how; });
+  track("how_step_opened", { step: button.dataset.how });
+}));
+
+let heroTimer;
+function replayHero() {
+  clearTimeout(heroTimer);
+  const demo = $("#hero-demo");
+  demo.classList.remove("is-playing");
+  if (reducedMotion()) return;
+  void demo.offsetWidth;
+  demo.classList.add("is-playing");
+  heroTimer = setTimeout(() => demo.classList.remove("is-playing"), 4800);
+}
+$("#replay-hero").addEventListener("click", replayHero);
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => { if (entries.some((entry) => entry.isIntersecting)) { replayHero(); observer.disconnect(); } }, {threshold:.35});
+  observer.observe($("#hero-demo"));
+}
+window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", (event) => { if (event.matches) { clearTimeout(heroTimer); $("#hero-demo").classList.remove("is-playing"); } });
+let savedLanguage;
+try { savedLanguage = localStorage.getItem("wizzdom-language"); } catch { /* Use browser language. */ }
+const initialLanguage = ["vi", "en"].includes(savedLanguage) ? savedLanguage : (navigator.language.toLowerCase().startsWith("vi") ? "vi" : "en");
 setLanguage(initialLanguage);
