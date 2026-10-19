@@ -189,12 +189,22 @@ Object.assign(vietnamese, {
   applyEyebrow: "CÙNG XÂY PRIVATE BETA", applyBody: "Mang đến một tình huống thật. Cùng định hình cohort đầu tiên.", formMoment: "Bạn muốn Wizzdom nhắc điều gì trước khi quá muộn?", formStepOne: "1 / 2 · Tình huống của bạn", formStepTwo: "2 / 2 · Bước tiếp theo", formNext: "Tiếp tục →", formBack: "← Sửa tình huống", formSubmit: "Lưu mong muốn tham gia beta", formNote: "Prototype: chỉ lưu trong browser này. Chưa kết nối đăng ký beta thật.", formSuccess: "Đã lưu trong browser này. Đây chưa phải đăng ký beta."
 });
 
+Object.assign(vietnamese, {
+  navCta: "Vào beta", labMobileTitle: "Thử Wizzdom", applyTitle: "Cho AI thấy toàn cảnh của bạn.", applyBody: "Dùng thử sớm. Cùng định hình những điều Wizzdom nên nhận ra cho bạn.", makeYours: "Nhận lời mời beta",
+  betaCta: "Nhận lời mời beta", betaEasy: "Chỉ vài lựa chọn + email. Không cần viết dài.", betaRoleQ: "Bạn làm công việc gì?", betaProduct: "Sản phẩm", betaDev: "Developer", betaResearch: "Nghiên cứu", betaBusiness: "Chủ business", betaPersonal: "Cá nhân", betaNeedQ: "Điều gì hữu ích nhất với bạn?", betaDecisions: "Đưa ra quyết định tốt hơn", betaRework: "Không lặp việc cũ hoặc sai lầm", betaCommitments: "Nhớ những chi tiết quan trọng", betaPatterns: "Nối ý tưởng, nhìn ra quy luật", betaExplore: "Tôi muốn khám phá thử", betaEmailQ: "Nhận lời mời qua email nào?", betaToolsQ: "Bạn đang dùng AI nào? (không bắt buộc)", betaOther: "Khác", betaConsent: "Đăng ký nghĩa là bạn đồng ý nhận liên hệ về beta. Không spam.", betaBack: "← Quay lại", betaSkip: "Bỏ qua →", betaSubmit: "Đăng ký dùng thử", betaSuccessTitle: "Bạn đã có trong danh sách.", betaSuccessBody: "Chúng tôi sẽ liên hệ khi có đợt beta phù hợp với bạn.", betaDone: "Xong"
+});
+
 let currentLanguage = "en";
 let currentPersona = "product";
 let selectedChoice = "";
 let selectedChoiceIndex = 0;
 let currentStep = 1;
-let formStep = 1;
+let betaStep = 1;
+let betaRole = "unknown";
+let betaNeed = "explore";
+const betaTools = new Set();
+let betaBusy = false;
+let betaComplete = false;
 let lastInsightAction = "use";
 
 const $ = (selector) => document.querySelector(selector);
@@ -205,7 +215,14 @@ const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (char) => ({"&":
 const readJSON = (key) => { try { const data = JSON.parse(localStorage.getItem(key) || "[]"); return Array.isArray(data) ? data : []; } catch { return []; } };
 const saveJSON = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; } };
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const focusStage = (selector) => $(selector).focus({ preventScroll: true });
+const focusStage = (selector) => {
+  const node = $(selector);
+  node.focus({ preventScroll: true });
+  if (window.matchMedia("(max-width: 650px)").matches) {
+    const target = selector === "#scenario-ask" ? $("#lab") : node.closest(".insight-panel, .reflection-panel") || node;
+    target.scrollIntoView({behavior: "auto", block: "start"});
+  }
+};
 
 function renderArtifact() {
   const vi = currentLanguage === "vi";
@@ -258,9 +275,10 @@ function renderScenario() {
   $("#scenario-ask").textContent = compact.prompt;
   $("#message-mark").textContent = ({product:"↗",engineer:"{ }",research:"≡",business:"✉",creator:"▶",personal:"◇"})[currentPersona];
   $("#scenario-choices").innerHTML = compact.choices.map((choice, index) => `<button type="button" data-choice="${index}" data-key="${index + 1}"><span>${escapeHTML(choice)}</span></button>`).join("");
-  $("#form-persona").value = currentPersona;
   $$(`[data-persona-label]`).forEach((node) => { node.textContent = moments[node.dataset.personaLabel][currentLanguage].label; });
   $$(`[data-persona-blurb]`).forEach((node) => { node.textContent = moments[node.dataset.personaBlurb][currentLanguage].blurb; });
+  $$("#mobile-persona option").forEach((option) => { option.textContent = moments[option.value][currentLanguage].label; });
+  $("#mobile-persona").value = currentPersona;
   $$("[data-choice]").forEach((button) => button.addEventListener("click", () => showInsight(Number(button.dataset.choice))));
   resetStage();
 }
@@ -311,8 +329,6 @@ function setLanguage(language) {
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
   });
-  $("#form-moment").placeholder = language === "vi" ? "Khi tôi sắp…" : "When I’m about to…";
-  $("#form-outcome").placeholder = language === "vi" ? "Đưa ra quyết định tốt hơn, nhớ một constraint…" : "Make a better decision, remember a constraint…";
   document.title = language === "vi" ? "wizzdom — Cho AI thấy toàn cảnh" : "wizzdom — Give AI the full picture";
   document.querySelector('meta[name="description"]').content = language === "vi" ? "AI quên rồi hành động khi chỉ thấy một phần. Wizzdom đưa quyết định, bài học và tín hiệu còn thiếu trở lại trước bước tiếp theo." : "AI forgets, then acts on an incomplete picture. Wizzdom brings the missing decisions, lessons and signals back before the next move.";
   try { localStorage.setItem("wizzdom-language", language); } catch { /* Language still works without storage. */ }
@@ -322,7 +338,7 @@ function setLanguage(language) {
   if (evidenceWasOpen) { $("#evidence-drawer").hidden = false; $("#evidence-toggle").setAttribute("aria-expanded", "true"); $("#evidence-toggle b").textContent = "−"; }
   if (rating) { $(`[data-value="${rating}"]`).classList.add("active"); $("#signal-capture").hidden = false; }
   chosenSources.forEach((source) => $(`[data-source="${source}"]`).classList.add("active"));
-  updateFormStep(formStep, false);
+  renderBetaStep(false);
 }
 
 $$(`[data-persona]`).forEach((button) => button.addEventListener("click", () => {
@@ -330,7 +346,10 @@ $$(`[data-persona]`).forEach((button) => button.addEventListener("click", () => 
   $$(`[data-persona]`).forEach((item) => { const active = item === button; item.classList.toggle("active", active); item.setAttribute("aria-pressed", String(active)); });
   renderScenario();
   track("persona_selected");
+  if (window.matchMedia("(max-width: 650px)").matches) focusStage("#scenario-ask");
 }));
+
+$("#mobile-persona").addEventListener("change", (event) => $(`[data-persona="${event.target.value}"]`).click());
 
 $$(`[data-language]`).forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.language)));
 
@@ -356,11 +375,7 @@ $$(`.source-chips button`).forEach((button) => button.addEventListener("click", 
 }));
 
 $("#make-it-yours").addEventListener("click", () => {
-  $("#form-moment").value = scenario().form;
-  $("#form-persona").value = currentPersona;
-  updateFormStep(1, false);
-  $("#apply").scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
-  $("#form-moment").focus({ preventScroll: true });
+  openBeta(true);
   track("make_it_yours_clicked", { sources: $$(".source-chips button.active").map((node) => node.dataset.source) });
 });
 
@@ -368,51 +383,109 @@ $("#reset-demo").addEventListener("click", () => { resetStage(); focusStage("#sc
 
 $$(`a[href^="#"]`).forEach((link) => link.addEventListener("click", (event) => {
   const target = document.querySelector(link.getAttribute("href"));
+  if (link.hasAttribute("data-open-beta")) return;
   if (!target) return;
   event.preventDefault();
   target.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
 }));
 
-$("#demand-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  if (formStep === 1) { nextFormStep(); return; }
-  const form = new FormData(event.currentTarget);
-  const response = {
-    persona: form.get("persona"), moment: form.get("moment"), outcome: form.get("outcome"), email: form.get("email"),
-    selected_sources: $$(".source-chips button.active").map((node) => node.dataset.source), created_at: new Date().toISOString()
-  };
-  const responses = readJSON("wizzdom-beta-responses");
-  responses.push(response);
-  const saved = saveJSON("wizzdom-beta-responses", responses.slice(-20));
-  $("#form-success").hidden = false;
-  if (!saved) $("#form-success").textContent = currentLanguage === "vi" ? "Browser không cho phép lưu. Chưa có dữ liệu nào được gửi đi." : "Browser storage is unavailable. Nothing has been sent.";
-  track("beta_form_completed", { has_moment: Boolean(response.moment), has_outcome: Boolean(response.outcome), selected_sources: response.selected_sources });
-});
-
-function updateFormStep(step, focus = true) {
-  formStep = step;
-  $("#form-step-one").hidden = step !== 1;
-  // Keep the moment enabled so it is included in FormData on the final step.
-  $("#form-step-two").hidden = step !== 2;
-  $("#form-step-two").disabled = step !== 2;
-  $("#form-step-label").textContent = currentLanguage === "vi" ? vietnamese[step === 1 ? "formStepOne" : "formStepTwo"] : (step === 1 ? "1 of 2 · Your moment" : "2 of 2 · Next step");
-  if (focus) $(step === 1 ? "#form-moment" : "#form-outcome").focus({preventScroll:true});
+function renderBetaStep(focus = true) {
+  $("#beta-progress").textContent = `${betaStep} / 3`;
+  $("#beta-progress").hidden = betaComplete;
+  $("#demand-form").hidden = betaComplete;
+  $("#beta-success").hidden = !betaComplete;
+  $$("[data-beta-step]").forEach(node => { node.hidden = Number(node.dataset.betaStep) !== betaStep; });
+  $("#beta-back").hidden = betaStep === 1;
+  $("#beta-skip").hidden = betaStep === 3;
+  $("#beta-submit").hidden = betaStep !== 3;
+  $$("[data-beta-role]").forEach(node => node.setAttribute("aria-pressed", String(node.dataset.betaRole === betaRole)));
+  $$("[data-beta-need]").forEach(node => node.setAttribute("aria-pressed", String(node.dataset.betaNeed === betaNeed)));
+  $$("[data-beta-tool]").forEach(node => node.setAttribute("aria-pressed", String(betaTools.has(node.dataset.betaTool))));
+  if (focus && !betaComplete) {
+    const legend = $(`[data-beta-step="${betaStep}"] legend`);
+    legend.focus({preventScroll: true});
+    $(".beta-body").scrollTop = 0;
+  }
 }
-function nextFormStep() {
-  const field = $("#form-moment");
-  field.setCustomValidity(field.value.trim() ? "" : (currentLanguage === "vi" ? "Hãy mô tả một tình huống." : "Describe one moment."));
-  if (!field.reportValidity()) return;
-  updateFormStep(2);
-  track("beta_moment_entered", { has_moment: true });
+function syncDialogViewport() {
+  const view = window.visualViewport;
+  const height = view?.height || window.innerHeight;
+  const top = window.matchMedia("(max-width: 650px)").matches ? 12 : Math.min(80, height * .1);
+  $("#beta-dialog").style.setProperty("--dialog-top", `${(view?.offsetTop || 0) + top}px`);
+  $("#beta-dialog").style.setProperty("--dialog-height", `${Math.max(180, height - top - 12)}px`);
 }
-$("#form-next").addEventListener("click", nextFormStep);
-$("#form-back").addEventListener("click", () => updateFormStep(1));
-$("#form-moment").addEventListener("input", () => { $("#form-moment").setCustomValidity(""); $("#form-success").hidden = true; });
-$$('[data-start-persona]').forEach((link) => link.addEventListener("click", () => {
-  const persona = link.dataset.startPersona;
-  $(`[data-persona="${persona}"]`).click();
-  track("helpful_moment_opened", { source: "how_it_works" });
+function openBeta(fromDemo = false) {
+  if (fromDemo && !betaComplete) {
+    betaRole = currentPersona;
+    betaStep = 2;
+    $$(".source-chips button.active").forEach(node => {
+      if (["chatgpt", "claude", "codex"].includes(node.dataset.source)) betaTools.add(node.dataset.source);
+    });
+  }
+  renderBetaStep(false);
+  syncDialogViewport();
+  const dialog = $("#beta-dialog");
+  if (!dialog.open) dialog.showModal();
+  document.body.classList.add("beta-is-open");
+  renderBetaStep();
+  track("beta_opened", {from_demo: fromDemo});
+}
+$$("[data-open-beta]").forEach(node => node.addEventListener("click", event => { event.preventDefault(); openBeta(); }));
+$$("[data-close-beta]").forEach(node => node.addEventListener("click", () => $("#beta-dialog").close()));
+$("#beta-dialog").addEventListener("close", () => document.body.classList.remove("beta-is-open"));
+$("#beta-dialog").addEventListener("click", event => { if (event.target === $("#beta-dialog")) $("#beta-dialog").close(); });
+window.visualViewport?.addEventListener("resize", syncDialogViewport);
+window.addEventListener("resize", () => { if ($("#beta-dialog").open) syncDialogViewport(); });
+$$("[data-beta-role]").forEach(node => node.addEventListener("click", () => { betaRole = node.dataset.betaRole; betaStep = 2; renderBetaStep(); }));
+$$("[data-beta-need]").forEach(node => node.addEventListener("click", () => { betaNeed = node.dataset.betaNeed; betaStep = 3; renderBetaStep(); }));
+$$("[data-beta-tool]").forEach(node => node.addEventListener("click", () => {
+  const tool = node.dataset.betaTool;
+  betaTools.has(tool) ? betaTools.delete(tool) : betaTools.add(tool);
+  renderBetaStep(false);
 }));
+$("#beta-back").addEventListener("click", () => { betaStep = Math.max(1, betaStep - 1); renderBetaStep(); });
+$("#beta-skip").addEventListener("click", () => { betaStep = Math.min(3, betaStep + 1); renderBetaStep(); });
+$("#beta-email").addEventListener("input", () => { $("#beta-error").hidden = true; });
+$("#demand-form").addEventListener("submit", async event => {
+  event.preventDefault();
+  if (betaBusy || betaComplete) return;
+  if (betaStep < 3) { betaStep += 1; renderBetaStep(); return; }
+  const field = $("#beta-email");
+  if (!field.reportValidity()) return;
+  betaBusy = true;
+  $("#beta-submit").disabled = true;
+  $("#demand-form").setAttribute("aria-busy", "true");
+  $("#beta-error").hidden = true;
+  $("#beta-submit").textContent = currentLanguage === "vi" ? "Đang đăng ký…" : "Joining…";
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+  try {
+    const response = await fetch("/api/beta", {
+      method: "POST", headers: {"Content-Type": "application/json"}, signal: controller.signal,
+      body: JSON.stringify({
+        email: field.value.trim(), role: betaRole, need: betaNeed, tools: [...betaTools],
+        language: currentLanguage, consent: true, website: event.currentTarget.elements.website.value,
+        demo: selectedChoice ? {persona: currentPersona, choice: selectedChoiceIndex, rating: $("[data-value].active")?.dataset.value} : {}
+      })
+    });
+    const result = await response.json();
+    if (!response.ok || result.ok !== true) throw new Error("signup_failed");
+    betaComplete = true;
+    field.value = "";
+    renderBetaStep(false);
+    $("#beta-success button").focus({preventScroll: true});
+    track("beta_signup_completed", {role: betaRole, need: betaNeed, tools: [...betaTools]});
+  } catch {
+    $("#beta-error").textContent = currentLanguage === "vi" ? "Chưa gửi được. Vui lòng thử lại; email của bạn vẫn ở đây." : "Couldn’t send yet. Please try again; your email is still here.";
+    $("#beta-error").hidden = false;
+  } finally {
+    clearTimeout(timeout);
+    betaBusy = false;
+    $("#beta-submit").disabled = false;
+    $("#demand-form").setAttribute("aria-busy", "false");
+    $("#beta-submit").textContent = currentLanguage === "vi" ? vietnamese.betaSubmit : english.betaSubmit;
+  }
+});
 
 let heroTimer;
 function replayHero() {

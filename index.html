@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="AI forgets, then acts on an incomplete picture. Wizzdom brings the missing decisions, lessons and signals back before the next move." />
     <title>wizzdom — Give AI the full picture</title>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/assets/brand/wizzdom-lens.png" type="image/png" />
+    <link rel="stylesheet" href="/styles.css?v=9" />
   </head>
   <body>
     <header class="site-nav">
-      <a class="brand" href="#top" aria-label="wizzdom home"><span class="brand-mark" aria-hidden="true">⌁</span><span>wizzdom</span></a>
+      <a class="brand" href="#top" aria-label="wizzdom home"><span class="brand-mark" aria-hidden="true"><img src="/assets/brand/wizzdom-lens.png" width="32" height="32" alt="" /></span><span>wizzdom</span></a>
       <nav class="main-nav" aria-label="Main navigation"><a href="#lab" data-i18n="navDemo">Interactive demo</a><a href="#how" data-i18n="navHow">How it works</a><a href="#privacy" data-i18n="navPrivacy">Privacy</a></nav>
-      <div class="nav-actions"><div class="language-switch" role="group" aria-label="Language"><button type="button" data-language="vi">VI</button><button type="button" data-language="en">EN</button></div><a class="nav-cta" href="#lab" data-i18n="navCta">Choose your moment</a></div>
+      <div class="nav-actions"><div class="language-switch" role="group" aria-label="Language"><button type="button" data-language="vi">VI</button><button type="button" data-language="en">EN</button></div><a class="nav-cta" href="#apply" data-open-beta data-i18n="navCta">Join beta</a></div>
     </header>
 
     <main id="top">
@@ -30,7 +30,7 @@
             <div class="hero-demo-bar"><span data-i18n="heroExample">Fictional example</span><button type="button" id="replay-hero"><span aria-hidden="true">↻</span> <span data-i18n="replay">Replay</span></button></div>
             <div class="hero-scene scene-prompt"><span class="scene-step" aria-hidden="true">↗</span><div><small data-i18n="heroNow">You ask AI</small><p data-i18n="heroPrompt">“Plan the analytics dashboard.”</p></div></div>
             <div class="hero-retrieval scene-sources"><span class="retrieval-line" aria-hidden="true"></span><div class="memory-ticket"><b class="tool-label"><img src="/assets/logos/openai.svg" width="24" height="24" alt="" />ChatGPT</b><span data-i18n="heroMemoryOne">7 users stuck at setup</span></div><div class="memory-ticket"><b class="tool-label"><img src="/assets/logos/claude.svg" width="24" height="24" alt="" />Claude</b><span data-i18n="heroMemoryTwo">Fix setup first</span></div></div>
-            <div class="hero-scene scene-insight"><span class="scene-step">⌁</span><div><small data-i18n="heroRemembers">Wizzdom brings back the evidence</small><p data-i18n="heroInsight">“Fix setup before building more features.”</p><div class="mini-funnel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+            <div class="hero-scene scene-insight"><span class="scene-step" aria-hidden="true"><img src="/assets/brand/wizzdom-lens.png" width="24" height="24" alt="" /></span><div><small data-i18n="heroRemembers">Wizzdom brings back the evidence</small><p data-i18n="heroInsight">“Fix setup before building more features.”</p><div class="mini-funnel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
             <div class="hero-change scene-result"><del data-i18n="heroOld">Build dashboard</del><span aria-hidden="true">→</span><strong data-i18n="heroNew">Fix setup first</strong></div>
           </div>
         </div>
@@ -46,7 +46,7 @@
       </section>
 
       <section class="lab-section" id="lab">
-        <div class="lab-intro"><h2 data-i18n="labTitle">What are you working on?</h2></div>
+        <div class="lab-intro"><h2><span class="desktop-lab-title" data-i18n="labTitle">What are you working on?</span><span class="mobile-lab-title" data-i18n="labMobileTitle">Try Wizzdom</span></h2><label class="mobile-role-picker"><span class="sr-only" data-i18n="betaRoleQ">What do you do?</span><select id="mobile-persona" aria-label="Choose your role"><option value="product">Product</option><option value="engineer">Developer</option><option value="research">Researcher</option><option value="business">Business owner</option><option value="creator">Creator</option><option value="personal">Personal</option></select></label></div>
         <div class="persona-grid" role="group" aria-label="Choose a persona">
           <button class="persona-card active" type="button" aria-pressed="true" data-persona="product"><strong data-persona-label="product">Product</strong><small data-persona-blurb="product">Wrong priorities</small></button>
           <button class="persona-card" type="button" aria-pressed="false" data-persona="engineer"><strong data-persona-label="engineer">Developer</strong><small data-persona-blurb="engineer">Repeated fixes</small></button>
@@ -73,7 +73,7 @@
                 <div class="decision-delta"><div><small data-i18n="beforeContext">CURRENT THOUGHT</small><strong id="decision-before"></strong></div><span aria-hidden="true">→</span><div><small data-i18n="afterContext">WHAT SHOULD BE DONE</small><strong id="decision-after"></strong></div></div>
                 <h3 id="reflection-title" tabindex="-1" data-i18n="wouldChange">Would this insight change your next move?</h3>
                 <div class="value-buttons" role="group" aria-label="Rate the value"><button type="button" data-value="definitely" data-i18n="definitely">Definitely</button><button type="button" data-value="maybe" data-i18n="maybe">Maybe</button><button type="button" data-value="no" data-i18n="notReally">Not really</button></div>
-                <div class="signal-capture" id="signal-capture" hidden><p data-i18n="whereLives">Where does context like this live for you?</p><div class="source-chips" id="source-chips"><button type="button" data-source="chatgpt">ChatGPT</button><button type="button" data-source="claude">Claude</button><button type="button" data-source="codex">Codex</button><button type="button" data-source="browser" data-i18n="browserChats">Browser chats</button><button type="button" data-source="notes" data-i18n="notesDocs">Notes & docs</button><button type="button" data-source="calls" data-i18n="callsFeedback">Calls & feedback</button></div><button class="button primary next-button" id="make-it-yours" type="button" data-i18n="makeYours">Make this about my work</button></div>
+                <div class="signal-capture" id="signal-capture" hidden><p data-i18n="whereLives">Where does context like this live for you?</p><div class="source-chips" id="source-chips"><button type="button" data-source="chatgpt">ChatGPT</button><button type="button" data-source="claude">Claude</button><button type="button" data-source="codex">Codex</button><button type="button" data-source="browser" data-i18n="browserChats">Browser chats</button><button type="button" data-source="notes" data-i18n="notesDocs">Notes & docs</button><button type="button" data-source="calls" data-i18n="callsFeedback">Calls & feedback</button></div><button class="button primary next-button" id="make-it-yours" type="button" data-i18n="makeYours">Get early access</button></div>
               </div>
               <div class="reset-row"><button id="reset-demo" type="button" data-i18n="resetDemo">↻ Try another moment</button></div>
               <p class="demo-disclaimer" data-i18n="demoDisclaimer">No access to your data.</p>
@@ -97,7 +97,7 @@
           <article class="pipeline-step">
             <h3 data-i18n="pipelineAnalyze">Make sense of it</h3>
             <div class="pipeline-visual organize-visual">
-              <div class="analysis-header"><span class="mini-wizz" aria-hidden="true">⌁</span><b data-i18n="pipelineOrganize">Structure + analyze</b></div>
+              <div class="analysis-header"><span class="mini-wizz" aria-hidden="true"><img src="/assets/brand/wizzdom-lens.png" width="24" height="24" alt="" /></span><b data-i18n="pipelineOrganize">Structure + analyze</b></div>
               <div class="knowledge-tree"><div class="knowledge-card"><span class="knowledge-dot" aria-hidden="true"></span><strong data-i18n="pipelineGoals">Your goals</strong><div class="motif-lines" aria-hidden="true"><i></i><i></i></div></div><div class="knowledge-card"><span class="knowledge-dot" aria-hidden="true"></span><strong data-i18n="pipelineDecisions">Past decisions</strong><div class="motif-lines" aria-hidden="true"><i></i><i></i></div></div><div class="knowledge-card"><span class="knowledge-dot" aria-hidden="true"></span><strong data-i18n="pipelineLessons">Lessons & patterns</strong><div class="motif-lines" aria-hidden="true"><i></i><i></i></div></div></div>
             </div>
             <p data-i18n="pipelineAnalyzeBody">Connect decisions, lessons and patterns—not just keywords.</p>
@@ -115,7 +115,7 @@
           <article class="pipeline-step">
             <h3 data-i18n="pipelineHelp">Get a better next move</h3>
             <div class="pipeline-visual value-visual">
-              <div class="value-help"><div class="value-byline"><span class="mini-wizz" aria-hidden="true">⌁</span><b>wizzdom</b></div><strong data-i18n="pipelineAdvice">A timely insight. A way forward.</strong><div class="value-detail"><span data-i18n="pipelineWhy">Why it matters</span><div class="motif-lines" aria-hidden="true"><i></i></div></div><div class="value-detail"><span data-i18n="pipelineNext">What to do next</span><div class="motif-lines" aria-hidden="true"><i></i></div></div><span class="value-evidence"><span aria-hidden="true">↳</span> <span data-i18n="pipelineEvidence">With the supporting sources</span></span></div>
+              <div class="value-help"><div class="value-byline"><span class="mini-wizz" aria-hidden="true"><img src="/assets/brand/wizzdom-lens.png" width="24" height="24" alt="" /></span><b>wizzdom</b></div><strong data-i18n="pipelineAdvice">A timely insight. A way forward.</strong><div class="value-detail"><span data-i18n="pipelineWhy">Why it matters</span><div class="motif-lines" aria-hidden="true"><i></i></div></div><div class="value-detail"><span data-i18n="pipelineNext">What to do next</span><div class="motif-lines" aria-hidden="true"><i></i></div></div><span class="value-evidence"><span aria-hidden="true">↳</span> <span data-i18n="pipelineEvidence">With the supporting sources</span></span></div>
             </div>
             <p data-i18n="pipelineHelpBody">Insight, evidence and a suggested next step. You decide.</p>
           </article>
@@ -126,12 +126,32 @@
       <section class="privacy-section" id="privacy"><div class="privacy-copy"><p class="eyebrow" data-i18n="privacyEyebrow">LOCAL-FIRST. YOU’RE IN CONTROL.</p><h2 data-i18n="privacyTitle">Your history stays on your Mac.</h2><p data-i18n="privacyBody">Cloud reasoning receives only the selected task and relevant evidence. Choose sources, inspect evidence, pause anytime.</p></div><div class="privacy-console"><div class="console-head"><span data-i18n="privacyConsoleLabel">Your data controls</span><b data-i18n="userControlled">USER CONTROLLED</b></div><div><i>✓</i><span data-i18n="privacyOne">Choose each source and time range</span></div><div><i>✓</i><span data-i18n="privacyTwo">Raw imported history stays on your Mac</span></div><div><i>✓</i><span data-i18n="privacyThree">Preview evidence used for reasoning</span></div><div><i>✓</i><span data-i18n="privacyFour">Pause or disconnect any source</span></div><div class="negative"><i>×</i><span data-i18n="privacyFive">No screen scraping or silent actions</span></div></div></section>
 
       <section class="apply-section" id="apply">
-        <div class="apply-copy"><p class="eyebrow" data-i18n="applyEyebrow">CO-BUILD THE PRIVATE BETA</p><h2 data-i18n="applyTitle">What should Wizzdom catch for you?</h2><p data-i18n="applyBody">Bring one real moment. Help shape the first cohort.</p></div>
-        <form class="apply-form" id="demand-form"><input type="hidden" name="persona" id="form-persona" value="product" /><p class="form-step-label" id="form-step-label" data-i18n="formStepOne">1 of 2 · Your moment</p><fieldset id="form-step-one"><label><span data-i18n="formMoment">What should Wizzdom catch before it’s too late?</span><textarea name="moment" id="form-moment" rows="4" required placeholder="When I’m about to…"></textarea></label><button class="button primary full" id="form-next" type="button" data-i18n="formNext">Continue →</button></fieldset><fieldset id="form-step-two" hidden disabled><label><span data-i18n="formOutcome">What should it help you do next?</span><input name="outcome" id="form-outcome" type="text" required placeholder="Make a better decision, remember a constraint…" /></label><label><span data-i18n="formEmail">Email</span><input name="email" type="email" required placeholder="you@example.com" /></label><label class="consent"><input required type="checkbox" /><span data-i18n="formConsent">I can test this on a real workflow during the private beta.</span></label><button class="button primary full" type="submit" data-i18n="formSubmit">Save my beta interest</button><button class="form-back" id="form-back" type="button" data-i18n="formBack">← Edit my moment</button></fieldset><p class="form-note" data-i18n="formNote">Prototype: saves in this browser only. Beta registration is not connected yet.</p><p class="form-success" id="form-success" role="status" hidden data-i18n="formSuccess">Saved in this browser. This is not yet a beta registration.</p></form>
+        <div class="apply-copy"><p class="eyebrow" data-i18n="applyEyebrow">CO-BUILD THE PRIVATE BETA</p><h2 data-i18n="applyTitle">Give your AI the full picture.</h2><p data-i18n="applyBody">Get early access. Help shape what Wizzdom notices for you.</p></div>
+        <div class="beta-invite"><button class="button primary full" type="button" data-open-beta data-i18n="betaCta">Get early access</button><p data-i18n="betaEasy">A few taps + your email. No essays.</p></div>
       </section>
     </main>
 
-    <footer><a class="brand" href="#top"><span class="brand-mark">⌁</span><span>wizzdom</span></a><p data-i18n="footerLine">Your history. The right moment. A better next move.</p><a href="#top" data-i18n="backTop">Back to top ↑</a></footer>
-    <script src="/script.js"></script>
+    <dialog id="beta-dialog" aria-labelledby="beta-title">
+      <div class="beta-shell">
+        <header class="beta-header"><span class="brand"><img src="/assets/brand/wizzdom-lens.png" width="28" height="28" alt="" />wizzdom</span><button class="beta-close" type="button" data-close-beta aria-label="Close">×</button></header>
+        <div class="beta-intro"><h2 id="beta-title" data-i18n="betaCta">Get early access</h2><span id="beta-progress" aria-live="polite">1 / 3</span></div>
+        <form id="demand-form">
+          <div class="beta-body">
+            <fieldset data-beta-step="1"><legend tabindex="-1" data-i18n="betaRoleQ">What do you do?</legend><div class="beta-options role-options" role="group" aria-label="Your role">
+              <button type="button" data-beta-role="product" aria-pressed="false" data-i18n="betaProduct">Product</button><button type="button" data-beta-role="engineer" aria-pressed="false" data-i18n="betaDev">Developer</button><button type="button" data-beta-role="research" aria-pressed="false" data-i18n="betaResearch">Research</button><button type="button" data-beta-role="business" aria-pressed="false" data-i18n="betaBusiness">Business owner</button><button type="button" data-beta-role="creator" aria-pressed="false">Creator</button><button type="button" data-beta-role="personal" aria-pressed="false" data-i18n="betaPersonal">Personal use</button>
+            </div></fieldset>
+            <fieldset data-beta-step="2" hidden><legend tabindex="-1" data-i18n="betaNeedQ">What would help you most?</legend><div class="beta-options need-options" role="group" aria-label="Your priority">
+              <button type="button" data-beta-need="decisions" aria-pressed="false" data-i18n="betaDecisions">Make better decisions</button><button type="button" data-beta-need="rework" aria-pressed="false" data-i18n="betaRework">Stop repeating work or mistakes</button><button type="button" data-beta-need="commitments" aria-pressed="false" data-i18n="betaCommitments">Remember important details</button><button type="button" data-beta-need="patterns" aria-pressed="false" data-i18n="betaPatterns">Connect ideas & understand patterns</button><button type="button" data-beta-need="explore" aria-pressed="false" data-i18n="betaExplore">I’d like to explore</button>
+            </div></fieldset>
+            <fieldset data-beta-step="3" hidden><legend tabindex="-1" data-i18n="betaEmailQ">Where should we send your invite?</legend><p class="beta-tools-label" data-i18n="betaToolsQ">Which AI tools do you use? (optional)</p><div class="beta-tools" role="group" aria-label="AI tools"><button type="button" data-beta-tool="chatgpt" aria-pressed="false">ChatGPT</button><button type="button" data-beta-tool="claude" aria-pressed="false">Claude</button><button type="button" data-beta-tool="codex" aria-pressed="false">Codex</button><button type="button" data-beta-tool="gemini" aria-pressed="false">Gemini</button><button type="button" data-beta-tool="other" aria-pressed="false" data-i18n="betaOther">Other</button></div><label class="beta-email"><span class="sr-only">Email</span><input id="beta-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="254" placeholder="you@example.com" required /></label><label class="beta-honey" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label><p class="beta-consent" data-i18n="betaConsent">By joining, you agree we can contact you about the beta. No spam.</p></fieldset>
+            <p id="beta-error" role="alert" hidden></p>
+          </div>
+          <div class="beta-controls"><button type="button" id="beta-back" data-i18n="betaBack">← Back</button><button type="button" id="beta-skip" data-i18n="betaSkip">Skip for now →</button><button class="button primary" type="submit" id="beta-submit" hidden data-i18n="betaSubmit">Request beta access</button></div>
+        </form>
+        <div id="beta-success" role="status" hidden><h3 data-i18n="betaSuccessTitle">You’re on the list.</h3><p data-i18n="betaSuccessBody">We’ll contact you when there’s a beta cohort for you.</p><button class="button primary" type="button" data-close-beta data-i18n="betaDone">Done</button></div>
+      </div>
+    </dialog>
+    <footer><a class="brand" href="#top"><span class="brand-mark"><img src="/assets/brand/wizzdom-lens.png" width="32" height="32" alt="" /></span><span>wizzdom</span></a><p data-i18n="footerLine">Your history. The right moment. A better next move.</p><a href="#top" data-i18n="backTop">Back to top ↑</a></footer>
+    <script src="/script.js?v=9"></script>
   </body>
 </html>
