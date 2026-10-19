@@ -190,7 +190,7 @@ Object.assign(vietnamese, {
 });
 
 Object.assign(vietnamese, {
-  navCta: "Vào beta", labMobileTitle: "Thử Wizzdom", applyTitle: "Cho AI thấy toàn cảnh của bạn.", applyBody: "Dùng thử sớm. Cùng định hình những điều Wizzdom nên nhận ra cho bạn.", makeYours: "Nhận lời mời beta",
+  navCta: "Vào beta", labMobileTitle: "Thử Wizzdom", changeRole: "Đổi vai trò", applyTitle: "Cho AI thấy toàn cảnh của bạn.", applyBody: "Dùng thử sớm. Cùng định hình những điều Wizzdom nên nhận ra cho bạn.", makeYours: "Nhận lời mời beta",
   betaCta: "Nhận lời mời beta", betaEasy: "Chỉ vài lựa chọn + email. Không cần viết dài.", betaRoleQ: "Bạn làm công việc gì?", betaProduct: "Sản phẩm", betaDev: "Developer", betaResearch: "Nghiên cứu", betaBusiness: "Chủ business", betaPersonal: "Cá nhân", betaNeedQ: "Điều gì hữu ích nhất với bạn?", betaDecisions: "Đưa ra quyết định tốt hơn", betaRework: "Không lặp việc cũ hoặc sai lầm", betaCommitments: "Nhớ những chi tiết quan trọng", betaPatterns: "Nối ý tưởng, nhìn ra quy luật", betaExplore: "Tôi muốn khám phá thử", betaEmailQ: "Nhận lời mời qua email nào?", betaToolsQ: "Bạn đang dùng AI nào? (không bắt buộc)", betaOther: "Khác", betaConsent: "Đăng ký nghĩa là bạn đồng ý nhận liên hệ về beta. Không spam.", betaBack: "← Quay lại", betaSkip: "Bỏ qua →", betaSubmit: "Đăng ký dùng thử", betaSuccessTitle: "Bạn đã có trong danh sách.", betaSuccessBody: "Chúng tôi sẽ liên hệ khi có đợt beta phù hợp với bạn.", betaDone: "Xong"
 });
 

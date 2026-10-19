@@ -6,7 +6,7 @@
     <meta name="description" content="AI forgets, then acts on an incomplete picture. Wizzdom brings the missing decisions, lessons and signals back before the next move." />
     <title>wizzdom — Give AI the full picture</title>
     <link rel="icon" href="/assets/brand/wizzdom-lens.png" type="image/png" />
-    <link rel="stylesheet" href="/styles.css?v=9" />
+    <link rel="stylesheet" href="/styles.css?v=10" />
   </head>
   <body>
     <header class="site-nav">
@@ -28,7 +28,7 @@
         <div class="hero-composition">
           <div class="hero-demo" id="hero-demo">
             <div class="hero-demo-bar"><span data-i18n="heroExample">Fictional example</span><button type="button" id="replay-hero"><span aria-hidden="true">↻</span> <span data-i18n="replay">Replay</span></button></div>
-            <div class="hero-scene scene-prompt"><span class="scene-step" aria-hidden="true">↗</span><div><small data-i18n="heroNow">You ask AI</small><p data-i18n="heroPrompt">“Plan the analytics dashboard.”</p></div></div>
+            <div class="hero-scene scene-prompt"><span class="scene-step" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M6 6h12v12"/></svg></span><div><small data-i18n="heroNow">You ask AI</small><p data-i18n="heroPrompt">“Plan the analytics dashboard.”</p></div></div>
             <div class="hero-retrieval scene-sources"><span class="retrieval-line" aria-hidden="true"></span><div class="memory-ticket"><b class="tool-label"><img src="/assets/logos/openai.svg" width="24" height="24" alt="" />ChatGPT</b><span data-i18n="heroMemoryOne">7 users stuck at setup</span></div><div class="memory-ticket"><b class="tool-label"><img src="/assets/logos/claude.svg" width="24" height="24" alt="" />Claude</b><span data-i18n="heroMemoryTwo">Fix setup first</span></div></div>
             <div class="hero-scene scene-insight"><span class="scene-step" aria-hidden="true"><img src="/assets/brand/wizzdom-lens.png" width="24" height="24" alt="" /></span><div><small data-i18n="heroRemembers">Wizzdom brings back the evidence</small><p data-i18n="heroInsight">“Fix setup before building more features.”</p><div class="mini-funnel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
             <div class="hero-change scene-result"><del data-i18n="heroOld">Build dashboard</del><span aria-hidden="true">→</span><strong data-i18n="heroNew">Fix setup first</strong></div>
@@ -46,7 +46,7 @@
       </section>
 
       <section class="lab-section" id="lab">
-        <div class="lab-intro"><h2><span class="desktop-lab-title" data-i18n="labTitle">What are you working on?</span><span class="mobile-lab-title" data-i18n="labMobileTitle">Try Wizzdom</span></h2><label class="mobile-role-picker"><span class="sr-only" data-i18n="betaRoleQ">What do you do?</span><select id="mobile-persona" aria-label="Choose your role"><option value="product">Product</option><option value="engineer">Developer</option><option value="research">Researcher</option><option value="business">Business owner</option><option value="creator">Creator</option><option value="personal">Personal</option></select></label></div>
+        <div class="lab-intro"><h2><span class="desktop-lab-title" data-i18n="labTitle">What are you working on?</span><span class="mobile-lab-title" data-i18n="labMobileTitle">Try Wizzdom</span></h2><label class="mobile-role-picker" for="mobile-persona"><span class="role-picker-label" data-i18n="changeRole">Switch role</span><select id="mobile-persona"><option value="product">Product</option><option value="engineer">Developer</option><option value="research">Researcher</option><option value="business">Business owner</option><option value="creator">Creator</option><option value="personal">Personal</option></select><svg class="role-picker-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></label></div>
         <div class="persona-grid" role="group" aria-label="Choose a persona">
           <button class="persona-card active" type="button" aria-pressed="true" data-persona="product"><strong data-persona-label="product">Product</strong><small data-persona-blurb="product">Wrong priorities</small></button>
           <button class="persona-card" type="button" aria-pressed="false" data-persona="engineer"><strong data-persona-label="engineer">Developer</strong><small data-persona-blurb="engineer">Repeated fixes</small></button>
@@ -105,7 +105,7 @@
           <article class="pipeline-step">
             <h3 data-i18n="pipelineMatch">Find what matters now</h3>
             <div class="pipeline-visual pipeline-match-visual">
-              <div class="current-task"><span aria-hidden="true">↗</span><div><strong data-i18n="pipelineTask">What you’re working on</strong><div class="motif-lines" aria-hidden="true"><i></i><i></i></div></div></div>
+              <div class="current-task"><span aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M6 6h12v12"/></svg></span><div><strong data-i18n="pipelineTask">What you’re working on</strong><div class="motif-lines" aria-hidden="true"><i></i><i></i></div></div></div>
               <div class="match-beam" aria-hidden="true"><span></span><span></span></div>
               <div class="retrieved-card"><span class="retrieval-dot" aria-hidden="true"></span><strong data-i18n="pipelineRelevantDecision">Relevant decisions</strong><span aria-hidden="true">✓</span></div>
               <div class="retrieved-card"><span class="retrieval-dot" aria-hidden="true"></span><strong data-i18n="pipelineRelevantLesson">Related lessons</strong><span aria-hidden="true">✓</span></div>
@@ -152,6 +152,6 @@
       </div>
     </dialog>
     <footer><a class="brand" href="#top"><span class="brand-mark"><img src="/assets/brand/wizzdom-lens.png" width="32" height="32" alt="" /></span><span>wizzdom</span></a><p data-i18n="footerLine">Your history. The right moment. A better next move.</p><a href="#top" data-i18n="backTop">Back to top ↑</a></footer>
-    <script src="/script.js?v=9"></script>
+    <script src="/script.js?v=10"></script>
   </body>
 </html>
