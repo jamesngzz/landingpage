@@ -176,6 +176,7 @@ const moments = {
 };
 
 Object.assign(vietnamese, {
+  pipelineTitle: "Wizzdom hoạt động thế nào?", pipelineSubtitle: "Từ lịch sử rời rạc đến bước đi đúng hơn.", pipelineGather: "Gom lịch sử của bạn", pipelineLocal: "Lịch sử lưu trên Mac của bạn", pipelineGatherBody: "Chat AI + lịch sử duyệt web. Bạn chọn nguồn để nhập.", pipelineAnalyze: "Sắp xếp & phân tích", pipelineOrganize: "Tìm cấu trúc & mối liên hệ", pipelineLesson: "CÁCH ĐÃ THỬ", pipelineRetry: "Retry token đã thất bại 2 lần", pipelineSignal: "PHÁT HIỆN LIÊN QUAN", pipelineClock: "Lệch giờ có thể gây lỗi login", pipelineOther: "PROJECT KHÁC", pipelineBrand: "Màu mới cho trang chủ", pipelineAnalyzeBody: "Nối quyết định, bài học và quy luật—không chỉ từ khóa.", pipelineMatch: "Tìm đúng điều cần lúc này", pipelineNow: "BẠN ĐANG LÀM", pipelineTask: "Sửa lỗi đăng nhập", pipelineMatchBody: "Tìm lại bằng chứng liên quan đến việc bạn đang làm.", pipelineHelp: "Gợi ý bước tiếp theo", pipelineOld: "Thử lại cùng cách sửa", pipelineAdvice: "Kiểm tra đồng hồ thiết bị trước.", pipelineEvidence: "Các lần thử cũ + báo cáo sự cố", pipelineHelpBody: "Nhắc đúng điều, có nguồn đối chiếu. Bạn quyết định.", pipelineExample: "Minh họa quy trình · Dữ liệu hư cấu", pipelineTry: "Thử tình huống này",
   howEyebrow: "NGƯỜI ĐỒNG HÀNH TINH Ý CỦA BẠN", wisdomTitleOne: "Nhìn ra mối liên hệ.", wisdomTitleTwo: "Giúp đúng lúc.", wisdomCurrent: "Bạn đang sửa lỗi đăng nhập.", wisdomExample: "Ví dụ hư cấu", wisdomPatch: "Cùng cách sửa. Đã thử hai lần.", wisdomBrowser: "Lịch sử duyệt web", wisdomIncident: "Báo cáo sự cố: lệch đồng hồ.", wisdomNotes: "Ghi chú của bạn", wisdomDeadline: "Release vào thứ Sáu.", wisdomTiming: "Nhắc bạn một chút", wisdomVoice: "Trước khi bạn thử lại…", wisdomAdvice: "Bạn đã thử cách này hai lần. Hãy kiểm tra đồng hồ thiết bị trước khi retry.", wisdomEvidence: "2 lần sửa cũ + báo cáo sự cố", wisdomTry: "Thử tình huống này", wisdomRememberTitle: "Chú tâm.", wisdomRememberBody: "Nhớ xuyên suốt các nguồn bạn chọn.", wisdomConnectTitle: "Tinh ý.", wisdomConnectBody: "Đối chiếu bằng chứng cũ với việc hiện tại.", wisdomHelpTitle: "Hữu ích.", wisdomHelpBody: "Gợi ý bước tốt hơn. Bạn quyết định.",
   heroPrimary: "Xem AI bỏ sót gì", exampleTitle: "Wizzdom tìm lại những mảnh ghép còn thiếu.",
   heroSub: "Wizzdom kết nối điều bạn đã biết với việc bạn đang làm.", heroExample: "Ví dụ hư cấu", replay: "Xem lại", heroNow: "Bạn hỏi AI", heroPrompt: "“Lên kế hoạch analytics dashboard.”", heroMemoryOne: "7 người kẹt ở bước thiết lập", heroMemoryTwo: "Ưu tiên sửa thiết lập", heroRemembers: "Wizzdom tìm lại bằng chứng", heroInsight: "“Sửa thiết lập trước khi thêm tính năng.”", heroOld: "Build dashboard", heroNew: "Sửa thiết lập",
@@ -423,13 +424,13 @@ $("#replay-hero").addEventListener("click", replayHero);
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver((entries) => { if (entries.some((entry) => entry.isIntersecting)) { replayHero(); observer.disconnect(); } }, {threshold:.35});
   observer.observe($("#hero-demo"));
-  const wisdomObserver = new IntersectionObserver((entries) => {
+  const pipelineObserver = new IntersectionObserver((entries) => {
     if (entries.some((entry) => entry.isIntersecting)) {
-      if (!reducedMotion()) $("#wisdom-story").classList.add("is-awake");
-      wisdomObserver.disconnect();
+      if (!reducedMotion()) $("#pipeline").classList.add("is-awake");
+      pipelineObserver.disconnect();
     }
   }, {threshold:.25});
-  wisdomObserver.observe($("#wisdom-story"));
+  pipelineObserver.observe($("#pipeline"));
 }
 window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", (event) => { if (event.matches) { clearTimeout(heroTimer); $("#hero-demo").classList.remove("is-playing"); } });
 let savedLanguage;

@@ -29,7 +29,7 @@
           <div class="hero-demo" id="hero-demo">
             <div class="hero-demo-bar"><span data-i18n="heroExample">Fictional example</span><button type="button" id="replay-hero"><span aria-hidden="true">↻</span> <span data-i18n="replay">Replay</span></button></div>
             <div class="hero-scene scene-prompt"><span class="scene-step" aria-hidden="true">↗</span><div><small data-i18n="heroNow">You ask AI</small><p data-i18n="heroPrompt">“Plan the analytics dashboard.”</p></div></div>
-            <div class="hero-retrieval scene-sources"><span class="retrieval-line" aria-hidden="true"></span><div class="memory-ticket"><b>ChatGPT</b><span data-i18n="heroMemoryOne">7 users stuck at setup</span></div><div class="memory-ticket"><b>Claude</b><span data-i18n="heroMemoryTwo">Fix setup first</span></div></div>
+            <div class="hero-retrieval scene-sources"><span class="retrieval-line" aria-hidden="true"></span><div class="memory-ticket"><b class="tool-label"><img src="/assets/logos/openai.svg" width="24" height="24" alt="" />ChatGPT</b><span data-i18n="heroMemoryOne">7 users stuck at setup</span></div><div class="memory-ticket"><b class="tool-label"><img src="/assets/logos/claude.svg" width="24" height="24" alt="" />Claude</b><span data-i18n="heroMemoryTwo">Fix setup first</span></div></div>
             <div class="hero-scene scene-insight"><span class="scene-step">⌁</span><div><small data-i18n="heroRemembers">Wizzdom brings back the evidence</small><p data-i18n="heroInsight">“Fix setup before building more features.”</p><div class="mini-funnel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
             <div class="hero-change scene-result"><del data-i18n="heroOld">Build dashboard</del><span aria-hidden="true">→</span><strong data-i18n="heroNew">Fix setup first</strong></div>
           </div>
@@ -82,28 +82,46 @@
         </div>
       </section>
 
-      <section class="principles-section wisdom-section" id="how" aria-labelledby="wisdom-title">
-        <div class="wisdom-heading"><p class="eyebrow" data-i18n="howEyebrow">MEET YOUR THOUGHTFUL TEAMMATE</p><h2 id="wisdom-title"><span data-i18n="wisdomTitleOne">Connects the dots.</span><span data-i18n="wisdomTitleTwo">Lends a hand.</span></h2></div>
-        <div class="wisdom-story" id="wisdom-story">
-          <div class="wisdom-task"><span class="task-spark" aria-hidden="true">↗</span><span data-i18n="wisdomCurrent">You’re fixing a login failure.</span><small data-i18n="wisdomExample">Fictional example</small></div>
-          <div class="wisdom-canvas">
-            <div class="wisdom-memories">
-              <article class="memory-fragment"><span class="fragment-icon" aria-hidden="true">{ }</span><div><small>Codex</small><strong data-i18n="wisdomPatch">Same fix. Tried twice.</strong></div><span class="fragment-status" aria-hidden="true">↶</span></article>
-              <article class="memory-fragment"><span class="fragment-icon browser-fragment" aria-hidden="true">↗</span><div><small data-i18n="wisdomBrowser">Browsing history</small><strong data-i18n="wisdomIncident">Incident review: clock skew.</strong></div><span class="fragment-status" aria-hidden="true">✓</span></article>
-              <article class="memory-fragment"><span class="fragment-icon notes-fragment" aria-hidden="true">≡</span><div><small data-i18n="wisdomNotes">Your notes</small><strong data-i18n="wisdomDeadline">Ship on Friday.</strong></div><span class="fragment-status" aria-hidden="true">◷</span></article>
+      <section class="pipeline-section" id="how" aria-labelledby="pipeline-title">
+        <div class="pipeline-heading"><h2 id="pipeline-title" data-i18n="pipelineTitle">How Wizzdom works.</h2><p data-i18n="pipelineSubtitle">From scattered history to a better next move.</p></div>
+        <div class="pipeline" id="pipeline">
+          <article class="pipeline-step">
+            <h3 data-i18n="pipelineGather">Gather your history</h3>
+            <div class="pipeline-visual import-visual">
+              <div class="import-tools"><div class="logo-tile"><img src="/assets/logos/openai.svg" width="48" height="48" alt="" loading="lazy" /><b>ChatGPT</b></div><div class="logo-tile"><img src="/assets/logos/claude.svg" width="48" height="48" alt="" loading="lazy" /><b>Claude</b></div><div class="logo-tile"><img src="/assets/logos/chrome.svg" width="48" height="48" alt="" loading="lazy" /><b>Chrome</b></div></div>
+              <svg class="import-wires" viewBox="0 0 300 80" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M48 0V20Q48 35 63 35H135Q150 35 150 50V80M150 0V80M252 0V20Q252 35 237 35H165Q150 35 150 50"/></svg>
+              <div class="local-vault"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8m-4-5v5"/></svg><span data-i18n="pipelineLocal">Your history, on your Mac</span></div>
             </div>
-            <div class="wisdom-mind" aria-hidden="true"><svg class="wisdom-wires" viewBox="0 0 200 300" preserveAspectRatio="none" fill="none"><path d="M0 50C70 50 45 150 100 150M0 150H200M0 250C70 250 45 150 100 150"/><path class="wire-signal" d="M0 50C70 50 45 150 100 150H200M0 150H200M0 250C70 250 45 150 100 150H200"/></svg><div class="wisdom-halo"></div><div class="wisdom-orb"><span>⌁</span><i></i></div></div>
-            <article class="wisdom-help"><div class="wisdom-help-head"><span class="helper-avatar" aria-hidden="true">⌁</span><div><b>wizzdom</b><small data-i18n="wisdomTiming">A little heads-up</small></div></div><h3 data-i18n="wisdomVoice">One thing before you try that…</h3><p data-i18n="wisdomAdvice">You’ve tried this fix twice. Check the device clock before another retry.</p><div class="wisdom-citation"><span aria-hidden="true">↳</span><span data-i18n="wisdomEvidence">2 past fixes + incident review</span></div><a class="wisdom-next" href="#lab" data-start-persona="engineer"><span data-i18n="wisdomTry">Try this moment</span><b aria-hidden="true">↗</b></a></article>
-          </div>
-          <div class="wisdom-qualities">
-            <div><div><h3 data-i18n="wisdomRememberTitle">Attentive.</h3><p data-i18n="wisdomRememberBody">Remembers across the sources you choose.</p></div></div>
-            <div><div><h3 data-i18n="wisdomConnectTitle">Perceptive.</h3><p data-i18n="wisdomConnectBody">Matches past evidence to your current task.</p></div></div>
-            <div><div><h3 data-i18n="wisdomHelpTitle">Helpful.</h3><p data-i18n="wisdomHelpBody">Suggests a better next move. You decide.</p></div></div>
-          </div>
+            <p data-i18n="pipelineGatherBody">AI chats + browsing history. You choose what to import.</p>
+          </article>
+          <article class="pipeline-step">
+            <h3 data-i18n="pipelineAnalyze">Make sense of it</h3>
+            <div class="pipeline-visual organize-visual">
+              <div class="analysis-header"><span class="mini-wizz" aria-hidden="true">⌁</span><b data-i18n="pipelineOrganize">Structure + analyze</b></div>
+              <div class="knowledge-tree"><div class="knowledge-card"><span class="knowledge-dot"></span><div><small data-i18n="pipelineLesson">PAST ATTEMPT</small><strong data-i18n="pipelineRetry">Token retry failed twice</strong></div></div><div class="knowledge-card"><span class="knowledge-dot"></span><div><small data-i18n="pipelineSignal">RELATED FINDING</small><strong data-i18n="pipelineClock">Clock skew can break login</strong></div></div><div class="knowledge-card muted-knowledge"><span class="knowledge-dot"></span><div><small data-i18n="pipelineOther">OTHER PROJECT</small><strong data-i18n="pipelineBrand">New homepage colors</strong></div></div></div>
+            </div>
+            <p data-i18n="pipelineAnalyzeBody">Connect decisions, lessons and patterns—not just keywords.</p>
+          </article>
+          <article class="pipeline-step">
+            <h3 data-i18n="pipelineMatch">Find what matters now</h3>
+            <div class="pipeline-visual match-visual">
+              <div class="current-task"><span aria-hidden="true">↗</span><div><small data-i18n="pipelineNow">YOU’RE WORKING ON</small><strong data-i18n="pipelineTask">Fix the login failure</strong></div></div>
+              <div class="match-beam" aria-hidden="true"><span></span><span></span></div>
+              <div class="retrieved-card"><img src="/assets/logos/claude.svg" width="24" height="24" alt="Claude" loading="lazy" /><strong data-i18n="pipelineRetry">Token retry failed twice</strong><span aria-hidden="true">✓</span></div>
+              <div class="retrieved-card"><img src="/assets/logos/chrome.svg" width="24" height="24" alt="Chrome" loading="lazy" /><strong data-i18n="pipelineClock">Clock skew can break login</strong><span aria-hidden="true">✓</span></div>
+            </div>
+            <p data-i18n="pipelineMatchBody">Retrieve the relevant evidence for the task in front of you.</p>
+          </article>
+          <article class="pipeline-step">
+            <h3 data-i18n="pipelineHelp">Get a better next move</h3>
+            <div class="pipeline-visual value-visual">
+              <div class="value-help"><div class="value-byline"><span class="mini-wizz" aria-hidden="true">⌁</span><b>wizzdom</b></div><del data-i18n="pipelineOld">Try the same fix again</del><strong data-i18n="pipelineAdvice">Check the device clock first.</strong><span class="value-evidence"><span aria-hidden="true">↳</span> <span data-i18n="pipelineEvidence">Past attempts + incident review</span></span></div>
+            </div>
+            <p data-i18n="pipelineHelpBody">A useful heads-up, backed by sources. You stay in control.</p>
+          </article>
         </div>
+        <div class="pipeline-footer"><small data-i18n="pipelineExample">Illustrative workflow · Fictional data</small><a class="button primary" href="#lab" data-start-persona="engineer"><span data-i18n="pipelineTry">Try this moment</span><span aria-hidden="true">↗</span></a></div>
       </section>
-
-      <section class="source-section"><div class="source-copy"><p class="eyebrow" data-i18n="sourceEyebrow">ONE HISTORY. ACROSS YOUR AI.</p><h2 data-i18n="sourceTitle">Different tools. Connected thinking.</h2><p data-i18n="sourceBody">Your research in ChatGPT. A decision in Claude. A lesson in Codex. Wizzdom connects the pieces on your Mac.</p></div><div class="source-map" aria-label="Illustration of context moving between tools"><div class="map-node"><b>ChatGPT</b><small data-i18n="mapResearch">research</small></div><div class="map-node"><b>Claude</b><small data-i18n="mapDecision">decision</small></div><div class="map-node"><b>Codex</b><small data-i18n="mapBuild">build</small></div><div class="map-node"><b data-i18n="mapBrowser">Browser</b><small data-i18n="mapSignals">signals</small></div><div class="map-core"><span>⌁</span><b>wizzdom</b><small data-i18n="mapLocal">on your Mac</small></div><div class="map-output"><small data-i18n="mapRightMoment">RIGHT MOMENT</small><b data-i18n="mapOneCard">The missing insight</b></div></div></section>
 
       <section class="privacy-section" id="privacy"><div class="privacy-copy"><p class="eyebrow" data-i18n="privacyEyebrow">LOCAL-FIRST. YOU’RE IN CONTROL.</p><h2 data-i18n="privacyTitle">Your history stays on your Mac.</h2><p data-i18n="privacyBody">Cloud reasoning receives only the selected task and relevant evidence. Choose sources, inspect evidence, pause anytime.</p></div><div class="privacy-console"><div class="console-head"><span data-i18n="privacyConsoleLabel">Your data controls</span><b data-i18n="userControlled">USER CONTROLLED</b></div><div><i>✓</i><span data-i18n="privacyOne">Choose each source and time range</span></div><div><i>✓</i><span data-i18n="privacyTwo">Raw imported history stays on your Mac</span></div><div><i>✓</i><span data-i18n="privacyThree">Preview evidence used for reasoning</span></div><div><i>✓</i><span data-i18n="privacyFour">Pause or disconnect any source</span></div><div class="negative"><i>×</i><span data-i18n="privacyFive">No screen scraping or silent actions</span></div></div></section>
 
