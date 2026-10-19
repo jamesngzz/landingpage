@@ -5,7 +5,7 @@ document.querySelectorAll("[data-i18n]").forEach((node) => {
 
 const vietnamese = {
   navDemo: "Demo tương tác", navHow: "Cách hoạt động", navPrivacy: "Quyền riêng tư", navCta: "Chọn khoảnh khắc",
-  heroEyebrow: "CHO AI THẤY TOÀN CẢNH", heroLineOne: "AI quên.", heroLineTwo: "Rồi làm trong mù mờ.", heroLineThree: "Bạn trả giá.",
+  heroEyebrow: "CHO AI THẤY TOÀN CẢNH", heroLineOne: "AI quên", heroLineTwo: "Rồi làm việc mù mờ", heroLineThree: "Bạn trả giá.",
   heroSub: "Wizzdom tìm lại quyết định và bài học từ các chat AI, lịch sử duyệt web để giúp bạn làm việc trước mắt.",
   heroPrimary: "Cho AI thấy toàn cảnh", heroSecondary: "Cách hoạt động ↓", heroMicro: "Demo 30 giây · Không truy cập dữ liệu của bạn",
   heroFlowSourcesLabel: "ĐIỀU AI ĐÃ QUÊN", heroFlowChat: "7 người kẹt ở bước thiết lập.", heroFlowClaude: "Sửa thiết lập trước analytics.", heroFlowBrowserLabel: "Duyệt web", heroFlowBrowser: "Checklist thiết lập · xem lại 4 lần",
