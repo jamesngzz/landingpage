@@ -244,7 +244,7 @@ footer { min-height: 150px; padding: 34px 28px; display: grid; grid-template-col
   .source-stack { grid-template-columns: 1fr; }.decision-stage { padding: 20px 15px 25px; }.decision-panel blockquote { font-size: 2.35rem; }
   html[lang="vi"] .decision-panel blockquote { font-size: 2.1rem; line-height: 1.18; }
   .insight-panel { grid-template-columns: 1fr; }.companion-orb { width: 60px; height: 60px; margin: 0 0 -15px 15px; }.insight-card > h3 { font-size: 2.2rem; }.insight-header { padding-top: 24px; }.insight-actions, .value-buttons { flex-direction: column; }.insight-actions .button, .value-buttons button { width: 100%; }
-  .decision-delta { grid-template-columns: 1fr; }.decision-delta div:last-child { text-align: left; }.decision-delta > span { transform: rotate(90deg); justify-self: start; }
+  .decision-delta { grid-template-columns: 1fr; }.decision-delta div:last-child { text-align: left; }
   .principle-grid article { min-height: 430px; }.source-map { min-height: 570px; }.map-node:nth-child(1) { left: 18px; }.map-node:nth-child(2) { right: 18px; }.map-node:nth-child(3) { left: 18px; }.map-node:nth-child(4) { right: 18px; }.map-output { display: none; }
   footer { grid-template-columns: 1fr; gap: 13px; text-align: center; }footer .brand, footer > a:last-child { justify-self: center; }
 }
@@ -595,6 +595,8 @@ footer p, footer > a:last-child { font-size: 14px; }
 }
 /* One visual language: source tiles, connected evidence, Wizzdom blue. */
 .memory-ticket .tool-label { display: flex; align-items: center; gap: 9px; }
+.decision-delta > .decision-arrow { display: grid; place-items: center; justify-self: center; transform: none; }
+.decision-arrow svg { display: block; width: 24px; max-width: 100%; height: auto; }
 .tool-label img { flex: 0 0 24px; object-fit: contain; }
 .pipeline-section { padding: 96px max(28px, calc((100vw - 1320px) / 2)) 70px; border-bottom: 1px solid var(--ink); background: var(--paper); scroll-margin-top: 85px; }
 .pipeline-heading { margin-bottom: 46px; }

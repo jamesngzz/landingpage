@@ -6,20 +6,20 @@
     <meta name="description" content="AI forgets, then acts on an incomplete picture. Wizzdom brings the missing decisions, lessons and signals back before the next move." />
     <title>wizzdom — Give AI the full picture</title>
     <link rel="icon" href="/assets/brand/wizzdom-lens.png" type="image/png" />
-    <link rel="stylesheet" href="/styles.css?v=10" />
+    <link rel="stylesheet" href="/styles.css?v=11" />
   </head>
   <body>
     <header class="site-nav">
       <a class="brand" href="#top" aria-label="wizzdom home"><span class="brand-mark" aria-hidden="true"><img src="/assets/brand/wizzdom-lens.png" width="32" height="32" alt="" /></span><span>wizzdom</span></a>
       <nav class="main-nav" aria-label="Main navigation"><a href="#lab" data-i18n="navDemo">Interactive demo</a><a href="#how" data-i18n="navHow">How it works</a><a href="#privacy" data-i18n="navPrivacy">Privacy</a></nav>
-      <div class="nav-actions"><div class="language-switch" role="group" aria-label="Language"><button type="button" data-language="vi">VI</button><button type="button" data-language="en">EN</button></div><a class="nav-cta" href="#apply" data-open-beta data-i18n="navCta">Join beta</a></div>
+      <div class="nav-actions"><div class="language-switch" role="group" aria-label="Language"><button type="button" data-language="vi">VI</button><button type="button" data-language="en">EN</button></div><a class="nav-cta" href="#apply" data-open-beta data-i18n="navCta">Try now</a></div>
     </header>
 
     <main id="top">
       <section class="hero minimal-hero">
         <div class="hero-copy">
           <h1><span data-i18n="heroLineOne">AI forgets.</span><span data-i18n="heroLineTwo">It acts blind.</span><span class="price-line" data-i18n="heroLineThree">You pay the price.</span></h1>
-          <div class="hero-actions"><a class="button primary" href="#lab" data-i18n="heroPrimary">See what AI misses</a></div>
+          <div class="hero-actions"><a class="button primary" href="#lab" data-i18n="heroPrimary">Try Wizzdom now!</a></div>
         </div>
         <a class="scroll-cue" href="#example" aria-label="See Wizzdom in action"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg></a>
       </section>
@@ -70,10 +70,10 @@
                 </div>
               </div>
               <div class="reflection-panel" id="reflection-panel" hidden>
-                <div class="decision-delta"><div><small data-i18n="beforeContext">CURRENT THOUGHT</small><strong id="decision-before"></strong></div><span aria-hidden="true">→</span><div><small data-i18n="afterContext">WHAT SHOULD BE DONE</small><strong id="decision-after"></strong></div></div>
+                <div class="decision-delta"><div><small data-i18n="beforeContext">CURRENT THOUGHT</small><strong id="decision-before"></strong></div><span class="decision-arrow" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span><div><small data-i18n="afterContext">WHAT SHOULD BE DONE</small><strong id="decision-after"></strong></div></div>
                 <h3 id="reflection-title" tabindex="-1" data-i18n="wouldChange">Would this insight change your next move?</h3>
                 <div class="value-buttons" role="group" aria-label="Rate the value"><button type="button" data-value="definitely" data-i18n="definitely">Definitely</button><button type="button" data-value="maybe" data-i18n="maybe">Maybe</button><button type="button" data-value="no" data-i18n="notReally">Not really</button></div>
-                <div class="signal-capture" id="signal-capture" hidden><p data-i18n="whereLives">Where does context like this live for you?</p><div class="source-chips" id="source-chips"><button type="button" data-source="chatgpt">ChatGPT</button><button type="button" data-source="claude">Claude</button><button type="button" data-source="codex">Codex</button><button type="button" data-source="browser" data-i18n="browserChats">Browser chats</button><button type="button" data-source="notes" data-i18n="notesDocs">Notes & docs</button><button type="button" data-source="calls" data-i18n="callsFeedback">Calls & feedback</button></div><button class="button primary next-button" id="make-it-yours" type="button" data-i18n="makeYours">Get early access</button></div>
+                <div class="signal-capture" id="signal-capture" hidden><p data-i18n="whereLives">Where does context like this live for you?</p><div class="source-chips" id="source-chips"><button type="button" data-source="chatgpt">ChatGPT</button><button type="button" data-source="claude">Claude</button><button type="button" data-source="codex">Codex</button><button type="button" data-source="browser" data-i18n="browserChats">Browser chats</button><button type="button" data-source="notes" data-i18n="notesDocs">Notes & docs</button><button type="button" data-source="calls" data-i18n="callsFeedback">Calls & feedback</button></div><button class="button primary next-button" id="make-it-yours" type="button" data-i18n="makeYours">Try Wizzdom now!</button></div>
               </div>
               <div class="reset-row"><button id="reset-demo" type="button" data-i18n="resetDemo">↻ Try another moment</button></div>
               <p class="demo-disclaimer" data-i18n="demoDisclaimer">No access to your data.</p>
@@ -126,15 +126,15 @@
       <section class="privacy-section" id="privacy"><div class="privacy-copy"><p class="eyebrow" data-i18n="privacyEyebrow">LOCAL-FIRST. YOU’RE IN CONTROL.</p><h2 data-i18n="privacyTitle">Your history stays on your Mac.</h2><p data-i18n="privacyBody">Cloud reasoning receives only the selected task and relevant evidence. Choose sources, inspect evidence, pause anytime.</p></div><div class="privacy-console"><div class="console-head"><span data-i18n="privacyConsoleLabel">Your data controls</span><b data-i18n="userControlled">USER CONTROLLED</b></div><div><i>✓</i><span data-i18n="privacyOne">Choose each source and time range</span></div><div><i>✓</i><span data-i18n="privacyTwo">Raw imported history stays on your Mac</span></div><div><i>✓</i><span data-i18n="privacyThree">Preview evidence used for reasoning</span></div><div><i>✓</i><span data-i18n="privacyFour">Pause or disconnect any source</span></div><div class="negative"><i>×</i><span data-i18n="privacyFive">No screen scraping or silent actions</span></div></div></section>
 
       <section class="apply-section" id="apply">
-        <div class="apply-copy"><p class="eyebrow" data-i18n="applyEyebrow">CO-BUILD THE PRIVATE BETA</p><h2 data-i18n="applyTitle">Give your AI the full picture.</h2><p data-i18n="applyBody">Get early access. Help shape what Wizzdom notices for you.</p></div>
-        <div class="beta-invite"><button class="button primary full" type="button" data-open-beta data-i18n="betaCta">Get early access</button><p data-i18n="betaEasy">A few taps + your email. No essays.</p></div>
+        <div class="apply-copy"><p class="eyebrow" data-i18n="applyEyebrow">CO-BUILD THE PRIVATE BETA</p><h2 data-i18n="applyTitle">Don’t pay twice for what you already know.</h2><p data-i18n="applyBody">Wizzdom brings past decisions, lessons and overlooked details into your next move—before the same mistake costs you again.</p></div>
+        <div class="beta-invite"><button class="button primary full" type="button" data-open-beta data-i18n="betaCta">Try Wizzdom now!</button><p data-i18n="betaEasy">Sign up for a beta invite. A few taps + email.</p></div>
       </section>
     </main>
 
     <dialog id="beta-dialog" aria-labelledby="beta-title">
       <div class="beta-shell">
         <header class="beta-header"><span class="brand"><img src="/assets/brand/wizzdom-lens.png" width="28" height="28" alt="" />wizzdom</span><button class="beta-close" type="button" data-close-beta aria-label="Close">×</button></header>
-        <div class="beta-intro"><h2 id="beta-title" data-i18n="betaCta">Get early access</h2><span id="beta-progress" aria-live="polite">1 / 3</span></div>
+        <div class="beta-intro"><h2 id="beta-title" data-i18n="betaTitle">Join the Wizzdom beta</h2><span id="beta-progress" aria-live="polite">1 / 3</span></div>
         <form id="demand-form">
           <div class="beta-body">
             <fieldset data-beta-step="1"><legend tabindex="-1" data-i18n="betaRoleQ">What do you do?</legend><div class="beta-options role-options" role="group" aria-label="Your role">
@@ -152,6 +152,6 @@
       </div>
     </dialog>
     <footer><a class="brand" href="#top"><span class="brand-mark"><img src="/assets/brand/wizzdom-lens.png" width="32" height="32" alt="" /></span><span>wizzdom</span></a><p data-i18n="footerLine">Your history. The right moment. A better next move.</p><a href="#top" data-i18n="backTop">Back to top ↑</a></footer>
-    <script src="/script.js?v=10"></script>
+    <script src="/script.js?v=11"></script>
   </body>
 </html>
