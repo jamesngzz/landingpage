@@ -15,7 +15,7 @@ const vietnamese = {
   costTitle: "Không chỉ bằng token.", costSub: "Thiếu lịch sử, bạn phải trả bằng…", costWork: "Làm lại việc cũ.", costWorkSub: "Giải thích lại. Xây lại. Lần nữa.", costMistake: "Lặp lại sai lầm.", costMistakeSub: "Hướng từng thất bại lại trông như mới.", costAutomate: "Tự động hóa sai việc.", costAutomateSub: "Đi nhanh hơn. Nhưng sai hướng.",
   labEyebrow: "THỬ TRONG 30 GIÂY", labTitle: "Bạn đang làm gì?", labSub: "Chọn vai. Đưa ra quyết định. Xem AI đã bỏ sót gì.",
   sampleWorkspace: "WORKSPACE MẪU", fictionalContext: "Context hư cấu", contextAvailable: "CONTEXT CÓ SẴN", currentGoal: "MỤC TIÊU HIỆN TẠI", whatsHappening: "ĐANG XẢY RA", railNote: "Các nguồn chỉ mang tính minh hoạ. Wizzdom không đọc thiết bị của bạn trong demo này.",
-  progressLabel: "CHỌN · NHẬN RA · CHỌN LẠI", youreAboutToAsk: "BẠN SẮP HỎI AI", chooseNext: "Bạn sẽ yêu cầu AI làm gì tiếp theo?", wizzdomNoticed: "WIZZDOM NHẬN RA", highConfidence: "ĐỘ TIN CẬY CAO", showEvidence: "Xem bằng chứng", whyNow: "VÌ SAO LÚC NÀY", useContext: "Dùng context này", continueAnyway: "Vẫn tiếp tục", beforeContext: "SUY NGHĨ HIỆN TẠI", afterContext: "ĐIỀU NÊN LÀM", wouldChange: "Insight này có làm thay đổi bước tiếp theo của bạn không?", definitely: "Chắc chắn", maybe: "Có thể", notReally: "Không hẳn", whereLives: "Context tương tự đang nằm ở đâu với bạn?", browserChats: "Chat trên browser", notesDocs: "Ghi chú & tài liệu", callsFeedback: "Calls & feedback", makeYours: "Áp dụng cho công việc của tôi", resetDemo: "↻ Thử khoảnh khắc khác",
+  chooseNext: "Bạn sẽ yêu cầu AI làm gì tiếp theo?", wizzdomNoticed: "WIZZDOM NHẬN RA", highConfidence: "ĐỘ TIN CẬY CAO", showEvidence: "Xem bằng chứng", whyNow: "VÌ SAO LÚC NÀY", useContext: "Dùng context này", continueAnyway: "Vẫn tiếp tục", beforeContext: "SUY NGHĨ HIỆN TẠI", afterContext: "ĐIỀU NÊN LÀM", wouldChange: "Insight này có làm thay đổi bước tiếp theo của bạn không?", definitely: "Chắc chắn", maybe: "Có thể", notReally: "Không hẳn", whereLives: "Context tương tự đang nằm ở đâu với bạn?", browserChats: "Chat trên browser", notesDocs: "Ghi chú & tài liệu", callsFeedback: "Calls & feedback", makeYours: "Áp dụng cho công việc của tôi", resetDemo: "↻ Thử khoảnh khắc khác",
   howEyebrow: "CÁCH WIZZDOM HOẠT ĐỘNG", howTitle: "Kết nối. Đối chiếu. Nhận ra.",
   howVisualBrowser: "Lịch sử duyệt web", howOneSmall: "KẾT NỐI", howOneTitle: "Chọn nguồn dữ liệu.", howOneBody: "Chat AI, lịch sử duyệt web, ghi chú. Bạn chọn nguồn được kết nối.",
   howVisualTask: "VIỆC HIỆN TẠI", howVisualTaskValue: "Lên kế hoạch sprint", howVisualContext: "BẰNG CHỨNG CŨ", howVisualContextValue: "9 tín hiệu trước đó", howVisualMatch: "ĐỐI CHIẾU", howTwoSmall: "TÌM LẠI + ĐỐI CHIẾU", howTwoTitle: "Tìm mảnh ghép còn thiếu.", howTwoBody: "Tìm lại quyết định và tín hiệu liên quan. Đối chiếu với việc đang làm.",
@@ -179,7 +179,7 @@ Object.assign(vietnamese, {
   howEyebrow: "NGƯỜI ĐỒNG HÀNH TINH Ý CỦA BẠN", wisdomTitleOne: "Nhìn ra mối liên hệ.", wisdomTitleTwo: "Giúp đúng lúc.", wisdomCurrent: "Bạn đang sửa lỗi đăng nhập.", wisdomExample: "Ví dụ hư cấu", wisdomPatch: "Cùng cách sửa. Đã thử hai lần.", wisdomBrowser: "Lịch sử duyệt web", wisdomIncident: "Báo cáo sự cố: lệch đồng hồ.", wisdomNotes: "Ghi chú của bạn", wisdomDeadline: "Release vào thứ Sáu.", wisdomTiming: "Nhắc bạn một chút", wisdomVoice: "Trước khi bạn thử lại…", wisdomAdvice: "Bạn đã thử cách này hai lần. Hãy kiểm tra đồng hồ thiết bị trước khi retry.", wisdomEvidence: "2 lần sửa cũ + báo cáo sự cố", wisdomTry: "Thử tình huống này", wisdomRememberTitle: "Chú tâm.", wisdomRememberBody: "Nhớ xuyên suốt các nguồn bạn chọn.", wisdomConnectTitle: "Tinh ý.", wisdomConnectBody: "Đối chiếu bằng chứng cũ với việc hiện tại.", wisdomHelpTitle: "Hữu ích.", wisdomHelpBody: "Gợi ý bước tốt hơn. Bạn quyết định.",
   heroPrimary: "Xem AI bỏ sót gì", exampleTitle: "Wizzdom tìm lại những mảnh ghép còn thiếu.",
   heroSub: "Wizzdom kết nối điều bạn đã biết với việc bạn đang làm.", heroExample: "Ví dụ hư cấu", replay: "Xem lại", heroNow: "Bạn hỏi AI", heroPrompt: "“Lên kế hoạch analytics dashboard.”", heroMemoryOne: "7 người kẹt ở bước thiết lập", heroMemoryTwo: "Ưu tiên sửa thiết lập", heroRemembers: "Wizzdom tìm lại bằng chứng", heroInsight: "“Sửa thiết lập trước khi thêm tính năng.”", heroOld: "Build dashboard", heroNew: "Sửa thiết lập",
-  yourTask: "VIỆC TRƯỚC MẮT", chooseNext: "Bạn sẽ làm gì tiếp theo?", moreBackground: "Xem bối cảnh", showEvidence: "Xem 3 nguồn", demoDisclaimer: "Tình huống hư cấu. Không truy cập dữ liệu của bạn.", fictionalContext: "Tình huống hư cấu", sampleWorkspace: "THỬ MỘT QUYẾT ĐỊNH",
+  chooseNext: "Bạn sẽ làm gì tiếp theo?", moreBackground: "Xem bối cảnh", showEvidence: "Xem 3 nguồn", demoDisclaimer: "Không truy cập dữ liệu của bạn.", fictionalContext: "Tình huống hư cấu",
   howConnect: "Kết nối", howMatch: "Đối chiếu", howInsight: "Insight", howVisualSources: "Xem nguồn trong demo",
   applyEyebrow: "CÙNG XÂY PRIVATE BETA", applyBody: "Mang đến một tình huống thật. Cùng định hình cohort đầu tiên.", formMoment: "Bạn muốn Wizzdom nhắc điều gì trước khi quá muộn?", formStepOne: "1 / 2 · Tình huống của bạn", formStepTwo: "2 / 2 · Bước tiếp theo", formNext: "Tiếp tục →", formBack: "← Sửa tình huống", formSubmit: "Lưu mong muốn tham gia beta", formNote: "Prototype: chỉ lưu trong browser này. Chưa kết nối đăng ký beta thật.", formSuccess: "Đã lưu trong browser này. Đây chưa phải đăng ký beta."
 });
@@ -226,9 +226,8 @@ function track(type, detail = {}) {
   window.dispatchEvent(new CustomEvent("wizzdom:demand-signal", { detail: signal }));
 }
 
-function setProgress(step) {
+function setStage(step) {
   currentStep = step;
-  $$(".stage-progress > span").forEach((node, index) => node.classList.toggle("active", index < step));
 }
 
 function resetStage() {
@@ -242,7 +241,7 @@ function resetStage() {
   $$(".background-details").forEach((node) => { node.open = false; });
   $$("[data-value], .source-chips button").forEach((node) => node.classList.remove("active"));
   selectedChoice = "";
-  setProgress(1);
+  setStage(1);
 }
 
 function renderScenario() {
@@ -274,7 +273,7 @@ function showInsight(choiceIndex, record = true) {
   $("#insight-why").textContent = data.why;
   $("#evidence-items").innerHTML = data.evidence.map(([source, text]) => `<div class="evidence-item"><b>${escapeHTML(source)}</b><span>${escapeHTML(text)}</span></div>`).join("");
   renderArtifact();
-  setProgress(2);
+  setStage(2);
   if (record) { focusStage("#insight-title"); track("scenario_choice", { choice: selectedChoice, choice_index: choiceIndex }); }
 }
 
@@ -285,7 +284,7 @@ function showReflection(action, record = true) {
   $("#decision-before").textContent = moment().thoughts[selectedChoiceIndex];
   $("#decision-after").textContent = data.after;
   lastInsightAction = action;
-  setProgress(3);
+  setStage(3);
   if (record) { focusStage("#reflection-title"); track("insight_action", { action, choice: selectedChoice }); }
 }
 

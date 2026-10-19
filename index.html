@@ -28,7 +28,7 @@
         <div class="hero-composition">
           <div class="hero-demo" id="hero-demo">
             <div class="hero-demo-bar"><span data-i18n="heroExample">Fictional example</span><button type="button" id="replay-hero"><span aria-hidden="true">↻</span> <span data-i18n="replay">Replay</span></button></div>
-            <div class="hero-scene scene-prompt"><span class="scene-step">1</span><div><small data-i18n="heroNow">You ask AI</small><p data-i18n="heroPrompt">“Plan the analytics dashboard.”</p></div></div>
+            <div class="hero-scene scene-prompt"><span class="scene-step" aria-hidden="true">↗</span><div><small data-i18n="heroNow">You ask AI</small><p data-i18n="heroPrompt">“Plan the analytics dashboard.”</p></div></div>
             <div class="hero-retrieval scene-sources"><span class="retrieval-line" aria-hidden="true"></span><div class="memory-ticket"><b>ChatGPT</b><span data-i18n="heroMemoryOne">7 users stuck at setup</span></div><div class="memory-ticket"><b>Claude</b><span data-i18n="heroMemoryTwo">Fix setup first</span></div></div>
             <div class="hero-scene scene-insight"><span class="scene-step">⌁</span><div><small data-i18n="heroRemembers">Wizzdom brings back the evidence</small><p data-i18n="heroInsight">“Fix setup before building more features.”</p><div class="mini-funnel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
             <div class="hero-change scene-result"><del data-i18n="heroOld">Build dashboard</del><span aria-hidden="true">→</span><strong data-i18n="heroNew">Fix setup first</strong></div>
@@ -46,7 +46,7 @@
       </section>
 
       <section class="lab-section" id="lab">
-        <div class="lab-intro"><div><p class="eyebrow" data-i18n="labEyebrow">TRY IT IN 30 SECONDS</p><h2 data-i18n="labTitle">What are you working on?</h2></div><p data-i18n="labSub">Pick your role. Make a call. See what your AI missed.</p></div>
+        <div class="lab-intro"><h2 data-i18n="labTitle">What are you working on?</h2></div>
         <div class="persona-grid" role="group" aria-label="Choose a persona">
           <button class="persona-card active" type="button" aria-pressed="true" data-persona="product"><span class="persona-icon" aria-hidden="true">P</span><strong data-persona-label="product">Product</strong><small data-persona-blurb="product">Wrong priorities</small></button>
           <button class="persona-card" type="button" aria-pressed="false" data-persona="engineer"><span class="persona-icon" aria-hidden="true">{ }</span><strong data-persona-label="engineer">Developer</strong><small data-persona-blurb="engineer">Repeated fixes</small></button>
@@ -57,11 +57,10 @@
         </div>
 
         <div class="simulator">
-          <div class="simulator-bar"><div><i></i><i></i><i></i><b data-i18n="sampleWorkspace">SAMPLE WORKSPACE</b></div><span><em></em><span data-i18n="fictionalContext">Fictional context</span></span></div>
+          <div class="simulator-bar"><span data-i18n="fictionalContext">Fictional example</span></div>
           <div class="simulator-layout compact-simulator">
             <div class="decision-stage">
-              <div class="stage-progress"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span><small data-i18n="progressLabel">CHOOSE · NOTICE · DECIDE AGAIN</small></div>
-              <div class="decision-panel" id="decision-panel"><p class="scenario-setup" id="scenario-setup"></p><div class="task-message"><span class="message-mark" id="message-mark" aria-hidden="true">↗</span><div><p class="stage-label" data-i18n="yourTask">IN FRONT OF YOU</p><h3 id="scenario-ask" tabindex="-1"></h3></div></div><p class="choice-prompt" data-i18n="chooseNext">What would you do next?</p><div class="choice-list" id="scenario-choices"></div><details class="background-details"><summary data-i18n="moreBackground">More background</summary><p id="scenario-goal"></p><p id="scenario-situation"></p></details></div>
+              <div class="decision-panel" id="decision-panel"><p class="scenario-setup" id="scenario-setup"></p><div class="task-message"><span class="message-mark" id="message-mark" aria-hidden="true">↗</span><div><h3 id="scenario-ask" tabindex="-1"></h3></div></div><p class="choice-prompt" data-i18n="chooseNext">What would you do next?</p><div class="choice-list" id="scenario-choices"></div><details class="background-details"><summary data-i18n="moreBackground">More background</summary><p id="scenario-goal"></p><p id="scenario-situation"></p></details></div>
               <div class="insight-panel" id="insight-panel" hidden>
                 <div class="insight-card">
                   <div class="insight-header"><div><small data-i18n="wizzdomNoticed">WIZZDOM NOTICED</small><span id="selected-action"></span></div></div>
@@ -77,7 +76,7 @@
                 <div class="signal-capture" id="signal-capture" hidden><p data-i18n="whereLives">Where does context like this live for you?</p><div class="source-chips" id="source-chips"><button type="button" data-source="chatgpt">ChatGPT</button><button type="button" data-source="claude">Claude</button><button type="button" data-source="codex">Codex</button><button type="button" data-source="browser" data-i18n="browserChats">Browser chats</button><button type="button" data-source="notes" data-i18n="notesDocs">Notes & docs</button><button type="button" data-source="calls" data-i18n="callsFeedback">Calls & feedback</button></div><button class="button primary next-button" id="make-it-yours" type="button" data-i18n="makeYours">Make this about my work</button></div>
               </div>
               <div class="reset-row"><button id="reset-demo" type="button" data-i18n="resetDemo">↻ Try another moment</button></div>
-              <p class="demo-disclaimer" data-i18n="demoDisclaimer">Fictional sample. No access to your data.</p>
+              <p class="demo-disclaimer" data-i18n="demoDisclaimer">No access to your data.</p>
             </div>
           </div>
         </div>
@@ -97,9 +96,9 @@
             <article class="wisdom-help"><div class="wisdom-help-head"><span class="helper-avatar" aria-hidden="true">⌁</span><div><b>wizzdom</b><small data-i18n="wisdomTiming">A little heads-up</small></div></div><h3 data-i18n="wisdomVoice">One thing before you try that…</h3><p data-i18n="wisdomAdvice">You’ve tried this fix twice. Check the device clock before another retry.</p><div class="wisdom-citation"><span aria-hidden="true">↳</span><span data-i18n="wisdomEvidence">2 past fixes + incident review</span></div><a class="wisdom-next" href="#lab" data-start-persona="engineer"><span data-i18n="wisdomTry">Try this moment</span><b aria-hidden="true">↗</b></a></article>
           </div>
           <div class="wisdom-qualities">
-            <div><span class="quality-mark" aria-hidden="true">01</span><div><h3 data-i18n="wisdomRememberTitle">Attentive.</h3><p data-i18n="wisdomRememberBody">Remembers across the sources you choose.</p></div></div>
-            <div><span class="quality-mark" aria-hidden="true">02</span><div><h3 data-i18n="wisdomConnectTitle">Perceptive.</h3><p data-i18n="wisdomConnectBody">Matches past evidence to your current task.</p></div></div>
-            <div><span class="quality-mark" aria-hidden="true">03</span><div><h3 data-i18n="wisdomHelpTitle">Helpful.</h3><p data-i18n="wisdomHelpBody">Suggests a better next move. You decide.</p></div></div>
+            <div><div><h3 data-i18n="wisdomRememberTitle">Attentive.</h3><p data-i18n="wisdomRememberBody">Remembers across the sources you choose.</p></div></div>
+            <div><div><h3 data-i18n="wisdomConnectTitle">Perceptive.</h3><p data-i18n="wisdomConnectBody">Matches past evidence to your current task.</p></div></div>
+            <div><div><h3 data-i18n="wisdomHelpTitle">Helpful.</h3><p data-i18n="wisdomHelpBody">Suggests a better next move. You decide.</p></div></div>
           </div>
         </div>
       </section>

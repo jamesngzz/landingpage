@@ -125,7 +125,7 @@ html[lang="vi"] .flow-insight h3 { line-height: 1.15; }
 .statement-band span + span { border-left: 1px solid var(--ink); }
 
 .lab-section { padding: 118px max(28px, calc((100vw - 1240px) / 2)); }
-.lab-intro { display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: end; }
+.lab-intro { display: block; }
 .lab-intro h2, .principles-heading h2, .source-copy h2, .privacy-copy h2, .apply-copy h2 { margin: 0; font: 500 clamp(3.2rem, 5.4vw, 5.9rem)/.94 var(--serif); letter-spacing: -.055em; }
 html[lang="vi"] .lab-intro h2, html[lang="vi"] .principles-heading h2, html[lang="vi"] .source-copy h2, html[lang="vi"] .privacy-copy h2, html[lang="vi"] .apply-copy h2 { line-height: 1.06; letter-spacing: -.035em; }
 .lab-intro > p { margin: 0 0 5px; color: var(--muted); font-size: 1.07rem; }
@@ -150,7 +150,6 @@ html[lang="vi"] .lab-intro h2, html[lang="vi"] .principles-heading h2, html[lang
 .rail-note { margin: 18px 0 0; color: var(--muted); font-size: 10px; line-height: 1.45; }
 
 .decision-stage { position: relative; padding: 24px 34px 30px; display: flex; flex-direction: column; background-image: radial-gradient(circle, rgba(17,17,15,.12) 1px, transparent 1.2px); background-size: 23px 23px; }
-.stage-progress { display: grid; grid-template-columns: 24px 44px 24px 44px 24px 1fr; align-items: center; gap: 7px; }.stage-progress > span { width: 24px; height: 24px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); background: var(--white); font: 700 9px/1 var(--mono); }.stage-progress > span.active { color: #fff; border-color: var(--blue); background: var(--blue); }.stage-progress i { height: 1px; background: var(--line); }.stage-progress small { justify-self: end; color: var(--muted); font: 8px/1 var(--mono); letter-spacing: .08em; }
 .decision-panel { max-width: 700px; margin: auto; padding: 36px 0; width: 100%; }
 .decision-panel blockquote { margin: 14px 0 32px; font: 500 clamp(2rem, 3.6vw, 3.7rem)/1.05 var(--serif); letter-spacing: -.035em; }
 html[lang="vi"] .decision-panel blockquote { line-height: 1.13; letter-spacing: -.02em; }
@@ -242,7 +241,7 @@ footer { min-height: 150px; padding: 34px 28px; display: grid; grid-template-col
   .lab-intro h2, .principles-heading h2, .source-copy h2, .privacy-copy h2, .apply-copy h2 { font-size: 3.25rem; }
   html[lang="vi"] .lab-intro h2, html[lang="vi"] .principles-heading h2, html[lang="vi"] .source-copy h2, html[lang="vi"] .privacy-copy h2, html[lang="vi"] .apply-copy h2 { font-size: 2.9rem; line-height: 1.1; }
   .persona-grid { grid-template-columns: 1fr 1fr; }.persona-card:nth-child(n) { min-height: 138px; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }.persona-card:nth-child(2n) { border-right: 0; }.persona-card:nth-child(n+5) { border-bottom: 0; }
-  .source-stack { grid-template-columns: 1fr; }.decision-stage { padding: 20px 15px 25px; }.stage-progress { grid-template-columns: 22px 24px 22px 24px 22px; }.stage-progress small { display: none; }.decision-panel blockquote { font-size: 2.35rem; }
+  .source-stack { grid-template-columns: 1fr; }.decision-stage { padding: 20px 15px 25px; }.decision-panel blockquote { font-size: 2.35rem; }
   html[lang="vi"] .decision-panel blockquote { font-size: 2.1rem; line-height: 1.18; }
   .insight-panel { grid-template-columns: 1fr; }.companion-orb { width: 60px; height: 60px; margin: 0 0 -15px 15px; }.insight-card > h3 { font-size: 2.2rem; }.insight-header { padding-top: 24px; }.insight-actions, .value-buttons { flex-direction: column; }.insight-actions .button, .value-buttons button { width: 100%; }
   .decision-delta { grid-template-columns: 1fr; }.decision-delta div:last-child { text-align: left; }.decision-delta > span { transform: rotate(90deg); justify-self: start; }
@@ -298,7 +297,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .cost-grid h3 { margin: 0 0 5px; font: 750 20px/1.25 var(--sans); letter-spacing: -.02em; }
 .cost-grid p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
 .lab-section, .principles-section, .source-section, .privacy-section, .apply-section { padding-top: 80px; padding-bottom: 80px; }
-.lab-intro { grid-template-columns: 1.2fr .8fr; gap: 35px; }
+.lab-intro { display: block; }
 .lab-intro h2, .principles-heading h2, .source-copy h2, .privacy-copy h2, .apply-copy h2,
 html[lang="vi"] .lab-intro h2, html[lang="vi"] .principles-heading h2, html[lang="vi"] .source-copy h2, html[lang="vi"] .privacy-copy h2, html[lang="vi"] .apply-copy h2 { font: 650 clamp(2.2rem, 3.8vw, 3.5rem)/1.14 var(--sans); letter-spacing: -.045em; }
 .lab-intro > p { color: #33322e; font-size: 18px; }
@@ -315,8 +314,6 @@ html[lang="vi"] .lab-intro h2, html[lang="vi"] .principles-heading h2, html[lang
 .source-pill { grid-template-columns: 8px 1fr; font-size: 14px; }
 .source-pill small { grid-column: 2; font: 500 12px/1.3 var(--sans); }
 .rail-note { font-size: 12px; }
-.stage-progress > span { width: 28px; height: 28px; font: 750 12px/1 var(--sans); }
-.stage-progress small { font: 750 11px/1.3 var(--sans); letter-spacing: .02em; }
 .choice-prompt { color: #38372f; font-size: 16px; }
 .choice-list button { min-height: 58px; font-size: 16px; line-height: 1.4; }
 .choice-list button::before { font: 700 12px/1 var(--sans); }
@@ -429,7 +426,6 @@ footer p, footer > a:last-child { font-size: 14px; }
   .simulator-bar { font-size: 11px; flex-wrap: wrap; }
   .simulator-layout { min-height: 0; }
   .context-note p { font-size: 20px; }
-  .stage-progress { gap: 8px; }
   .insight-card > h3, html[lang="vi"] .insight-card > h3 { font-size: 29px; line-height: 1.18; }
   .insight-card > p, .insight-card > h3 { margin-left: 18px; margin-right: 18px; }
   .evidence-item { grid-template-columns: 1fr; gap: 5px; }
@@ -484,6 +480,8 @@ footer p, footer > a:last-child { font-size: 14px; }
 .persona-card small { margin-top: 4px; }
 .compact-simulator { display: block; min-height: 570px; }
 .compact-simulator .decision-stage { min-height: 570px; padding: 26px 40px 20px; }
+.compact-simulator .task-message { align-items: center; }
+.simulator-bar { justify-content: flex-end; min-height: 36px; padding: 9px 18px; border-bottom-color: var(--line); color: var(--muted); background: var(--white); font-size: 12px; }
 .scenario-setup { max-width: 620px; margin: 0 auto 22px; text-align: center; color: #45433d; font-size: 17px; }
 .decision-panel { max-width: 760px; padding: 32px 0; }
 .task-message { display: grid; grid-template-columns: 48px 1fr; gap: 17px; padding: 26px; border: 1px solid var(--ink); border-radius: 14px; background: var(--white); box-shadow: 4px 5px 0 var(--ink); }
