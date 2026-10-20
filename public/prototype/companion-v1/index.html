@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="description" content="Prototype Wizzdom: người đồng hành trong những cuộc chat AI bạn cho phép." />
+  <title>Wizzdom — Companion prototype</title>
+  <link rel="stylesheet" href="./prototype.css" />
+  <link rel="stylesheet" href="./landing-theme.css" />
+</head>
+<body>
+  <header class="nav"><a class="brand" href="#top"><img src="/assets/brand/wizzdom-lens.png" width="31" height="31" alt="" />wizzdom</a><span class="prototype-badge">LOCAL PROTOTYPE</span><div class="nav-actions"><div class="language" aria-label="Language"><button data-lang="vi" aria-pressed="true">VI</button><button data-lang="en" aria-pressed="false">EN</button></div><button class="text-button nav-beta" data-invite data-copy="invite">Nhận lời mời beta ↗</button></div></header>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow" data-copy="eyebrow">CHROME EXTENSION + DESKTOP COMPANION</p>
+        <h1 id="hero-title"><span data-copy="heroOne">Người đồng hành</span> <br><em data-copy="heroAccent">ngay trong</em> <br><span data-copy="heroTwo">chat AI.</span></h1>
+        <p class="hero-description" data-copy="description">Hiểu việc bạn đang làm, tìm lại điều liên quan từ các chat trước và gợi ý một hướng tốt hơn — đúng lúc.</p>
+        <div class="hero-actions"><button class="button primary" id="watch-demo"><svg width="15" height="15" viewBox="0 0 20 20" aria-hidden="true"><path d="m6 3 11 7-11 7Z" fill="currentColor"/></svg><span data-copy="watch">Xem Wizzdom đồng hành</span></button><span class="length" data-copy="duration">20 giây · Không cần bật tiếng</span></div>
+        <p class="privacy-note"><span aria-hidden="true">✓</span><span data-copy="privacy">Chỉ theo dõi những cuộc chat bạn cho phép.</span></p>
+      </div>
+
+      <div class="demo-wrap" id="demo">
+        <div class="mode-switch" role="group" aria-label="Nơi Wizzdom đồng hành"><button data-mode="browser" aria-pressed="true"><img src="/assets/logos/chrome.svg" width="17" height="17" alt=""/><span data-copy="browserTab">Trong trình duyệt</span></button><button data-mode="desktop" aria-pressed="false"><svg width="18" height="16" viewBox="0 0 24 22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="20" height="13" rx="2"/><path d="M8 20h8m-4-5v5"/></svg><span data-copy="desktopTab">Trên desktop</span></button><span class="illustration" data-copy="example">UI minh họa</span></div>
+        <div class="player" id="player" data-mode="browser" data-stage="0" data-card="closed" data-observing="true">
+          <div class="scene" id="scene">
+            <div class="desktop-menu" aria-hidden="true"><b>Claude</b><span>File</span><span>Edit</span><span>View</span><time>09:41</time></div>
+            <div class="app-window">
+              <div class="browser-chrome">
+                <div class="tab-strip"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="active-tab"><img src="/assets/logos/openai.svg" width="13" height="13" alt=""/><span data-copy="chatTitleBrowser">Kế hoạch tuần này · ChatGPT</span><span class="tab-close" aria-hidden="true">×</span></span><span class="new-tab" aria-hidden="true">+</span></div>
+                <div class="address-row"><span class="browser-arrows" aria-hidden="true">‹ &nbsp; ›</span><span class="address">⌕ &nbsp; chatgpt.com</span><button class="extension-icon" id="extension-icon" aria-label="Mở Wizzdom extension"><img src="/assets/brand/wizzdom-lens.png" width="20" height="20" alt=""/><i class="notification-dot" aria-hidden="true"></i></button></div>
+              </div>
+              <div class="desktop-chrome"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Claude</span><span aria-hidden="true">⌘ K</span></div>
+              <div class="chat-layout">
+                <aside class="chat-sidebar" aria-hidden="true"><img id="sidebar-logo" src="/assets/logos/openai.svg" width="23" height="23" alt=""/><span class="sidebar-new">＋</span><div class="sidebar-line"></div><div class="sidebar-line short"></div><div class="sidebar-line"></div><div class="sidebar-line short"></div><span class="sidebar-profile">M</span></aside>
+                <div class="chat-main">
+                  <div class="chat-heading"><strong id="host-name">ChatGPT <span aria-hidden="true">⌄</span></strong><span id="conversation-title"></span></div>
+                  <div class="chat-transcript">
+                    <div class="user-message"><p id="task-text"></p></div>
+                    <div class="assistant-message"><div class="assistant-byline"><img id="assistant-logo" src="/assets/logos/openai.svg" width="21" height="21" alt=""/><span id="assistant-name">ChatGPT</span></div><p id="assistant-intro"></p><div id="assistant-plan" class="assistant-plan"></div><div class="reply-actions" aria-hidden="true">⧉ &nbsp; ♧ &nbsp; ↻</div></div>
+                  </div>
+                  <div class="composer"><span id="composer-placeholder"></span><span class="send-icon" aria-hidden="true">↑</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="observation-row"><button class="observation-toggle" id="observation-toggle" aria-pressed="true"><i aria-hidden="true"></i><span id="observation-label"></span><span class="scope-action" id="scope-action"></span></button></div>
+
+            <button class="whisper" id="whisper"><img class="whisper-lens" src="/assets/brand/wizzdom-lens.png" width="27" height="27" alt=""/><span><small id="whisper-kicker"></small><strong id="whisper-text"></strong></span><span class="whisper-arrow" aria-hidden="true">↗</span></button>
+
+            <section class="companion-card" id="companion-card" aria-label="Gợi ý của Wizzdom" aria-hidden="true">
+              <header class="card-top"><img src="/assets/brand/wizzdom-lens.png" width="22" height="22" alt=""/><strong>wizzdom</strong><span id="card-kicker"></span><button id="close-card" class="close-card" aria-label="Thu gọn gợi ý">×</button></header>
+              <h2 id="insight-title"></h2><p class="insight-suggestion" id="insight-suggestion"></p>
+              <div class="evidence" id="evidence"></div>
+              <div class="companion-actions"><button id="use-suggestion" class="button primary"><span id="use-label"></span><span aria-hidden="true">↗</span></button><button id="dismiss-suggestion" class="dismiss" data-copy="dismiss">Để sau</button></div>
+              <p class="approval-note" id="approval-note"></p>
+              <div class="taken-state" id="taken-state" hidden><span aria-hidden="true">↗</span><div><strong id="taken-title"></strong><p id="taken-copy"></p></div></div><button id="return-chat" class="return-chat" hidden data-copy="returnChat">Trở lại cuộc chat</button>
+            </section>
+
+            <button class="mascot" id="mascot" aria-label="Mở Wizzdom companion"><img src="/prototype/mascot.png" width="78" height="78" alt="Wizzdom mascot"/><span class="mascot-dot" aria-hidden="true">1</span><span class="mascot-name">wizzdom</span></button>
+          </div>
+          <div class="narrator"><span class="narrator-dot" aria-hidden="true"></span><p id="narration" aria-live="off"></p></div>
+          <div class="playback"><button id="play-pause" class="icon-button" aria-label="Tạm dừng"><svg id="pause-icon" width="15" height="15" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4v12M14 4v12" stroke="currentColor" stroke-width="3"/></svg><svg id="play-icon" width="15" height="15" viewBox="0 0 20 20" aria-hidden="true" hidden><path d="m6 3 11 7-11 7Z" fill="currentColor"/></svg></button><div id="timeline" class="timeline" role="group" aria-label="Các bước demo"></div><span id="timecode" class="timecode">00:00 / 00:20</span><button id="replay" class="icon-button" aria-label="Xem lại"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 11a8 8 0 1 1 2 7M4 5v6h6"/></svg></button></div>
+        </div>
+        <p class="demo-footnote" data-copy="demoNote">Tình huống giả lập. Không đọc chat thật, không tự sửa hay gửi nội dung.</p>
+      </div>
+    </section>
+
+    <section class="surface-section" aria-labelledby="surface-title"><div class="section-heading"><h2 id="surface-title" data-copy="surfaceTitle">Bạn ở lại nơi đang làm việc.</h2><p data-copy="surfaceBody">Wizzdom đồng hành bên cạnh, không bắt đầu lại một cuộc chat khác.</p></div><div class="surface-grid"><button class="surface-card" data-surface="browser"><div class="surface-icon"><img src="/assets/logos/chrome.svg" width="27" height="27" alt=""/></div><div><h3 data-copy="browserTitle">Extension trong Chrome</h3><p data-copy="browserBody">Theo mạch chat bạn cho phép. Nhắc một điều liên quan ngay bên cạnh ChatGPT, Claude web.</p></div><span aria-hidden="true">↗</span></button><button class="surface-card" data-surface="desktop"><div class="surface-icon mascot-mini"><img src="/prototype/mascot.png" width="51" height="51" alt=""/></div><div><h3 data-copy="desktopTitle">Mascot trên desktop</h3><p data-copy="desktopBody">Ở góc màn hình khi bạn làm việc với AI. Khẽ báo khi tìm thấy một góc nhìn hữu ích.</p></div><span aria-hidden="true">↗</span></button></div></section>
+    <section class="trust"><div><span aria-hidden="true">✓</span><p data-copy="trustOne">Bạn chọn chat và nguồn dữ liệu được kết nối.</p></div><div><span aria-hidden="true">✓</span><p data-copy="trustTwo">Gợi ý đi cùng lý do và bằng chứng.</p></div><div><span aria-hidden="true">✓</span><p data-copy="trustThree">Bạn duyệt. Wizzdom không tự hành động.</p></div></section>
+    <section class="invite-section"><div><p class="eyebrow" data-copy="betaEyebrow">CÙNG XÂY PRIVATE BETA</p><h2 data-copy="betaTitle">Một người đồng hành hiểu bạn hơn qua mỗi cuộc chat.</h2></div><button class="button primary" data-invite data-copy="invite">Nhận lời mời beta ↗</button></section>
+  </main>
+  <footer><a class="brand" href="#top"><img src="/assets/brand/wizzdom-lens.png" width="24" height="24" alt=""/>wizzdom</a><a class="previous-link" href="/prototype/previous/index.html" data-copy="previous">So sánh bản prototype trước</a><span data-copy="localOnly">Chỉ chạy local · Không thu thập dữ liệu</span></footer>
+  <dialog id="invite-dialog" aria-labelledby="invite-title"><button id="close-dialog" class="dialog-close" aria-label="Đóng">×</button><img src="/assets/brand/wizzdom-lens.png" width="38" height="38" alt=""/><p class="eyebrow">PROTOTYPE</p><h2 id="invite-title" data-copy="dialogTitle">Bạn đang xem một bản thử.</h2><p data-copy="dialogBody">Ở bản chính, nút này mở luồng đăng ký beta. Bản thử này không gửi dữ liệu, không đọc cuộc chat thật và không cài extension.</p><button id="back-demo" class="button primary" data-copy="backDemo">Quay lại demo</button></dialog>
+  <script src="./prototype.js"></script>
+</body>
+</html>

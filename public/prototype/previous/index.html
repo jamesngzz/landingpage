@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="description" content="Prototype local: xem cách Wizzdom dùng bằng chứng từ những cuộc chat trước để hỗ trợ công việc hiện tại." />
+  <title>Wizzdom — Value-first prototype</title>
+  <link rel="stylesheet" href="./prototype.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top"><img src="/assets/brand/wizzdom-lens.png" alt="" width="32" height="32" />wizzdom</a>
+    <span class="prototype-badge">PROTOTYPE · CHỈ TRÊN MÁY NÀY</span>
+    <div class="nav-actions"><div class="language" aria-label="Ngôn ngữ"><button data-lang="vi" aria-pressed="true">VI</button><button data-lang="en" aria-pressed="false">EN</button></div><button class="nav-invite" data-invite data-copy="invite">Nhận lời mời beta</button></div>
+  </header>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow" data-copy="eyebrow">TRỢ LÝ CÁ NHÂN TỪ LỊCH SỬ AI CỦA BẠN</p>
+        <h1 id="hero-title"><span data-copy="heroOne">Quyết định</span> <em data-copy="heroAccent">tốt hơn</em><br><span data-copy="heroTwo">từ những gì bạn đã biết</span></h1>
+        <p class="hero-description" data-copy="description">Wizzdom nối điều bạn từng nói trong ChatGPT, Claude với việc hiện tại, để chỉ ra điều bị bỏ sót và gợi ý bước tiếp theo — kèm bằng chứng.</p>
+        <div class="hero-actions"><button class="button primary" id="watch-demo"><svg width="17" height="17" viewBox="0 0 20 20" aria-hidden="true"><path d="m6 3 11 7-11 7Z" fill="currentColor"/></svg><span data-copy="watch">Xem Wizzdom giúp gì</span></button><button class="text-button" data-invite><span data-copy="invite">Nhận lời mời beta</span> ↗</button></div>
+        <p class="privacy-note"><svg width="15" height="16" viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="9" width="14" height="11" rx="3"/><path d="M6 9V6a4 4 0 0 1 8 0v3"/></svg><span data-copy="privacy">Bạn chọn nguồn. Lịch sử gốc ở trên máy bạn.</span></p>
+      </div>
+
+      <div class="demo-wrap" id="demo">
+        <div class="demo-topline"><span class="example-tag"><i></i><span data-copy="example">Ví dụ minh họa</span></span><span class="duration" data-copy="duration">20 GIÂY · KHÔNG CẦN BẬT TIẾNG</span></div>
+        <div class="player" data-stage="0" id="player">
+          <div class="workspace-bar"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span id="workspace-name">Email cho khách hàng An</span><img src="/assets/logos/openai.svg" alt="ChatGPT" width="19" height="19" /></div>
+          <div class="workspace-content">
+            <div class="task-line"><span class="you-avatar" aria-hidden="true">M</span><p id="task-text"></p></div>
+            <div class="draft-card" id="draft-card">
+              <div class="draft-heading"><span id="draft-label"></span><span class="draft-status" id="draft-status"></span></div>
+              <p id="draft-greeting"></p><div id="draft-body" class="draft-body"></div><p id="draft-end"></p>
+              <span class="draft-caret" aria-hidden="true"></span>
+            </div>
+            <div class="wizz-card" id="wizz-card">
+              <div class="wizz-byline"><img src="/assets/brand/wizzdom-lens.png" width="24" height="24" alt="" /><strong>wizzdom</strong><span id="wizz-status"></span></div>
+              <h2 id="wizz-title"></h2>
+              <div class="source-pair" id="source-pair"></div>
+              <p class="connection" id="connection"></p>
+              <button class="use-evidence" id="use-evidence"><span id="use-label"></span><span aria-hidden="true">↗</span></button>
+              <div class="used-proof" id="used-proof"><span aria-hidden="true">✓</span><span id="used-label"></span></div>
+            </div>
+          </div>
+          <div class="narrator"><span class="narrator-number" id="narrator-number">01</span><p id="narration" aria-live="off"></p></div>
+          <div class="playback">
+            <button class="play-button" id="play-pause" aria-label="Tạm dừng"><svg id="pause-icon" width="17" height="17" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4v12M14 4v12" stroke="currentColor" stroke-width="3"/></svg><svg id="play-icon" width="17" height="17" viewBox="0 0 20 20" aria-hidden="true" hidden><path d="m6 3 11 7-11 7Z" fill="currentColor"/></svg></button>
+            <div class="timeline" id="timeline" role="group" aria-label="Các bước trong demo"></div>
+            <span class="timecode" id="timecode">00:00 / 00:20</span>
+            <button class="replay-button" id="replay" aria-label="Xem lại từ đầu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 11a8 8 0 1 1 2 7M4 5v6h6"/></svg></button>
+          </div>
+        </div>
+        <p class="demo-footnote" data-copy="demoNote">Tình huống và dữ liệu giả lập. Wizzdom chỉ đề xuất; bạn chọn dùng hay không.</p>
+      </div>
+    </section>
+
+    <section class="use-cases" aria-labelledby="cases-title">
+      <div class="section-heading"><h2 id="cases-title" data-copy="casesTitle">Bạn muốn Wizzdom giúp lúc nào?</h2><p data-copy="casesBody">Chọn một việc quen thuộc. Xem chính xác thông tin cũ thay đổi điều gì.</p></div>
+      <div class="case-grid" id="case-grid"></div>
+    </section>
+
+    <section class="how" aria-labelledby="how-title">
+      <div class="how-intro"><h2 id="how-title" data-copy="howTitle">Không cần kể lại mọi thứ.</h2><p data-copy="howBody">Chỉ mang điều có liên quan vào việc trước mắt.</p></div>
+      <div class="how-flow"><div class="how-node"><div class="tool-stack"><img src="/assets/logos/openai.svg" width="30" height="30" alt="ChatGPT" /><img src="/assets/logos/claude.svg" width="30" height="30" alt="Claude" /></div><strong data-copy="howSources">Những chat bạn chọn</strong></div><span class="flow-arrow" aria-hidden="true">→</span><div class="how-node"><img src="/assets/brand/wizzdom-lens.png" width="35" height="35" alt="" /><strong data-copy="howMatch">Wizzdom tìm điều liên quan</strong></div><span class="flow-arrow" aria-hidden="true">→</span><div class="how-node"><span class="result-symbol" aria-hidden="true">↗</span><strong data-copy="howValue">Một kết quả sát việc hơn</strong></div></div>
+    </section>
+    <section class="invite-section"><div><p class="eyebrow" data-copy="betaEyebrow">CÙNG XÂY PRIVATE BETA</p><h2 data-copy="betaTitle">Mang những điều bạn đã biết<br>vào việc bạn sắp làm.</h2></div><button class="button primary" data-invite><span data-copy="invite">Nhận lời mời beta</span> ↗</button></section>
+  </main>
+  <footer><a class="brand" href="#top"><img src="/assets/brand/wizzdom-lens.png" width="25" height="25" alt="" />wizzdom</a><span data-copy="localOnly">Bản thử local. Không thu thập hay gửi dữ liệu.</span></footer>
+  <dialog id="invite-dialog" aria-labelledby="invite-title"><button class="close-dialog" id="close-dialog" aria-label="Đóng">×</button><img src="/assets/brand/wizzdom-lens.png" width="40" height="40" alt="" /><p class="eyebrow">PROTOTYPE</p><h2 id="invite-title" data-copy="dialogTitle">Thử hướng mới trước khi launch.</h2><p data-copy="dialogBody">Ở bản chính, nút này sẽ mở luồng đăng ký beta hiện tại. Prototype chỉ để xem nội dung và trải nghiệm mới; không gửi thông tin lên database.</p><button class="button primary" id="back-demo" data-copy="backDemo">Quay lại demo</button></dialog>
+  <script src="./prototype.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="vi" data-embedded="true">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Wizzdom — Nhắc điều bạn bỏ sót</title>
+  <link rel="stylesheet" href="/prototype/landing/base.css" />
+  <link rel="stylesheet" href="/prototype/cases-demo.css" />
+</head>
+<body>
+  <main id="demo">
+    <section class="case-player" id="player" data-stage="0" aria-label="Demo Wizzdom">
+      <div class="browser-bar"><p class="app-tab" id="setup"></p><button id="extension-trigger" aria-label="Mở Wizzdom"><img src="/assets/brand/wizzdom-lens.png" width="24" height="24" alt="" /><i aria-hidden="true"></i></button></div>
+      <div class="workspace" id="workspace">
+        <div class="ai-chat">
+          <div class="user-message"><small id="you-label">Bạn</small><p id="prompt"></p></div>
+          <div id="ai-answer" class="ai-answer" hidden><div class="ai-byline"><img src="/assets/logos/claude.svg" width="23" height="23" alt="" /><strong>Claude</strong></div><p id="answer-intro"></p><ol id="answer-steps"></ol></div>
+        </div>
+        <div class="mock-composer" aria-hidden="true"><span id="composer-label">Tiếp tục trò chuyện với Claude…</span><span>↑</span></div>
+        <p id="quiet-label" class="quiet-label"><img src="/assets/brand/wizzdom-lens.png" width="18" height="18" alt="" /><span id="scope-label">Chat này đã được cho phép</span></p>
+        <button class="whisper" id="whisper" hidden><img src="/assets/brand/wizzdom-lens.png" width="27" height="27" alt="" /><span><small>wizzdom</small><strong id="whisper-text"></strong></span><span aria-hidden="true">↗</span></button>
+        <aside class="wizzdom-popup" id="popup" aria-labelledby="insight-title" hidden>
+          <div class="popup-header"><img src="/assets/brand/wizzdom-lens.png" width="24" height="24" alt="" /><strong>wizzdom</strong><button id="dismiss" aria-label="Bỏ qua gợi ý">×</button></div>
+          <div class="popup-body">
+            <h2 id="insight-title"></h2><p id="connection"></p>
+            <div class="evidence-preview" id="evidence-preview"></div>
+            <div id="proposal" class="proposal" hidden><small id="proposal-label">Bước tiếp theo để cân nhắc</small><p id="next-step"></p></div>
+            <div class="popup-actions"><button id="show-proposal" class="proposal-button">Xem bước đề xuất <span aria-hidden="true">→</span></button><button id="view-sources" class="sources-button">Xem 3 nguồn</button></div>
+            <small class="control-note" id="control-note">Bạn quyết định. Không tự sửa hay gửi vào AI.</small>
+          </div>
+        </aside>
+        <div id="dismissed-note" class="dismissed-note" hidden><span id="dismissed-label">Đã bỏ qua. Wizzdom giữ im lặng.</span><button id="reopen">Xem lại gợi ý</button></div>
+      </div>
+      <p class="narration" id="narration" aria-live="off"></p>
+      <div class="playback"><button id="play-pause" aria-label="Tạm dừng demo">Ⅱ</button><div class="timeline" id="timeline" role="group" aria-label="Các bước demo"></div><span class="timecode" id="timecode"></span><button id="replay" aria-label="Xem lại demo">↻</button></div>
+    </section>
+    <section class="case-explorer" id="case-explorer" aria-labelledby="explore-label"><h2 id="explore-label">Chọn tình huống</h2><div class="case-picker">
+      <div id="case-groups" class="case-groups" aria-label="Chọn tình huống"></div>
+      <label class="mobile-picker" for="case-select"><span id="switch-label">Đổi tình huống</span><span class="select-wrap"><select id="case-select"></select><span aria-hidden="true">⌄</span></span></label>
+    </div></section>
+    <p class="demo-note" id="demo-note">Ví dụ hư cấu. Không đọc chat thật, không gửi nội dung và không thu thập dữ liệu.</p>
+  </main>
+  <dialog id="sources-dialog" aria-labelledby="sources-title"><div class="dialog-header"><span id="sources-kicker">ĐIỀU ĐÃ CÓ TRONG CÁC NGUỒN CŨ</span><button id="close-sources" aria-label="Đóng">×</button></div><h2 id="sources-title"></h2><div id="full-sources"></div><p class="source-connection" id="source-connection"></p><p class="source-note" id="source-note">Các trích đoạn đều là dữ liệu mẫu, không phải tài khoản thật.</p></dialog>
+  <script src="/prototype/landing/focus-modality.js"></script>
+  <script src="/prototype/cases-demo.js"></script>
+</body>
+</html>

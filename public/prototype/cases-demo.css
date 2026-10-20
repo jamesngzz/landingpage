@@ -1,0 +1,121 @@
+/* A companion popup over the AI app, never a second full-height workspace. */
+body{background:var(--paper);font-size:14px;overflow-x:visible}
+button,select{font:inherit;color:inherit;cursor:pointer}
+button{border:0}button:disabled{cursor:default}
+button:hover:not(:disabled){filter:brightness(.97)}
+p,h2,ol{margin:0}img{display:block;flex-shrink:0}
+#demo{padding:0 8px 8px}
+.case-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:20px}
+.case-group{min-width:0;padding-right:12px;border-right:1px solid var(--line)}.case-group:last-child{border:0;padding-right:0}
+.case-group>p{font-size:11px;color:#55534a;margin-bottom:7px;font-weight:650}
+.case-options{display:flex;gap:5px;flex-wrap:wrap}.case-options button{background:var(--white);border:1px solid var(--line);padding:8px 11px;min-height:40px;border-radius:7px;font-size:13px;font-weight:650}
+.case-options button[aria-pressed=true]{background:var(--yellow);border-color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
+.mobile-picker{display:none}
+.scenario-line{display:flex;align-items:center;gap:15px;justify-content:space-between;margin:0 0 12px;padding:0 2px;min-height:24px}
+.scenario-line p{font-size:13px;line-height:1.5;color:#45443e}.scenario-line small{flex-shrink:0;font-size:10px;color:var(--muted)}
+.case-player{border:1px solid var(--ink);border-radius:16px;box-shadow:5px 6px 0 var(--ink);background:var(--white);overflow:hidden}
+.browser-bar{display:flex;align-items:center;gap:13px;height:47px;padding:0 17px;background:#e9e6df;border-bottom:1px solid var(--line)}
+.window-dots{display:flex;gap:4px}.window-dots i{height:6px;width:6px;border-radius:50%;background:#ff765f}.window-dots i:nth-child(2){background:var(--yellow)}.window-dots i:nth-child(3){background:#83ba91}
+.app-tab{display:flex;gap:7px;align-items:center;font-size:12px;min-width:0}.app-tab #project-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#extension-trigger{position:relative;display:grid;place-items:center;width:34px;height:32px;margin-left:auto;border:1px solid #aebced;border-radius:7px;background:#fffefa}
+#extension-trigger i{position:absolute;width:6px;height:6px;right:2px;top:2px;background:var(--yellow);border:1px solid white;border-radius:50%;opacity:0}
+.case-player[data-stage="2"] #extension-trigger i,.case-player[data-stage="3"] #extension-trigger i{opacity:1}
+.workspace{height:460px;position:relative;background:#faf9f5}
+.ai-chat{width:60%;max-width:650px;padding:24px 26px 65px}
+.user-message{background:#eae7df;border-radius:13px 13px 3px 13px;padding:13px 15px;margin:0 0 23px 18px}
+.user-message small{display:block;font-size:10px;color:#6a6860;margin-bottom:4px}.user-message p{font-size:16px;line-height:1.5}
+.ai-byline{display:flex;gap:9px;align-items:center;margin-bottom:12px;font-size:13px}.ai-answer>p{font-size:14px;line-height:1.5}.ai-answer ol{display:grid;gap:9px;margin-top:14px;padding-left:22px;font-size:14px;color:#55534a;line-height:1.5}
+.mock-composer{position:absolute;left:25px;bottom:17px;width:calc(60% - 50px);display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border:1px solid #d9d5ca;border-radius:12px;color:#77746b;font-size:12px;background:var(--white)}
+.quiet-label{position:absolute;right:20px;bottom:19px;display:flex;align-items:center;gap:6px;font-size:10px;color:#646258}
+.whisper{position:absolute;right:18px;bottom:56px;z-index:2;width:35%;min-width:275px;max-width:380px;display:flex;gap:10px;align-items:center;text-align:left;border:1px solid #a5b8fa;border-radius:12px;padding:15px;background:var(--white);box-shadow:0 8px 24px #18214b20;animation:popup-in .3s ease-out}
+.whisper>span:nth-child(2){flex:1}.whisper small{display:block;font-size:11px;color:#2448c1;margin-bottom:4px}.whisper strong{font-size:14px;line-height:1.45}.whisper>span:last-child{color:var(--blue);font-size:20px}
+.wizzdom-popup{position:absolute;z-index:3;right:18px;bottom:18px;width:35%;min-width:285px;max-width:380px;background:var(--white);border:1px solid var(--ink);border-radius:13px;box-shadow:4px 5px 0 #11110f;overflow:hidden;animation:popup-in .3s ease-out}
+.popup-header{display:flex;gap:7px;align-items:center;height:43px;padding:0 13px;background:var(--blue);color:white;font-size:14px}.popup-header img{background:white;border-radius:5px;padding:2px}.popup-header button{display:grid;place-items:center;margin-left:auto;background:transparent;color:white;width:32px;height:36px;font-size:24px}
+.popup-body{padding:16px}.popup-body h2{font-size:21px;line-height:1.2;letter-spacing:-.025em}.popup-body>p{font-size:13px;line-height:1.5;margin-top:8px;color:#45443e}
+.evidence-preview{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:13px}.evidence-preview>div{min-width:0;background:#edf1ff;border:1px solid #c8d2f1;border-radius:7px;padding:8px}.evidence-preview small{display:flex;align-items:center;gap:5px;font-size:10px;color:#2448c1;margin-bottom:5px}.evidence-preview strong{font-size:12px;line-height:1.45;font-weight:650;display:block}
+.popup-actions{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:13px}.proposal-button{display:flex;align-items:center;justify-content:space-between;gap:9px;width:100%;min-height:43px;text-align:left;padding:10px 12px;background:var(--blue);color:white;border:1px solid var(--ink);border-radius:7px;font-size:12px;font-weight:650;box-shadow:2px 2px 0 var(--ink)}
+.sources-button{padding:3px 0;background:none;color:#2448c1;font-size:11px;min-height:27px;text-decoration:underline;text-underline-offset:3px}.control-note{display:block;font-size:9px;color:#65635b;line-height:1.5;margin-top:8px}
+.proposal{margin-top:12px;padding:11px;background:#e5f5e8;border-left:3px solid #4e9860;border-radius:0 6px 6px 0}.proposal small{display:block;font-size:10px;font-weight:650;color:#285f35;margin-bottom:5px}.proposal p{font-size:13px;line-height:1.5;color:#234b2d}
+.wizzdom-popup[data-proposal=true] .evidence-preview{display:none}
+.dismissed-note{position:absolute;right:18px;bottom:65px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--white);font-size:12px;max-width:300px}.dismissed-note button{display:block;background:transparent;color:#2448c1;text-decoration:underline;margin-top:8px;padding:5px 0}
+.narration{min-height:50px;padding:12px 17px;display:flex;align-items:center;font-size:13px;line-height:1.5;background:#fbf2c5;border-block:1px solid var(--ink)}
+.playback{display:flex;gap:11px;align-items:center;padding:2px 12px;min-height:45px}.playback>button{width:32px;min-height:40px;background:transparent;font-size:20px;flex-shrink:0}.timeline{display:flex;gap:6px;flex:1}.timeline button{position:relative;flex:1;min-height:40px;background:transparent;padding:0}.timeline button:before,.timeline button:after{position:absolute;content:'';left:0;top:18px;height:4px;border-radius:3px}.timeline button:before{width:100%;background:#dedbd1}.timeline button:after{width:var(--progress,0%);background:var(--blue)}.timecode{font:10px var(--mono);color:#6a6860;white-space:nowrap}
+.demo-note{font-size:10px;line-height:1.5;color:#65635b;text-align:center;margin:14px 10px 0}
+.case-explorer{margin:14px 2px 0;border:1px solid var(--line);border-radius:9px;background:var(--white)}
+.case-explorer>h2{margin:0;padding:12px 14px;color:var(--ink);font-size:16px;font-weight:700}
+.case-explorer .case-picker{padding:4px 12px 12px}.case-explorer .case-groups{margin-bottom:0}
+dialog{border:1px solid var(--ink);border-radius:14px;width:min(520px,calc(100% - 28px));max-height:85vh;padding:22px;background:var(--white);color:var(--ink);overflow:auto}dialog::backdrop{background:#11110f55}.dialog-header{display:flex;gap:8px;align-items:center;margin-bottom:10px}.dialog-header>span{font:650 9px/1.5 var(--mono);color:#2448c1}.dialog-header button{margin-left:auto;background:none;font-size:25px;width:35px;min-height:36px}dialog h2{font-size:23px;line-height:1.25;margin-bottom:15px}.source-record{padding:12px 0;border-top:1px solid var(--line)}.source-record header{display:flex;gap:7px;align-items:center;font-size:12px;font-weight:650;margin-bottom:6px}.source-record header small{font-weight:400;color:var(--muted)}.source-record blockquote{margin:0;font-size:14px;line-height:1.5}.source-connection{margin-top:12px;padding:12px;background:#edf1ff;color:#253d80;font-size:13px;line-height:1.5}.source-note{font-size:10px;line-height:1.5;color:var(--muted);margin-top:13px}
+@keyframes popup-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:1000px){.workspace{height:445px}.wizzdom-popup{right:24px;bottom:20px}.ai-chat{padding:28px 36px}.popup-body{padding:18px}.popup-body h2{font-size:23px}}
+@media(max-width:800px) and (min-width:651px){.ai-chat{width:53%;padding:22px 19px}.mock-composer{width:calc(53% - 38px);left:19px}.user-message{margin-left:0;padding:12px}.user-message p{font-size:15px}.wizzdom-popup{width:43%;right:14px}.quiet-label{font-size:9px}.case-options button{font-size:12px;padding-inline:9px}}
+@media(max-width:650px){
+  #demo{padding:0 4px 8px}.case-groups{display:none}.mobile-picker{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px;padding:0 3px}.mobile-picker>span{font-size:13px;font-weight:650}.select-wrap{position:relative;display:flex;align-items:center;min-width:175px;max-width:65%}.select-wrap select{appearance:none;width:100%;background:#fbf2c5;border:1px solid var(--ink);border-radius:8px;padding:10px 34px 10px 12px;font-size:14px;min-height:44px;font-weight:650}.select-wrap>span{position:absolute;right:12px;pointer-events:none;color:#2448c1;font-size:22px;line-height:1}
+  .scenario-line{align-items:flex-start;gap:5px;display:block;margin:0 3px 10px}.scenario-line p{font-size:12px}.scenario-line small{font-size:9px}.case-player{box-shadow:3px 4px 0 var(--ink);border-radius:13px}.browser-bar{height:39px;padding:0 12px;gap:9px}.app-tab{font-size:11px;gap:5px}.app-tab img{width:17px;height:17px}.window-dots{display:none}#extension-trigger{width:31px;height:29px}#extension-trigger img{height:22px;width:22px}
+  .workspace{height:490px}.ai-chat{width:100%;padding:14px 15px 60px}.user-message{margin:0 0 16px 20px;padding:10px 12px}.user-message p{font-size:15px;line-height:1.4}.user-message small{font-size:9px}.ai-byline{margin-bottom:8px;font-size:12px}.ai-answer>p,.ai-answer ol{font-size:13px}.ai-answer ol{margin-top:9px;gap:6px}.mock-composer{left:15px;right:15px;width:auto;bottom:15px;font-size:11px}.quiet-label{right:17px;bottom:70px;font-size:9px}.quiet-label img{width:16px;height:16px}
+  .whisper{right:12px;bottom:70px;width:calc(100% - 24px);min-width:0;max-width:380px;padding:13px}.whisper strong{font-size:13px}.wizzdom-popup{right:12px;bottom:12px;width:calc(100% - 24px);min-width:0;max-width:380px}.popup-header{height:38px;padding:0 12px;font-size:13px}.popup-header img{width:22px;height:22px}.popup-body{padding:13px}.popup-body h2{font-size:20px;line-height:1.2}.popup-body>p{font-size:12px;line-height:1.45;margin-top:7px}.evidence-preview{margin-top:10px;gap:6px}.evidence-preview>div{padding:7px}.evidence-preview strong{font-size:12px}.evidence-preview small{font-size:9px}.popup-actions{margin-top:10px;gap:6px}.proposal-button{min-height:42px;font-size:12px}.sources-button{font-size:10px;min-height:27px}.control-note{margin-top:5px;font-size:9px}.proposal p{font-size:12px}.proposal{margin-top:10px;padding:9px}.case-player[data-stage="3"] .mock-composer,.case-player[data-stage="3"] .quiet-label{visibility:hidden}
+  .narration{min-height:48px;padding:9px 12px;font-size:12px}.playback{padding:1px 8px;gap:7px}.playback>button{width:27px}.timecode{font-size:9px}.demo-note{font-size:9px;margin-top:12px}dialog{padding:17px}.source-record{padding:10px 0}.source-record blockquote{font-size:13px}.source-record header{font-size:11px;flex-wrap:wrap}dialog h2{font-size:21px}
+}
+@media(max-width:360px){.workspace{height:510px}.popup-body h2{font-size:19px}.select-wrap{min-width:165px}.mobile-picker>span{font-size:12px}.scenario-line p{font-size:12px}.evidence-preview strong{font-size:11px}.user-message p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+/* The hero starts at a useful, paused frame; replay explains the sequence. */
+html[data-presentation="hero"] .case-player{box-shadow:3px 4px 0 var(--ink)}
+html[data-presentation="hero"] .scenario-line{display:block;margin-bottom:9px}
+html[data-presentation="hero"] .scenario-line small{display:block;margin-top:3px}
+html[data-presentation="hero"] .scenario-line p{font-size:12px}
+html[data-presentation="hero"] .workspace{height:475px}
+html[data-presentation="hero"] .browser-bar{height:40px;padding-inline:12px}
+html[data-presentation="hero"] .ai-chat{width:100%;max-width:none;padding:18px}
+html[data-presentation="hero"] .user-message{margin-left:18px;margin-bottom:17px}
+html[data-presentation="hero"] .user-message p{font-size:15px}
+html[data-presentation="hero"] .ai-answer{max-width:46%}
+html[data-presentation="hero"] .ai-answer>p,html[data-presentation="hero"] .ai-answer ol{font-size:13px}
+html[data-presentation="hero"] .wizzdom-popup{width:55%;min-width:260px;max-width:340px;right:13px;bottom:16px}
+html[data-presentation="hero"] .popup-body{padding:13px}
+html[data-presentation="hero"] .popup-body h2{font-size:21px}
+html[data-presentation="hero"] .popup-body>p{font-size:12px;line-height:1.45}
+html[data-presentation="hero"] .evidence-preview strong{font-size:11px}
+html[data-presentation="hero"] .mock-composer{width:calc(44% - 30px);left:18px;font-size:10px}
+html[data-presentation="hero"] .narration{font-size:11px;min-height:46px;padding:10px 12px}
+html[data-presentation="hero"] .case-explorer .case-groups{grid-template-columns:1fr;gap:10px}
+html[data-presentation="hero"] .case-group{border-right:0;padding:0}
+@media(max-width:499px){
+  html[data-presentation="hero"] .workspace{height:490px}
+  html[data-presentation="hero"] .wizzdom-popup{width:calc(100% - 24px);max-width:380px;min-width:0;right:12px;bottom:12px}
+  html[data-presentation="hero"] .ai-chat{padding:14px 15px}
+  html[data-presentation="hero"] .ai-answer{max-width:none}
+  html[data-presentation="hero"] .mock-composer{width:auto;left:15px;right:15px}
+  html[data-presentation="hero"] .user-message{margin-left:18px}
+  html[data-presentation="hero"] .popup-body h2{font-size:20px}
+}
+@media(max-width:360px){html[data-presentation="hero"] .workspace{height:510px}}
+/* Focus the hero on the task and the sourced insight, not simulation chrome. */
+html[data-presentation="hero"] .case-explorer,
+html[data-presentation="hero"] .demo-note,
+html[data-presentation="hero"] .control-note,
+html[data-presentation="hero"] .mock-composer,
+html[data-presentation="hero"] .quiet-label,
+html[data-presentation="hero"] .timecode,
+html[data-presentation="hero"] .window-dots{display:none}
+html[data-presentation="hero"] .scenario-line{margin:0 2px 12px}
+html[data-presentation="hero"] .scenario-line p{font-size:14px;font-weight:600;line-height:1.45;color:var(--ink)}
+html[data-presentation="hero"] .scenario-line small{margin-top:5px;font-size:12px;line-height:1.4;color:#45443e}
+html[data-presentation="hero"] .app-tab{font-size:13px;color:var(--ink)}
+html[data-presentation="hero"] .user-message small{font-size:12px;font-weight:650;color:#45443e}
+html[data-presentation="hero"] .user-message p{font-size:16px}
+html[data-presentation="hero"] .popup-body>p{font-size:14px;line-height:1.45;color:#33332f}
+html[data-presentation="hero"] .evidence-preview{grid-template-columns:1fr;gap:6px}
+html[data-presentation="hero"] .evidence-preview>div{display:flex;gap:8px;align-items:center;padding:8px}
+html[data-presentation="hero"] .evidence-preview small{font-size:12px;min-width:72px;margin:0;line-height:1.4}
+html[data-presentation="hero"] .evidence-preview strong{font-size:13px;line-height:1.4}
+html[data-presentation="hero"] .proposal-button{font-size:14px;min-height:44px}
+html[data-presentation="hero"] .sources-button{font-size:13px;min-height:35px;font-weight:600}
+html[data-presentation="hero"] .proposal small{font-size:12px}
+html[data-presentation="hero"] .proposal p{font-size:14px}
+html[data-presentation="hero"] .case-player[data-stage="3"] .narration{display:none}
+html[data-presentation="hero"] .narration{font-size:14px;color:var(--ink)}
+html[data-presentation="hero"] .workspace{height:510px}
+@media(max-width:499px){html[data-presentation="hero"] .workspace{height:530px}}
+@media(max-width:360px){html[data-presentation="hero"] .workspace{height:570px}}
+/* The scenario itself is the tab title; no duplicate setup or app/project label. */
+.browser-bar,html[data-presentation="hero"] .browser-bar{height:auto;min-height:58px;padding:12px 14px;align-items:center}
+.app-tab,html[data-presentation="hero"] .app-tab{display:block;flex:1;margin:0;min-width:0;font-size:14px;font-weight:650;line-height:1.45;white-space:normal;color:var(--ink)}
