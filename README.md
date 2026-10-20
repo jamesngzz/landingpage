@@ -4,7 +4,7 @@ Bilingual English/Vietnamese landing page with six interactive use cases and a t
 
 ## Deploy to Vercel
 
-1. Import `jamesngzz/landingpage`, branch `main`, root directory `.`.
+1. Import `jamesngzz/landingpage`, root directory `.`. The current release is on `codex/landing-prototype`; select that as the Production Branch to deploy this release (or merge it before deploying a different branch).
 2. Framework preset: **Other**. `vercel.json` specifies the build command (`npm run build`) and output directory (`public`). Node.js: **22.x**.
 3. Add these **server-only Environment Variables** in Vercel for Production and, if needed, Preview:
 
@@ -33,7 +33,11 @@ npm test
 
 For local signup testing, copy `.env.example` to an ignored `.env.local` and fill in your server values. Then run `npm run dev` and visit `http://localhost:3000`. Without the variables the page/demo still works, but signup returns a visible error instead of pretending to save.
 
-Edit `index.html`, `script.js`, and `styles.css`, then run `npm run build`. It copies these and the `assets/` and `fonts/` directories into `public/`. Only `public/` is published as static content; the server API is deployed separately. The build never reads secrets.
+`npm run build` publishes the approved companion landing at **`/`**, not just under `/prototype/`. Its layout is composed by `scripts/build-landing-preview.mjs`, with hero styles in `public/prototype/landing/integration.css` and the six interactive scenarios in `public/prototype/cases-demo.{html,css,js}`. `scripts/production-landing.mjs` adapts the shared layout for production and restores the live signup handler from root `script.js`.
+
+Root `index.html` and `script.js` remain the legacy baseline for the unchanged How it works, privacy, invitation and signup sections. Do not deploy root HTML directly: `scripts/build-vercel.mjs` generates `public/index.html`, `public/script.js`, `public/landing.css` and `public/demo.*`. It also copies the base `styles.css`, focus helper, assets and fonts. Only `public/` is published as static content; the server API is deployed separately. The build never reads secrets.
+
+The homepage embeds `/demo.html` from the same origin. That one route permits same-origin framing; other routes retain framing protection. `/prototype/landing/index.html` is still an isolated, noindex local preview with signup explicitly blocked. It is not the production entry point.
 
 ## Collected data
 
@@ -66,7 +70,7 @@ Keep exports private. For an erasure request, delete the contact from `signups` 
 
 ## Verification
 
-`npm test` checks signup validation, consent boundaries, bounded event fields, input sizes, origin/method enforcement, throttling, server-only authentication and honest database-error responses.
+`npm test` checks signup validation, consent boundaries, bounded event fields, input sizes, origin/method enforcement, throttling, server-only authentication and honest database-error responses. It also builds the actual production homepage and checks its assets, iframe headers, preserved sections, language/scenario wiring and live signup client against mocked server responses. No live signup is created by the automated suite. Browser visual QA is separate; see `public/prototype/landing/VISUAL-REVIEW.md` for the latest limitations.
 
 For an optional live integration test, set `SUPABASE_URL` and run `node scripts/test-supabase.mjs` in a terminal. It prompts for the key without echoing or saving it, writes one clearly synthetic registration twice, and verifies successful API responses. Verify counts and remove its data afterwards:
 

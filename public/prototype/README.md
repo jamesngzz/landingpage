@@ -30,6 +30,9 @@ demo interactions do not read real chats, transmit data or persist answers.
 Run `npm test` for state, UI wiring and composition checks. Rebuild the preview
 after changing its generator or HTML sources, then run the tests again.
 
-This branch does not promote the prototype to the production homepage or
-change hosting/security configuration. Browser visual QA is still outstanding
-for the latest layout; passing automated tests does not replace that review.
+The approved layout is now also composed into the production homepage by
+`scripts/production-landing.mjs` and `scripts/build-vercel.mjs`. Unlike this
+local preview, production uses the real `/api/beta` signup flow. Only the
+production demo route allows same-origin framing; the rest of the site retains
+framing protection. Browser visual QA is still outstanding for the latest
+layout; passing automated tests does not replace that review.

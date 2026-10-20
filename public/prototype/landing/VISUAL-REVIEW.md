@@ -64,5 +64,8 @@ emphasizes a clear main action, a short path to understanding, and reviewing
 whether demos themselves create confusion. Applied here as review criteria,
 not a reason to change the chosen product strategy or imitate a visual template.
 
-Local beta submission is blocked with an explicit preview-only message. This
-does not change the live registration system.
+Local beta submission is blocked with an explicit preview-only message. The
+production build now reuses this approved layout at `/`, with the existing
+live signup handler restored, real API success/error handling, and a same-origin
+demo frame. Automated checks exercise that production build with mocked signup
+responses; they do not verify a live Supabase write or replace browser QA.
