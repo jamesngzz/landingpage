@@ -18,6 +18,8 @@ test('Vercel build serves the approved companion layout at /, not the old home o
   assert.match(html,/src="\/demo.html\?/);
   assert.doesNotMatch(html,/integration-play|integrationCta|Watch this scenario unfold/);
   assert.doesNotMatch(runtime,/integration-play|integrationCta|Xem diễn biến tình huống/);
+  assert.doesNotMatch(html,/scenario-picker-title|integrationChoose/);
+  assert.doesNotMatch(runtime,/integrationChoose|Bạn muốn Wizzdom giúp điều gì/);
   assert.doesNotMatch(html,/noindex|data-local-preview|\.\/demo|\.\/base|\.\/landing-runtime/);
   assert.doesNotMatch(runtime,/Bản thử landing ghép|Integrated landing preview|chưa gửi đăng ký và không lưu email/);
   assert.doesNotMatch(runtime,/service_role|SUPABASE_SECRET_KEY|sb_secret_/);

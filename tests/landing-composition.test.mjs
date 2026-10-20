@@ -37,7 +37,9 @@ test('translation reuses every existing dictionary amendment, without old demo e
 });
 test('hero leads with one product promise and an embedded Developer example, not two competing headlines',()=>{
   const hero=section(html,'<section class="hero minimal-hero integration-hero"');
-  for(const key of ['integrationHeadline','integrationBody','integrationChoose'])assert.ok(hero.includes(`data-i18n="${key}"`));
+  for(const key of ['integrationHeadline','integrationBody'])assert.ok(hero.includes(`data-i18n="${key}"`));
+  assert.doesNotMatch(hero,/scenario-picker-title|integrationChoose|What would help you most/);
+  assert.doesNotMatch(runtime,/integrationChoose|Bạn muốn Wizzdom giúp điều gì/);
   assert.equal((hero.match(/<h1 /g)||[]).length,1);
   assert.equal((hero.match(/<h2 /g)||[]).length,3);
   assert.ok(hero.includes('id="wizzdom-demo-frame"'));

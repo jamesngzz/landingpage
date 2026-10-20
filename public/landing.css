@@ -8,7 +8,6 @@ html[data-landing-version="companion"] main#top{scroll-margin-top:66px}
 .integration-hero .hero-actions{justify-content:flex-start;align-items:flex-start;margin-top:20px}
 .integration-hero .hero-actions .button{font-size:15px;min-height:47px;padding:12px 22px}
 .integration-scenarios{margin-top:24px}
-.integration-scenarios>p{margin:0 0 12px;font-size:16px;font-weight:700;color:var(--ink)}
 .scenario-value-groups{display:grid;gap:14px}
 .integration-hero .scenario-value-group h2{margin:0 0 7px;font:700 16px/1.4 var(--sans);letter-spacing:-.015em;color:var(--ink)}
 .scenario-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}

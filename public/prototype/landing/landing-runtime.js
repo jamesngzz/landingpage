@@ -54,7 +54,6 @@ Object.assign(vietnamese, {betaConsent: "Chúng tôi lưu email, hồ sơ đã c
       integrationHeadline:'Wizzdom nhắc điều bạn và AI đang bỏ sót.',
       integrationLineOne:'AI quên.',integrationLineTwo:'Nó vẫn tiếp tục.',integrationLineThree:'Bạn trả giá.',
       integrationBody:'Wizzdom nối quyết định, bài học và chi tiết từ các chat trước với việc bạn đang làm cùng AI — rồi nhắc khi chúng quan trọng.',
-      integrationChoose:'Bạn muốn Wizzdom giúp điều gì?',
       scenarioEngineer:"Developer",scenarioProduct:"Sản phẩm",scenarioBusiness:"Kinh doanh",scenarioResearch:"Nghiên cứu",scenarioCreator:"Creator",scenarioPersonal:"Cá nhân",
       valueDirection:"Chọn đúng việc",valueRepeat:"Không lặp sai lầm",valueConstraint:"Nhớ điều quan trọng"
     });

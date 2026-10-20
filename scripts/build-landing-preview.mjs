@@ -21,8 +21,7 @@ const hero=`      <section class="hero minimal-hero integration-hero" aria-label
           <div class="integration-promise">
             <h1 id="integration-hero-title" data-i18n="integrationHeadline">Wizzdom catches what you and your AI are missing.</h1>
             <p class="hero-blurb" data-i18n="integrationBody">Wizzdom connects earlier decisions, lessons and details to what you’re doing with AI — and reminds you when they matter.</p>
-            <div class="integration-scenarios" role="group" aria-labelledby="scenario-picker-title">
-              <p id="scenario-picker-title" data-i18n="integrationChoose">What would help you most?</p>
+            <div class="integration-scenarios">
               <div class="scenario-value-groups">${scenarioValueGroups.map(group=>`<div class="scenario-value-group"><h2 id="${group.key}" data-i18n="${group.key}">${group.en}</h2><div class="scenario-buttons" role="group" aria-labelledby="${group.key}">${group.cases.map(id=>{const option=scenarioOptions.find(option=>option.id===id);return `<button type="button" data-demo-case="${id}" aria-pressed="${id==='engineer'}" aria-controls="wizzdom-demo-frame" data-i18n="${option.key}">${option.en}</button>`;}).join('')}</div></div>`).join('')}</div>
             </div>
           </div>
@@ -64,7 +63,6 @@ export function composeRuntime(original){
       integrationHeadline:'Wizzdom nhắc điều bạn và AI đang bỏ sót.',
       integrationLineOne:'AI quên.',integrationLineTwo:'Nó vẫn tiếp tục.',integrationLineThree:'Bạn trả giá.',
       integrationBody:'Wizzdom nối quyết định, bài học và chi tiết từ các chat trước với việc bạn đang làm cùng AI — rồi nhắc khi chúng quan trọng.',
-      integrationChoose:'Bạn muốn Wizzdom giúp điều gì?',
       ${scenarioOptions.map(option=>`${option.key}:${JSON.stringify(option.vi)}`).join(',')},
       ${scenarioValueGroups.map(group=>`${group.key}:${JSON.stringify(group.vi)}`).join(',')}
     });
