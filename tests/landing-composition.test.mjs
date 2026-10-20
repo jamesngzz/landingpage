@@ -37,7 +37,7 @@ test('translation reuses every existing dictionary amendment, without old demo e
 });
 test('hero leads with one product promise and an embedded Developer example, not two competing headlines',()=>{
   const hero=section(html,'<section class="hero minimal-hero integration-hero"');
-  for(const key of ['integrationHeadline','integrationBody','integrationCta','integrationChoose'])assert.ok(hero.includes(`data-i18n="${key}"`));
+  for(const key of ['integrationHeadline','integrationBody','integrationChoose'])assert.ok(hero.includes(`data-i18n="${key}"`));
   assert.equal((hero.match(/<h1 /g)||[]).length,1);
   assert.equal((hero.match(/<h2 /g)||[]).length,3);
   assert.ok(hero.includes('id="wizzdom-demo-frame"'));
@@ -63,7 +63,8 @@ test('hero retains existing editorial typography without the retired equal-weigh
   const css=read('public/prototype/landing/integration.css');
   assert.match(css,/font:550 clamp\(40px,4\.1vw,58px\)\/1\.08 var\(--serif\)/);
   assert.doesNotMatch(css,/integration-solution|integrationValueTwo/);
-  assert.ok(runtime.includes("type:'wizzdom-demo-replay'"));
+  assert.doesNotMatch(html,/integration-play|integrationCta|Watch this scenario unfold/);
+  assert.doesNotMatch(runtime,/integration-play|integrationCta|Xem diễn biến tình huống/);
 });
 test('local form preview never sends or saves a registration',()=>{
   assert.doesNotMatch(runtime,/\bfetch\s*\(|sendBeacon|XMLHttpRequest|localStorage|sessionStorage|SUPABASE|service_role/);

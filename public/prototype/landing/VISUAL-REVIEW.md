@@ -10,8 +10,9 @@ is isolated so its CSS cannot alter the preserved sections.
 
 One product promise sits next to one interactive Developer example, instead of
 two equal-weight problem/solution text columns. The first frame is paused with
-the request, earlier evidence and Wizzdom nudge visible. The main CTA replays
-the 17-second sequence; animation is not required to understand the example.
+the request, earlier evidence and Wizzdom nudge visible. The separate hero
+replay CTA is removed in both languages; the demo keeps its own controls.
+Animation is not required to understand the example.
 Three value headings are visible beside the example, under the promise: choose
 the right work, avoid repeating mistakes, and remember what matters. Each has
 two role buttons, mapped to the original six scenarios. The selected role has

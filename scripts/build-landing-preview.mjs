@@ -25,7 +25,6 @@ const hero=`      <section class="hero minimal-hero integration-hero" aria-label
               <p id="scenario-picker-title" data-i18n="integrationChoose">What would help you most?</p>
               <div class="scenario-value-groups">${scenarioValueGroups.map(group=>`<div class="scenario-value-group"><h2 id="${group.key}" data-i18n="${group.key}">${group.en}</h2><div class="scenario-buttons" role="group" aria-labelledby="${group.key}">${group.cases.map(id=>{const option=scenarioOptions.find(option=>option.id===id);return `<button type="button" data-demo-case="${id}" aria-pressed="${id==='engineer'}" aria-controls="wizzdom-demo-frame" data-i18n="${option.key}">${option.en}</button>`;}).join('')}</div></div>`).join('')}</div>
             </div>
-            <div class="hero-actions"><a class="button primary" id="integration-play" href="#lab" data-i18n="integrationCta">Watch this scenario unfold</a></div>
           </div>
           <div class="integration-demo" id="lab" aria-label="Interactive Wizzdom demo">
             <span id="example" class="integration-anchor" aria-hidden="true"></span>
@@ -67,8 +66,7 @@ export function composeRuntime(original){
       integrationBody:'Wizzdom nối quyết định, bài học và chi tiết từ các chat trước với việc bạn đang làm cùng AI — rồi nhắc khi chúng quan trọng.',
       integrationChoose:'Bạn muốn Wizzdom giúp điều gì?',
       ${scenarioOptions.map(option=>`${option.key}:${JSON.stringify(option.vi)}`).join(',')},
-      ${scenarioValueGroups.map(group=>`${group.key}:${JSON.stringify(group.vi)}`).join(',')},
-      integrationCta:'Xem diễn biến tình huống'
+      ${scenarioValueGroups.map(group=>`${group.key}:${JSON.stringify(group.vi)}`).join(',')}
     });
     const frame=$('#wizzdom-demo-frame');
     let selectedDemoCase='engineer';
@@ -80,7 +78,6 @@ export function composeRuntime(original){
       sendCase();
       if(matchMedia('(max-width: 900px)').matches)$('#lab').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
     }));
-    $('#integration-play').addEventListener('click',()=>frame.contentWindow?.postMessage({type:'wizzdom-demo-replay'},location.origin));
     function sendLanguage(){frame.contentWindow?.postMessage({type:'wizzdom-demo-language',language:currentLanguage},location.origin);}
     function setLanguage(language){
       currentLanguage=language==='en'?'en':'vi';document.documentElement.lang=currentLanguage;

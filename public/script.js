@@ -78,8 +78,7 @@ function researchSession() {
       integrationBody:'Wizzdom nối quyết định, bài học và chi tiết từ các chat trước với việc bạn đang làm cùng AI — rồi nhắc khi chúng quan trọng.',
       integrationChoose:'Bạn muốn Wizzdom giúp điều gì?',
       scenarioEngineer:"Developer",scenarioProduct:"Sản phẩm",scenarioBusiness:"Kinh doanh",scenarioResearch:"Nghiên cứu",scenarioCreator:"Creator",scenarioPersonal:"Cá nhân",
-      valueDirection:"Chọn đúng việc",valueRepeat:"Không lặp sai lầm",valueConstraint:"Nhớ điều quan trọng",
-      integrationCta:'Xem diễn biến tình huống'
+      valueDirection:"Chọn đúng việc",valueRepeat:"Không lặp sai lầm",valueConstraint:"Nhớ điều quan trọng"
     });
     const frame=$('#wizzdom-demo-frame');
     let selectedDemoCase='engineer';currentPersona=selectedDemoCase;
@@ -91,7 +90,6 @@ function researchSession() {
       sendCase();
       if(matchMedia('(max-width: 900px)').matches)$('#lab').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
     }));
-    $('#integration-play').addEventListener('click',()=>frame.contentWindow?.postMessage({type:'wizzdom-demo-replay'},location.origin));
     function sendLanguage(){frame.contentWindow?.postMessage({type:'wizzdom-demo-language',language:currentLanguage},location.origin);}
     function setLanguage(language){
       currentLanguage=language==='en'?'en':'vi';document.documentElement.lang=currentLanguage;
