@@ -35,6 +35,8 @@ yarn-error.log*
 /backups/
 /exports/
 /public/index.html
+/public/analytics.js
+/public/vercel-analytics.js
 
 # vercel
 .vercel

@@ -12,6 +12,7 @@ export function composeProductionLanding(base){
     .replace('src="./focus-modality.js"','src="/focus-modality.js"')
     .replace('src="./landing-runtime.js"','src="/script.js"')
     .replace('src="./demo.html?','src="/demo.html?')
+    .replace('</body>', '  <script type="module" src="/analytics.js"></script>\n  </body>')
     .replace('The rest of this preview is available below.','Explore how Wizzdom works below.');
 }
 

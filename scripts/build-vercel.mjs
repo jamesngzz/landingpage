@@ -3,9 +3,12 @@ import {fileURLToPath} from 'node:url';
 import {composeProductionLanding,composeProductionRuntime,composeProductionDemo} from './production-landing.mjs';
 const root = new URL('../', import.meta.url);
 await mkdir(new URL('public/', root), {recursive:true});
-for (const file of ['styles.css', 'focus-modality.js']) {
+for (const file of ['styles.css', 'focus-modality.js', 'analytics.js']) {
   await copyFile(new URL(file, root), new URL(`public/${file}`, root));
 }
+// The framework-neutral SDK is a self-contained browser ES module. Serve it
+// locally so the static landing needs neither React nor an external CDN.
+await copyFile(fileURLToPath(import.meta.resolve('@vercel/analytics')), new URL('public/vercel-analytics.js', root));
 const base=await readFile(new URL('index.html',root),'utf8');
 const original=await readFile(new URL('script.js',root),'utf8');
 await writeFile(new URL('public/index.html',root),composeProductionLanding(base));

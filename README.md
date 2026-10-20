@@ -23,7 +23,8 @@ Never put a server key in frontend files, `NEXT_PUBLIC_*` variables, GitHub, or 
 
 - Static HTML/CSS/JavaScript, self-hosted fonts and brand assets.
 - One Vercel Node.js function at `POST /api/beta`.
-- Supabase PostgreSQL via an authenticated HTTPS RPC, with no runtime dependencies.
+- Supabase PostgreSQL via an authenticated HTTPS RPC.
+- Vercel Web Analytics via the framework-neutral `@vercel/analytics` browser SDK.
 
 ```sh
 npm ci
@@ -52,7 +53,15 @@ Private schema: **`wizzdom_landing`**.
 | `demand_summary` | Counts by role, need and language, plus research opt-ins |
 | `schema_migrations` | Applied migration version |
 
-The optional research checkbox is **off by default**. Demo interactions stay in page memory until the visitor submits signup with research consent. Without it, only the disclosed signup/profile/demo summary is saved; no session/events/referral data is sent. Visitors who leave without signing up are not tracked remotely. There are no imported AI conversations, browsing-history contents, fingerprint identifiers, stored IPs or email values in event properties. The language preference is the only persistent browser preference.
+The optional research checkbox is **off by default**. Demo interactions stay in page memory until the visitor submits signup with research consent. Without it, only the disclosed signup/profile/demo summary is saved to Supabase; no research session/events/referral data is sent there. Visitors who leave without signing up have no Supabase research record. There are no imported AI conversations, browsing-history contents, fingerprint identifiers, stored IPs or email values in research event properties. The language preference is the only persistent browser preference.
+
+## Vercel Web Analytics
+
+Enable **Web Analytics** for this project in the Vercel dashboard, then deploy `main`. Select **Other / HTML** in the setup guide, not Next.js: the live site is static HTML and does not use the retained legacy React layout.
+
+The build copies the official `@vercel/analytics` browser SDK into `public/vercel-analytics.js` and loads `analytics.js` on the production homepage. It counts visitors and page views through Vercel's `/_vercel/insights/*` routes. There are no custom analytics events, email/form values or imported context sent to Vercel. Query strings and fragments are removed from page URLs before sending. The embedded demo, isolated prototypes, localhost and file previews do not initialize this SDK, avoiding duplicate counts from the demo iframe. This aggregate traffic measurement is separate from the optional Supabase research consent above.
+
+After deployment, visit the live homepage and check **Analytics** in Vercel. The SDK requires Web Analytics to be enabled in the project; if `/_vercel/insights/script.js` returns 404, enable it and redeploy. See the [official quickstart](https://vercel.com/docs/analytics/quickstart).
 
 The API validates and bounds input, requires same-origin JSON POSTs, includes a honeypot and best-effort per-instance throttling, and commits each signup atomically. Duplicate emails update the contact profile. Duplicate submission/event UUIDs do not create duplicate rows. A successful signup response is sent only after the database confirms the write. No public read/list endpoint exists. The schema has RLS enabled and no grants to anonymous or signed-in browser roles; the RPC is executable only by the server role.
 

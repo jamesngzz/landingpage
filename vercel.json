@@ -20,6 +20,6 @@
     ]},
     {"source": "/", "headers": [{"key": "Cache-Control", "value": "no-cache"}]},
     {"source": "/index.html", "headers": [{"key": "Cache-Control", "value": "no-cache"}]},
-    {"source": "/:asset(script.js|landing.css|demo.js|demo.css)", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
+    {"source": "/:asset(script.js|landing.css|demo.js|demo.css|analytics.js|vercel-analytics.js)", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
   ]
 }
