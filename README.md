@@ -4,7 +4,7 @@ Bilingual English/Vietnamese landing page with six interactive use cases and a t
 
 ## Deploy to Vercel
 
-1. Import `jamesngzz/landingpage`, root directory `.`. The current release is on `codex/landing-prototype`; select that as the Production Branch to deploy this release (or merge it before deploying a different branch).
+1. Import `jamesngzz/landingpage`, branch `main`, root directory `.`. The approved companion prototype is promoted to the homepage on this branch. Keep Vercel's Production Branch set to `main`; feature branches create Preview deployments.
 2. Framework preset: **Other**. `vercel.json` specifies the build command (`npm run build`) and output directory (`public`). Node.js: **22.x**.
 3. Add these **server-only Environment Variables** in Vercel for Production and, if needed, Preview:
 
