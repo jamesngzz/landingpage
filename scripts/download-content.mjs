@@ -28,11 +28,11 @@ export const content = {
       ],
       [
         "Cần nhiều lượt hơn? Cứ yêu cầu.",
-        "Giới hạn chủ yếu để chống spam. Báo trong app, mình sẽ nâng cho bạn. Gói Codex/Claude vẫn theo chính sách riêng."
+        "Giới hạn chủ yếu để chống spam. Báo trong app, mình sẽ nâng cho bạn."
       ],
       [
         "Lịch sử gốc ở trên máy bạn",
-        "Không đồng bộ toàn bộ kho lịch sử lên database online. Khi bật Cloud AI, lượt chat và context liên quan được gửi đi phân tích; kết quả có thể được cache tạm."
+        "Không đồng bộ toàn bộ kho lịch sử lên database online. Khi bật Cloud AI, lượt chat và context liên quan được gửi đi phân tích."
       ]
     ],
     "setupTitle": "Bắt đầu trong 3 bước.",
@@ -131,11 +131,11 @@ export const content = {
       ],
       [
         "Need more usage? Just ask.",
-        "Limits mainly prevent spam. Ask in the app and I’ll raise yours. Codex/Claude keep their own plan requirements."
+        "Limits mainly prevent spam. Ask in the app and I’ll raise yours."
       ],
       [
         "Original history stays on your Mac",
-        "Your entire history is not synced to an online database. With Cloud AI enabled, chat and relevant context are sent for analysis; results may be temporarily cached."
+        "Your entire history is not synced to an online database. With Cloud AI enabled, chat and relevant context are sent for analysis."
       ]
     ],
     "setupTitle": "Get started in 3 steps.",

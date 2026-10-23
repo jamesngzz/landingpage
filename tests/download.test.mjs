@@ -53,7 +53,8 @@ test('public beta uses verified asset metadata and explains free use without pro
   assert.match(html,/Wizzdom Recall/);assert.match(html,/Obsidian/);assert.match(html,/journaling/);
   assert.doesNotMatch(html,/Chưa mở tải công khai|Public download is not open yet|completely safe|hoàn toàn an toàn|all AI APIs are free/i);
  }
- assert.match(renderDownloadPage('vi',approvedRelease),/Gói Codex\/Claude/);
+ assert.doesNotMatch(renderDownloadPage('vi',approvedRelease),/Gói Codex\/Claude|kết quả có thể được cache tạm/);
+ assert.doesNotMatch(renderDownloadPage('en',approvedRelease),/own plan requirements|results may be temporarily cached/);
  assert.match(renderDownloadPage('en',approvedRelease),/not finished features/);
 });
 
