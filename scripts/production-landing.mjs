@@ -13,6 +13,7 @@ export function composeProductionLanding(base){
     .replace('src="./landing-runtime.js"','src="/script.js"')
     .replace('src="./demo.html?','src="/demo.html?')
     .replace('<nav class="main-nav" aria-label="Main navigation">', '<nav class="main-nav" aria-label="Main navigation"><a href="/download/" data-i18n="navDownload">Get Wizzdom</a>')
+    .replace('</footer>', '<a href="/download/" data-i18n="navDownload">Get Wizzdom</a></footer>')
     .replace('</body>', '  <script type="module" src="/analytics.js"></script>\n  <script type="module" src="/download-link.js"></script>\n  </body>')
     .replace('The rest of this preview is available below.','Explore how Wizzdom works below.');
 }
