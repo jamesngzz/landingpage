@@ -79,7 +79,7 @@ function researchSession() {
       scenarioEngineer:"Developer",scenarioProduct:"Sản phẩm",scenarioBusiness:"Kinh doanh",scenarioResearch:"Nghiên cứu",scenarioCreator:"Creator",scenarioPersonal:"Cá nhân",
       valueDirection:"Chọn đúng việc",valueRepeat:"Không lặp sai lầm",valueConstraint:"Nhớ điều quan trọng"
     });
-    vietnamese.navDownload='Tải Wizzdom';
+    vietnamese.navDownload='Tải Wizzdom';vietnamese.navGetDesktop='Tải bản beta';
     const frame=$('#wizzdom-demo-frame');
     let selectedDemoCase='engineer';currentPersona=selectedDemoCase;
     const demoChoices=$$('[data-demo-case]');

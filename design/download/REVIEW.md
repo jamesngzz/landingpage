@@ -13,3 +13,7 @@ Content decisions: explain the benefit before mechanics; disclose Mac/CPU compat
 Source review: https://github.com/jamesngzz/landingpage/pull/1. Vercel Preview status reported success for commit ca0dd40. The main branch/production site is unchanged.
 
 Direct GET of both preview routes redirects to Vercel sign-in (Deployment Protection). The returned200 belongs to the login page, not a verified guide render. Use a signed-in Vercel browser to review; no protection bypass attempted.
+
+## Public beta update
+
+The owner subsequently authorized public downloads on24 October2026. The current change opens the signed/notarized1.0.43 artifact as an early beta, adds free-AI/quota/support guidance and labels knowledge hub, Recall and reflection/journaling as directions rather than delivered promises. It also clarifies Accessibility versus MCP, local versus cloud, and permission revocation.85 tests pass after this update. Browser review remains unavailable due to Work settings; no visual pass is claimed. See PUBLIC_BETA_DECISION_2026-10-24.md for the distribution decision.

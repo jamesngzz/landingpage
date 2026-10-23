@@ -1,8 +1,12 @@
 {
-  "status": "waitlist",
-  "version": null,
-  "platform": "macOS 13+ · Apple Silicon",
-  "url": null,
-  "sha256": null,
-  "bytes": null
+  "status": "pilot",
+  "version": "1.0.43-internal.20261024",
+  "platform": "macOS 13+ \u00b7 Apple Silicon",
+  "url": "https://github.com/jamesngzz/wizzdom-desktop-releases/releases/download/v1.0.43-internal.20261024/Wizzdom-1.0.43-internal-mac-arm64.dmg",
+  "sha256": "60428dd9549dc5e2018dddfaad7fb49b59ce12d8e70b3446cbb7ccd29808532a",
+  "bytes": 133011371,
+  "approval": {
+    "pilot_distribution": true,
+    "evidence": "design/download/PUBLIC_BETA_DECISION_2026-10-24.md"
+  }
 }

@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import {readFileSync,existsSync,statSync} from 'node:fs';
 import {renderDownloadPage,validateRelease} from '../scripts/download-page.mjs';
 const read=name=>readFileSync(new URL('../'+name,import.meta.url),'utf8');
-const release=JSON.parse(read('design/download/release.json'));
+const approvedRelease=JSON.parse(read('design/download/release.json'));
+const release={status:'waitlist',version:null,url:null,sha256:null,bytes:null};
 
 test('unapproved release exposes signup, never an internal installer or fake download',()=>{
  assert.equal(validateRelease(release),false);
@@ -37,4 +38,19 @@ test('guide distinguishes host limits, capture, Cloud AI and analysis outcomes i
  assert.match(vi,/Minh họa · không phải dữ liệu của bạn/);assert.match(en,/Illustration · not your personal data/);
  for(const html of [vi,en]){assert.equal([...html.matchAll(/<h1>/g)].length,1);assert.equal([...html.matchAll(/<details(?: | >|>)/g)].length,7);assert.match(html,/href="#main"/);}
  assert.doesNotMatch(read('public/index.html'),/No screen scraping or silent actions/);
+});
+
+
+test('public beta uses verified asset metadata and explains free use without promising all AI services are free',()=>{
+ assert.equal(validateRelease(approvedRelease),true);
+ for(const lang of ['vi','en']){
+  const html=renderDownloadPage(lang,approvedRelease);
+  assert.match(html,/data-download/);assert.ok(html.includes(approvedRelease.url));
+  assert.ok(html.includes(approvedRelease.sha256));
+  for(const id of ['beta','ideas','feedback'])assert.match(html,new RegExp(`id="${id}"`));
+  assert.match(html,/Wizzdom Recall/);assert.match(html,/Obsidian/);assert.match(html,/journaling/);
+  assert.doesNotMatch(html,/Chưa mở tải công khai|Public download is not open yet|completely safe|hoàn toàn an toàn|all AI APIs are free/i);
+ }
+ assert.match(renderDownloadPage('vi',approvedRelease),/tài khoản và gói của Codex, Claude/);
+ assert.match(renderDownloadPage('en',approvedRelease),/not feature or delivery-date promises/);
 });

@@ -13,6 +13,7 @@ export function composeProductionLanding(base){
     .replace('src="./landing-runtime.js"','src="/script.js"')
     .replace('src="./demo.html?','src="/demo.html?')
     .replace('<nav class="main-nav" aria-label="Main navigation">', '<nav class="main-nav" aria-label="Main navigation"><a href="/download/" data-i18n="navDownload">Get Wizzdom</a>')
+    .replace('<a class="nav-cta" href="#apply" data-open-beta data-i18n="navCta">Try now</a>','<a class="nav-cta" href="/download/" data-i18n="navGetDesktop">Download beta</a>')
     .replace('</footer>', '<a href="/download/" data-i18n="navDownload">Get Wizzdom</a></footer>')
     .replace('</body>', '  <script type="module" src="/analytics.js"></script>\n  <script type="module" src="/download-link.js"></script>\n  </body>')
     .replace('The rest of this preview is available below.','Explore how Wizzdom works below.');
@@ -27,7 +28,7 @@ export function composeProductionRuntime(original){
     .replace('context_sources: $$(".source-chips button.active").map(node=>node.dataset.source),','context_sources: [],')
     .replace('demo: selectedChoice ? {persona: currentPersona, choice: selectedChoiceIndex, rating: $("[data-value].active")?.dataset.value} : {}','demo: {persona: selectedDemoCase}');
   let runtime=composeRuntime(original);
-  runtime=runtime.replace("const frame=$('#wizzdom-demo-frame');","vietnamese.navDownload='Tải Wizzdom';\n    const frame=$('#wizzdom-demo-frame');");
+  runtime=runtime.replace("const frame=$('#wizzdom-demo-frame');","vietnamese.navDownload='Tải Wizzdom';vietnamese.navGetDesktop='Tải bản beta';\n    const frame=$('#wizzdom-demo-frame');");
   const previewStart=runtime.indexOf("    $('#demand-form').addEventListener('submit',event=>{");
   const previewEnd=runtime.indexOf('    const motion=',previewStart);
   if(previewStart<0||previewEnd<0)throw new Error('Preview signup boundary changed.');
