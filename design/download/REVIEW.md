@@ -9,3 +9,5 @@ Browser QA was blocked by Work settings (“Local browser use is disabled”). N
 Download state remains waitlist. The current desktop1.0.43 internal artifact is not published by this change. A future controlled beta distribution needs an explicit release decision and integrity metadata; the existing product quality gates remain open.
 
 Content decisions: explain the benefit before mechanics; disclose Mac/CPU compatibility before setup; surface Claude foreground limits; distinguish connected/captured/checked and silence/failure; separate local storage/capture/cloud; preserve user review for memory and delivery; avoid claiming automatic invite emails or entirely offline analysis.
+
+Source review: https://github.com/jamesngzz/landingpage/pull/1. Vercel Preview status reported success for commit ca0dd40. The main branch/production site is unchanged.
