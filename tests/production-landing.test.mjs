@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync,statSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 import {execFileSync} from 'node:child_process';
 import {composeProductionLanding,composeProductionRuntime,composeProductionDemo} from '../scripts/production-landing.mjs';
@@ -33,7 +33,7 @@ test('Vercel build serves the approved companion layout at /, not the old home o
 
 test('all homepage and demo assets resolve in the production output',()=>{
   const demo=composeProductionDemo(read('public/prototype/cases-demo.html'));
-  for(const page of [html,demo])for(const [,asset] of page.matchAll(/(?:src|href)="(\/[^"?#]+)(?:\?[^\"]*)?"/g))assert.ok(read('public'+asset).length,asset);
+  for(const page of [html,demo])for(const [,asset] of page.matchAll(/(?:src|href)="(\/[^"?#]+)(?:\?[^\"]*)?"/g)){const target='public'+asset;assert.ok(read(statSync(new URL('../'+target,import.meta.url)).isDirectory()?target+'/index.html':target).length,asset);}
   for(const marker of ['<section class="pipeline-section"','<section class="privacy-section"','<section class="apply-section"']){
     const section=source=>source.slice(source.indexOf(marker),source.indexOf('</section>',source.indexOf(marker))+10);
     assert.equal(section(html),section(read('index.html')));
