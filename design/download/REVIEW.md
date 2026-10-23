@@ -11,3 +11,5 @@ Download state remains waitlist. The current desktop1.0.43 internal artifact is 
 Content decisions: explain the benefit before mechanics; disclose Mac/CPU compatibility before setup; surface Claude foreground limits; distinguish connected/captured/checked and silence/failure; separate local storage/capture/cloud; preserve user review for memory and delivery; avoid claiming automatic invite emails or entirely offline analysis.
 
 Source review: https://github.com/jamesngzz/landingpage/pull/1. Vercel Preview status reported success for commit ca0dd40. The main branch/production site is unchanged.
+
+Direct GET of both preview routes redirects to Vercel sign-in (Deployment Protection). The returned200 belongs to the login page, not a verified guide render. Use a signed-in Vercel browser to review; no protection bypass attempted.
