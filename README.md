@@ -105,3 +105,13 @@ commit;
 The original Sites/Vinext/Cloudflare implementation and its Git history are retained for reference under `app/`, `build/`, `db/`, `drizzle/`, the old framework configuration, and Sites helper scripts. They are **not part of the Vercel build** and their old dependencies are not installed by the current package manifest. Vercel uses `api/beta.mjs`, not `app/api/beta/route.ts`. The tracked `.openai/hosting.json` contains the former Sites project identifier, not credentials. Restoring that deployment stack would require restoring its dependencies/configuration from Git history.
 
 Official hosting reference: [Vercel Node.js functions](https://vercel.com/docs/functions/runtimes/node-js).
+
+## Desktop download & setup guide
+
+`/download/` (Vietnamese), `/download/vi/` and `/download/en/` are static, usable without JavaScript. The homepage links to the matching language. Content lives in `scripts/download-content.mjs`; markup in `scripts/download-page.mjs`; styles in `download.css`. The build generates the public pages. Local dev serves the same directory routes.
+
+`design/download/release.json` controls installer availability. Current state is `pilot`: the owner authorized public early-beta distribution on24 October2026 (see `design/download/PUBLIC_BETA_DECISION_2026-10-24.md`). The page points to the exact signed/notarized1.0.43 asset on the public releases repository, with bytes and SHA-256. This is a public beta distribution decision, not a claim that all quality gates passed. For a future release, publish the verified artifact to the approved releases repository, then set `status: pilot`, the exact version, immutable HTTPS release asset URL, bytes, SHA-256 and `approval: {pilot_distribution: true, evidence: "path to recorded decision"}`. The build rejects incomplete metadata and unexpected download domains. This metadata gate does not itself verify a notarization ticket; retain release verification evidence separately.
+
+The guide distinguishes Codex hooks from Claude foreground Accessibility, capture from Cloud AI consent, and waiting/error/no-suggestion results. The card is illustrative, not a production screenshot. Privacy copy on the homepage now discloses permission-based Claude chat reading rather than claiming no screen reading.
+
+The page does not add signup storage, support delivery, chat capture or a new analytics SDK. The homepage navigation and mobile CTA lead to the setup/download guide. If release status returns to waitlist, the guide offers the existing registration flow instead of a dead download.
