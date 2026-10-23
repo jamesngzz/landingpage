@@ -23,3 +23,11 @@ The owner subsequently authorized public downloads on24 October2026. The current
 Owner requested fewer words and no repeated onboarding material. The download page now focuses on download/compatibility, free-beta limits/data boundaries and3 short setup steps. Removes the duplicate card illustration, host tutorials, analysis-state explanation and6-question FAQ from the page. Roadmap ideas stay in a closed native disclosure; the support path remains a single short line.
 
 Default main copy (HTML text excluding closed disclosure bodies): Vietnamese1278→314 whitespace-delimited units (~75% less), English1065→285 (~73% less).86 tests pass, preserving actual asset URL/checksum, consent distinctions, Claude foreground limits, signup fallback and bilingual routes. The installer and release metadata are unchanged. Browser visual QA remains unavailable; do not claim a rendered visual pass.
+
+## Download clarity and visual ideas refinement
+
+Owner requested the official landing headline, removal of the community-beta/notarization/SHA labels, stronger bug-report guidance, explicit local Accessibility and visual demonstrations of the three ideas. The page now uses the same VI/EN headline as the homepage, keeps installation compatibility, and shows in-app support instructions directly beside download. The permission step names Wizzdom as the local macOS permission recipient; the privacy note distinguishes the raw local corpus, relevant context sent for Cloud AI, and transient inference-result cache.
+
+Three visible code-native illustrations show a knowledge hub, Recall source recovery with review, and a reflection timeline. These are labelled development ideas, use synthetic examples, and contain no fake interactive inputs/actions. They have accessible image descriptions and stacked mobile layouts. Removes the previous closed roadmap and technical display metadata; installer URL/metadata validation are unchanged.87 tests pass. Browser visual QA is still unavailable in Work settings; no rendered screenshot review is claimed.
+
+Privacy wording was checked against the selected desktop/backend source: inference usage DB stores metadata/counters; async results use temporary run cache; selected chat/context is sent for Cloud AI. It intentionally does not promise that every byte stays offline or that no context reaches a server.

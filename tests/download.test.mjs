@@ -30,16 +30,16 @@ test('a future pilot download requires explicit approval and complete integrity 
  for(const bad of [{...pilot,approval:null},{...pilot,sha256:null},{...pilot,bytes:0},{...pilot,url:'https://evil.example/Wizzdom.dmg'},{...pilot,url:'javascript:alert(1)'},{...pilot,status:'stable'},{...release,url:pilot.url}])assert.throws(()=>validateRelease(bad));
 });
 
-test('short page retains installation, privacy and host limits without repeating onboarding',()=>{
+test('page retains installation and local permission boundaries without repeating onboarding',()=>{
  const vi=renderDownloadPage('vi',release),en=renderDownloadPage('en',release);
  for(const html of [vi,en]){
   for(const phrase of ['Accessibility','Cloud AI','Codex','Claude','Apple Silicon','macOS 13'])assert.ok(html.includes(phrase),phrase);
   assert.equal([...html.matchAll(/<h1>/g)].length,1);assert.match(html,/href="#main"/);
-  assert.match(html,/<details class="ideas-disclosure" id="ideas">/);
+  assert.match(html,/<section class="guide-section ideas-section" id="ideas">/);
   assert.doesNotMatch(html,/example-card|states-grid|faq-list|host-grid/);
  }
  assert.match(vi,/không đọc bản nháp/);assert.match(en,/never drafts/);
- assert.match(en,/Original sources stay on your Mac/);assert.match(en,/sent for analysis/);
+ assert.match(en,/entire history is not synced to an online database/);assert.match(en,/sent for analysis/);
  assert.doesNotMatch(read('public/index.html'),/No screen scraping or silent actions/);
 });
 
@@ -48,13 +48,13 @@ test('public beta uses verified asset metadata and explains free use without pro
  for(const lang of ['vi','en']){
   const html=renderDownloadPage(lang,approvedRelease);
   assert.match(html,/data-download/);assert.ok(html.includes(approvedRelease.url));
-  assert.ok(html.includes(approvedRelease.sha256));
+  assert.doesNotMatch(html.replace(/<[^>]*>/g,' '),/SHA-256|notariz|Community beta|Beta cho cộng đồng|internal[.]20261024/);
   for(const id of ['beta','ideas','feedback'])assert.match(html,new RegExp(`id="${id}"`));
   assert.match(html,/Wizzdom Recall/);assert.match(html,/Obsidian/);assert.match(html,/journaling/);
   assert.doesNotMatch(html,/Chưa mở tải công khai|Public download is not open yet|completely safe|hoàn toàn an toàn|all AI APIs are free/i);
  }
  assert.match(renderDownloadPage('vi',approvedRelease),/Gói Codex\/Claude/);
- assert.match(renderDownloadPage('en',approvedRelease),/not feature or delivery-date promises/);
+ assert.match(renderDownloadPage('en',approvedRelease),/not finished features/);
 });
 
 
@@ -63,6 +63,21 @@ test('default reading copy stays within a compact word budget',()=>{
   const html=renderDownloadPage(lang,approvedRelease);
   const main=html.slice(html.indexOf('<main'),html.indexOf('</main>'));
   const visible=main.replace(/<details[\s\S]*?<\/details>/g,'').replace(/<[^>]*>/g,' ').trim().split(/\s+/);
-  assert.ok(visible.length< (lang==='en'?350:600),lang+': '+visible.length+' words');
+  assert.ok(visible.length< (lang==='en'?450:650),lang+': '+visible.length+' words');
  }
+});
+
+
+test('official headline, visible bug reporting and three illustrative product directions',()=>{
+ const vi=renderDownloadPage('vi',approvedRelease),en=renderDownloadPage('en',approvedRelease);
+ assert.match(vi,/<h1>Wizzdom nhắc điều bạn và AI đang bỏ sót[.]<\/h1>/);
+ assert.match(en,/<h1>Wizzdom catches what you and your AI are missing[.]<\/h1>/);
+ for(const html of [vi,en]){
+  assert.equal([...html.matchAll(/role="img" aria-label=/g)].length,3);
+  assert.ok(html.indexOf('support-callout')<html.indexOf('id="beta"'));
+  assert.doesNotMatch(html,/ideas-disclosure|class="checksum"|release-meta|beta-note|undefined/);
+  assert.match(html,/id="feedback"/);assert.match(html,/hub-demo/);assert.match(html,/recall-demo/);assert.match(html,/reflect-demo/);
+ }
+ assert.match(vi,/Accessibility được macOS cấp cho Wizzdom chạy local/);
+ assert.match(vi,/Khi macOS yêu cầu Accessibility, cấp cho Wizzdom/);
 });

@@ -17,13 +17,8 @@
 .download-app strong{display:block;font-size:25px;letter-spacing:-.04em}
 .download-app span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
 .download-panel .button{justify-content:space-between;font-size:16px;min-height:50px}
-.release-meta{font-size:12px;line-height:1.6;color:var(--muted);margin:14px 0}
 .system-requirements{margin-top:18px;display:grid;gap:5px;font-size:12px;line-height:1.6;color:var(--muted)}
 .system-requirements strong{color:#49473f;font-weight:500}
-.checksum{font-size:12px;margin-top:12px;color:var(--muted)}
-.checksum summary{cursor:pointer;min-height:36px;padding:8px 0}
-.checksum code{display:block;overflow-wrap:anywhere;margin-top:8px}
-.beta-note{font-size:12px;line-height:1.6;color:#625844;margin:12px 0 0}
 .guide-section{padding:36px 0;border-top:1px solid var(--line);scroll-margin-top:95px}
 .download-page h2{font:500 clamp(26px,2.8vw,34px)/1.2 var(--serif);letter-spacing:-.02em;margin:0 0 20px;text-wrap:balance}
 .download-page h3{font-size:17px;line-height:1.4;letter-spacing:-.015em;margin:0 0 8px}
@@ -34,14 +29,7 @@
 .setup-steps{list-style:none;padding:0;margin:0}
 .step-number{font:12px var(--mono);color:var(--blue);display:block;margin-bottom:10px}
 .permission-note{font-size:12px;line-height:1.7;color:var(--muted);border-left:2px solid var(--line);padding-left:14px;max-width:880px;margin:22px 0 0}
-.ideas-disclosure{border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:15px}
-.ideas-disclosure>summary{display:flex;justify-content:space-between;align-items:center;gap:20px;list-style:none;cursor:pointer;min-height:64px;padding:16px 0;font-weight:550}
-.ideas-disclosure>summary::-webkit-details-marker{display:none}
-.ideas-disclosure>summary>span{font-size:22px;font-weight:400;color:var(--muted)}
-.ideas-disclosure[open]>summary>span{transform:rotate(45deg)}
-.ideas-intro{font-size:12px;color:var(--muted);margin:0 0 24px}
 .ideas-grid{padding-bottom:25px}
-.feedback-note{font-size:12px;line-height:1.7;color:var(--muted);max-width:850px;margin:20px 0 36px}
 .download-page footer{margin:0;padding:24px clamp(20px,4vw,64px);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px}
 .download-page footer>a:last-child{font-size:12px;color:var(--muted)}
 .download-page :focus-visible{outline:3px solid var(--blue);outline-offset:4px}
@@ -69,3 +57,42 @@
  .download-page footer{padding:22px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.download-page *{transition:none!important;animation:none!important}}
+/* Focus on download, local permission and the next product ideas. */
+.download-page h1,html[lang=vi] .download-page h1{font-size:clamp(40px,4.6vw,60px);line-height:1.1}
+.download-app{margin-bottom:20px}
+.support-callout{margin-top:20px;padding:16px;border:1px solid #b6c5f5;border-left:3px solid var(--blue);background:#edf1ff;border-radius:7px;scroll-margin-top:94px}
+.support-callout>strong{font-size:15px;line-height:1.4;display:block;color:var(--ink)}
+.support-callout p{font-size:13px;line-height:1.55;margin:8px 0;color:#26304d}
+.support-callout small{font-size:12px;line-height:1.6;display:block;color:#4d546a}
+.permission-note{color:#49473f;font-size:13px;border-left-color:var(--blue)}
+.ideas-section{padding-top:42px}
+.ideas-section .section-heading>p{margin-top:-9px}
+.ideas-grid{gap:20px}
+.idea-card{min-width:0;background:var(--white);border:1px solid var(--ink);border-radius:12px;overflow:hidden}
+.idea-caption{padding:20px;border-top:1px solid var(--line)}
+.idea-caption h3{font-size:19px;margin-bottom:8px}
+.idea-caption p{font-size:14px}
+.idea-visual{min-height:218px;padding:22px 18px 16px;background:#e9eeff;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.idea-visual>small{font-size:12px;color:#4d546a;margin-top:17px;text-align:center;line-height:1.5}
+.hub-root{display:block;padding:10px 17px;border:1px solid var(--blue);background:var(--blue);color:#fff;border-radius:7px;font-size:14px;font-weight:600}
+.hub-demo>svg{width:100%;height:34px;overflow:visible;flex-shrink:0}
+.hub-demo path{fill:none;stroke:#5874c6;stroke-width:1.5}
+.hub-leaves{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%}
+.hub-leaves span{padding:9px 3px;background:var(--white);border:1px solid #8498ce;border-radius:6px;text-align:center;font-size:12px}
+.recall-demo{background:#f1efe8;align-items:stretch}
+.recall-query{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #98968d;padding:10px;border-radius:7px;font-size:12px}
+.recall-query svg{width:17px;height:17px;flex-shrink:0;stroke:var(--blue);stroke-width:1.7;fill:none}
+.recall-result{padding:12px;margin-top:11px;background:var(--white);border:1px solid #c7c3b8;border-left:3px solid var(--blue);border-radius:6px}
+.recall-result small{font-size:12px;color:#625f55}
+.recall-result p{font:500 19px/1.2 var(--serif);margin:8px 0 0;color:var(--ink)}
+.reflect-demo{background:#eaf0e7;align-items:stretch}
+.reflection-timeline{display:grid;grid-template-columns:repeat(3,1fr);position:relative}
+.reflection-timeline:before{content:'';position:absolute;top:32px;left:16%;right:16%;border-top:1px solid #6d8b69}
+.reflection-timeline>div{display:flex;align-items:center;flex-direction:column;gap:10px;text-align:center;position:relative}
+.reflection-timeline span{font-size:12px;color:#4c6148}
+.reflection-timeline i{display:block;border:2px solid #54754d;border-radius:50%;background:#eaf0e7;width:9px;height:9px}
+.reflection-timeline strong{font-size:12px;font-weight:500;color:#384f34}
+.reflection-question{font:500 22px/1.2 var(--serif);text-align:center;background:var(--white);padding:13px 10px;border-radius:7px;border:1px solid #99ab93;margin-top:18px;color:var(--ink)}
+.idea-invite{font-size:14px;color:#57544c;line-height:1.6;margin:16px 0 0;display:flex;align-items:center;gap:12px;justify-content:space-between;flex-wrap:wrap}
+@media(max-width:900px) and (min-width:651px){.ideas-grid{grid-template-columns:1fr}.idea-card{display:grid;grid-template-columns:1fr 1fr}.idea-caption{border-top:0;border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;padding:25px}.idea-visual{min-height:220px}}
+@media(max-width:650px){.download-page h1,html[lang=vi] .download-page h1{font-size:39px}.idea-visual{min-height:218px}.idea-invite{gap:0}}
