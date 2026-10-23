@@ -17,3 +17,9 @@ Direct GET of both preview routes redirects to Vercel sign-in (Deployment Protec
 ## Public beta update
 
 The owner subsequently authorized public downloads on24 October2026. The current change opens the signed/notarized1.0.43 artifact as an early beta, adds free-AI/quota/support guidance and labels knowledge hub, Recall and reflection/journaling as directions rather than delivered promises. It also clarifies Accessibility versus MCP, local versus cloud, and permission revocation.85 tests pass after this update. Browser review remains unavailable due to Work settings; no visual pass is claimed. See PUBLIC_BETA_DECISION_2026-10-24.md for the distribution decision.
+
+## Content reduction after owner review
+
+Owner requested fewer words and no repeated onboarding material. The download page now focuses on download/compatibility, free-beta limits/data boundaries and3 short setup steps. Removes the duplicate card illustration, host tutorials, analysis-state explanation and6-question FAQ from the page. Roadmap ideas stay in a closed native disclosure; the support path remains a single short line.
+
+Default main copy (HTML text excluding closed disclosure bodies): Vietnamese1278→314 whitespace-delimited units (~75% less), English1065→285 (~73% less).86 tests pass, preserving actual asset URL/checksum, consent distinctions, Claude foreground limits, signup fallback and bilingual routes. The installer and release metadata are unchanged. Browser visual QA remains unavailable; do not claim a rendered visual pass.

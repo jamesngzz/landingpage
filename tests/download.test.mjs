@@ -13,7 +13,7 @@ test('unapproved release exposes signup, never an internal installer or fake dow
   assert.match(html,new RegExp(`<html lang="${lang}">`));
   assert.match(html,/href="\/\?lang=(vi|en)#apply"/);
   assert.doesNotMatch(html,/data-download|href="[^"]+\.(dmg|zip)"|\/Users\/|file:\/\/|DO_NOT_PROMOTE/);
-  for(const id of ['setup','how','privacy','main'])assert.match(html,new RegExp(`id="${id}"`));
+  for(const id of ['setup','privacy','main'])assert.match(html,new RegExp(`id="${id}"`));
   for(const [,asset] of html.matchAll(/(?:href|src)="(\/[^"?#]+)(?:[?#][^"]*)?"/g)){
    if(asset==='/')continue;
    const path=new URL('../public'+asset,import.meta.url);
@@ -30,16 +30,18 @@ test('a future pilot download requires explicit approval and complete integrity 
  for(const bad of [{...pilot,approval:null},{...pilot,sha256:null},{...pilot,bytes:0},{...pilot,url:'https://evil.example/Wizzdom.dmg'},{...pilot,url:'javascript:alert(1)'},{...pilot,status:'stable'},{...release,url:pilot.url}])assert.throws(()=>validateRelease(bad));
 });
 
-test('guide distinguishes host limits, capture, Cloud AI and analysis outcomes in both languages',()=>{
+test('short page retains installation, privacy and host limits without repeating onboarding',()=>{
  const vi=renderDownloadPage('vi',release),en=renderDownloadPage('en',release);
- for(const phrase of ['Accessibility','MCP','Cloud AI','Codex','Claude','Apple Silicon','macOS 13']){assert.ok(vi.includes(phrase),phrase);assert.ok(en.includes(phrase),phrase);}
- for(const phrase of ['Không đọc bản nháp','Chưa có kết luận phân tích','Đây không phải kết quả im lặng','Đề xuất'])assert.ok(vi.toLowerCase().includes(phrase.toLowerCase()),phrase);
- assert.match(en,/Does not read all background chats/);assert.match(en,/a new proposal does not automatically become a fact/);
- assert.match(vi,/Minh họa · không phải dữ liệu của bạn/);assert.match(en,/Illustration · not your personal data/);
- for(const html of [vi,en]){assert.equal([...html.matchAll(/<h1>/g)].length,1);assert.equal([...html.matchAll(/<details(?: | >|>)/g)].length,7);assert.match(html,/href="#main"/);}
+ for(const html of [vi,en]){
+  for(const phrase of ['Accessibility','Cloud AI','Codex','Claude','Apple Silicon','macOS 13'])assert.ok(html.includes(phrase),phrase);
+  assert.equal([...html.matchAll(/<h1>/g)].length,1);assert.match(html,/href="#main"/);
+  assert.match(html,/<details class="ideas-disclosure" id="ideas">/);
+  assert.doesNotMatch(html,/example-card|states-grid|faq-list|host-grid/);
+ }
+ assert.match(vi,/không đọc bản nháp/);assert.match(en,/never drafts/);
+ assert.match(en,/Original sources stay on your Mac/);assert.match(en,/sent for analysis/);
  assert.doesNotMatch(read('public/index.html'),/No screen scraping or silent actions/);
 });
-
 
 test('public beta uses verified asset metadata and explains free use without promising all AI services are free',()=>{
  assert.equal(validateRelease(approvedRelease),true);
@@ -51,6 +53,16 @@ test('public beta uses verified asset metadata and explains free use without pro
   assert.match(html,/Wizzdom Recall/);assert.match(html,/Obsidian/);assert.match(html,/journaling/);
   assert.doesNotMatch(html,/Chưa mở tải công khai|Public download is not open yet|completely safe|hoàn toàn an toàn|all AI APIs are free/i);
  }
- assert.match(renderDownloadPage('vi',approvedRelease),/tài khoản và gói của Codex, Claude/);
+ assert.match(renderDownloadPage('vi',approvedRelease),/Gói Codex\/Claude/);
  assert.match(renderDownloadPage('en',approvedRelease),/not feature or delivery-date promises/);
+});
+
+
+test('default reading copy stays within a compact word budget',()=>{
+ for(const lang of ['vi','en']){
+  const html=renderDownloadPage(lang,approvedRelease);
+  const main=html.slice(html.indexOf('<main'),html.indexOf('</main>'));
+  const visible=main.replace(/<details[\s\S]*?<\/details>/g,'').replace(/<[^>]*>/g,' ').trim().split(/\s+/);
+  assert.ok(visible.length< (lang==='en'?350:600),lang+': '+visible.length+' words');
+ }
 });
