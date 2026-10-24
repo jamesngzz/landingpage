@@ -1,10 +1,10 @@
 {
   "status": "pilot",
-  "version": "1.0.46-beta.1",
+  "version": "1.0.47-beta.1",
   "platform": "macOS 13+ · Apple Silicon",
-  "url": "https://github.com/jamesngzz/wizzdom-desktop-releases/releases/download/v1.0.46-beta.1/Wizzdom-1.0.46-beta.1-mac-arm64.dmg",
-  "sha256": "bf197cc2c934247297021bebf90c01b8301e03eea8d97663eeae8efb7a9a432c",
-  "bytes": 133373824,
+  "url": "https://github.com/jamesngzz/wizzdom-desktop-releases/releases/download/v1.0.47-beta.1/Wizzdom-1.0.47-beta.1-mac-arm64.dmg",
+  "sha256": "2a25afe8e484c915172377c61f30def8ac6e41b090bb5cf736bad5f5751e08f4",
+  "bytes": 133372685,
   "approval": {
     "pilot_distribution": true,
     "evidence": "design/download/PUBLIC_BETA_DECISION_2026-10-24.md"
