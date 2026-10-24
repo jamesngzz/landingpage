@@ -32,7 +32,7 @@ export const content = {
       ],
       [
         "Lịch sử gốc ở trên máy bạn",
-        "Không đồng bộ toàn bộ kho lịch sử lên database online. Khi bật Cloud AI, lượt chat và context liên quan được gửi đi phân tích."
+        "Không đồng bộ toàn bộ lịch sử. Cloud AI nhận context để phân tích. Chia sẻ đánh giá, ngữ cảnh phân tích và insight lên Supabase riêng tư được chọn sẵn khi thiết lập; bạn có thể tắt trước khi tiếp tục."
       ]
     ],
     "setupTitle": "Bắt đầu trong 3 bước.",
@@ -135,7 +135,7 @@ export const content = {
       ],
       [
         "Original history stays on your Mac",
-        "Your entire history is not synced to an online database. With Cloud AI enabled, chat and relevant context are sent for analysis."
+        "Your entire history is not synced to an online database. With Cloud AI enabled, relevant context is sent for analysis. Onboarding preselects private Supabase sharing of ratings, analysis context and insights to improve Wizzdom; turn either option off before continuing."
       ]
     ],
     "setupTitle": "Get started in 3 steps.",
