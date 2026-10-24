@@ -40,7 +40,7 @@ export const content = {
     "steps": [
       [
         "Cài & mở Wizzdom",
-        "Mở DMG, kéo vào Applications rồi mở app và đăng nhập."
+        "Mở DMG, kéo vào Applications rồi đăng nhập. Từ bản này, app tự tải cập nhật và chờ bạn chọn khởi động lại."
       ],
       [
         "Chọn nguồn & cấp quyền local",
@@ -143,7 +143,7 @@ export const content = {
     "steps": [
       [
         "Install & open Wizzdom",
-        "Open the DMG, drag into Applications, launch and sign in."
+        "Open the DMG, drag into Applications and sign in. Updates download automatically and wait for you to choose restart."
       ],
       [
         "Choose sources & grant local access",
