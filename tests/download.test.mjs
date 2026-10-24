@@ -40,6 +40,7 @@ test('page retains installation and local permission boundaries without repeatin
  }
  assert.match(vi,/không đọc bản nháp/);assert.match(en,/never drafts/);
  assert.match(en,/entire history is not synced to an online database/);assert.match(en,/sent for analysis/);
+ assert.match(vi,/Supabase.*tắt trước khi tiếp tục/);assert.match(en,/preselects private Supabase sharing.*off before continuing/);
  assert.doesNotMatch(read('public/index.html'),/No screen scraping or silent actions/);
 });
 
